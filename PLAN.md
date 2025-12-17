@@ -27,20 +27,25 @@ When starting a session in Firebase Studio, please:
 ## 🗺️ Phase 3: External API Integrations
 - [ ] **Google Maps**:
   - Replace the placeholder in `pages/Contact.tsx` with a live Google Maps component centered on No 3 Maitama, Abuja.
-  - Use `navigator.geolocation` if relevant for "Get Directions".
 - [ ] **Asset Finalization**:
   - Replace `picsum.photos` placeholders with high-fidelity corporate images.
-  - **Critical**: Implement a background video loop for the Hero section in `Home.tsx`. Use a high-quality .mp4 file or a Vimeo/YouTube background wrapper.
+  - **Critical**: Implement a background video loop for the Hero section in `Home.tsx`. 
 
-## 📈 Phase 4: Advanced SEO & Performance
-- [ ] **Dynamic Metadata**: Use `react-helmet-async` to inject unique `<title>` and `<meta description>` tags for every page.
-- [ ] **Schema Validation**: Ensure the `SchemaScript` component is correctly rendering valid JSON-LD on Home, Training, and Contact pages.
-- [ ] **Performance**: Optimize images using modern formats (WebP) and ensure the build is minified.
-
-## 🚀 Phase 5: Deployment & Hosting
-- [ ] **Production Build**: Run `npm run build`.
-- [ ] **Deploy**: `firebase deploy --only hosting`.
-- [ ] **Custom Domain**: Connect and verify `digibeloved.com` in the Firebase Hosting panel.
+## 🚀 Phase 5: Deployment & Hosting (Terminal Commands)
+1. **Prepare Build**:
+   ```bash
+   npm run build
+   ```
+2. **Login (if prompted)**:
+   ```bash
+   firebase login
+   ```
+3. **Deploy to Spark Plan**:
+   ```bash
+   firebase deploy --only hosting
+   ```
+4. **View Live Site**:
+   The terminal will provide a "Hosting URL" (e.g., `https://digibeloved-web.web.app`).
 
 ---
 
