@@ -29,9 +29,9 @@ const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
           <div className="flex justify-between h-20 items-center">
             {/* Logo */}
             <Link to="/" className="flex items-center space-x-3 group">
-              <img 
-                src="https://res.cloudinary.com/dn2mgiges/image/upload/v1754587273/DigiBeloved.png" 
-                alt="DigiBeloved" 
+              <img
+                src="https://res.cloudinary.com/dn2mgiges/image/upload/v1754587273/DigiBeloved.png"
+                alt="DigiBeloved"
                 className="h-10 w-auto object-contain group-hover:scale-105 transition-transform duration-300"
               />
               <span className="text-2xl font-bold tracking-tight text-navy group-hover:text-navy-light transition-colors">
@@ -45,9 +45,8 @@ const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
                 <Link
                   key={link.name}
                   to={link.path}
-                  className={`text-sm font-medium transition-colors hover:text-navy-light ${
-                    isActive(link.path) ? 'text-navy font-bold border-b-2 border-accent' : 'text-gray-600'
-                  }`}
+                  className={`text-sm font-medium transition-colors hover:text-navy-light ${isActive(link.path) ? 'text-navy font-bold border-b-2 border-accent' : 'text-gray-600'
+                    }`}
                 >
                   {link.name}
                 </Link>
@@ -81,11 +80,10 @@ const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
                   key={link.name}
                   to={link.path}
                   onClick={() => setIsMenuOpen(false)}
-                  className={`block px-3 py-2 rounded-md text-base font-medium ${
-                    isActive(link.path)
+                  className={`block px-3 py-2 rounded-md text-base font-medium ${isActive(link.path)
                       ? 'bg-navy/5 text-navy font-bold'
                       : 'text-gray-600 hover:text-navy hover:bg-gray-50'
-                  }`}
+                    }`}
                 >
                   {link.name}
                 </Link>
@@ -115,10 +113,10 @@ const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
           <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
             <div className="col-span-1 md:col-span-2">
               <div className="flex items-center space-x-3 mb-4">
-                <img 
-                  src="https://res.cloudinary.com/dn2mgiges/image/upload/v1754587273/DigiBeloved.png" 
-                  alt="DigiBeloved" 
-                  className="h-8 w-auto object-contain brightness-0 invert"
+                <img
+                  src="https://res.cloudinary.com/dn2mgiges/image/upload/v1754587273/DigiBeloved.png"
+                  alt="DigiBeloved"
+                  className="h-8 w-auto object-contain"
                 />
                 <span className="text-xl font-bold text-white">DigiBeloved</span>
               </div>
@@ -129,7 +127,7 @@ const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
                 <p>Intelligence, Applied.</p>
               </div>
             </div>
-            
+
             <div>
               <h3 className="text-sm font-semibold text-accent tracking-wider uppercase mb-4">Quick Links</h3>
               <ul className="space-y-3">
