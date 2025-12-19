@@ -165,13 +165,13 @@ const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
         href="https://wa.me/2348067628656"
         target="_blank"
         rel="noopener noreferrer"
-        className="fixed bottom-6 right-6 z-50 bg-[#25D366] hover:bg-[#20bd5a] text-white p-4 rounded-full shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-110 flex items-center justify-center group"
+        className="fixed bottom-6 right-6 z-50 flex items-center justify-center transition-transform duration-300 hover:scale-110 group"
         aria-label="Chat on WhatsApp"
       >
         <img
           src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg"
           alt="WhatsApp"
-          className="w-8 h-8 filter brightness-0 invert"
+          className="w-16 h-16 drop-shadow-lg"
         />
         <span className="absolute right-full mr-4 bg-white text-navy px-3 py-1 rounded shadow-md text-sm font-medium opacity-0 group-hover:opacity-100 transition-opacity duration-300 whitespace-nowrap hidden md:block">
           Chat with us
