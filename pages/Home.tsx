@@ -29,13 +29,13 @@ const Home: React.FC = () => {
   return (
     <>
       <SchemaScript schema={schema} />
-      
+
       {/* Hero Section */}
       <section className="relative min-h-[90vh] flex items-center justify-center overflow-hidden">
         {/* Background - Simulating Video Loop with High Quality Image */}
         <div className="absolute inset-0 z-0">
-          <img 
-            src="https://picsum.photos/seed/digibeloved-office/1920/1080" 
+          <img
+            src="https://picsum.photos/seed/digibeloved-office/1920/1080"
             alt="DigiBeloved experts applying AI strategies in a modern Abuja office"
             className="w-full h-full object-cover"
           />
@@ -54,17 +54,17 @@ const Home: React.FC = () => {
             We don't just teach the future; we build it. Expert Applied AI training, custom software development, and strategic consulting.
           </p>
           <div className="mt-10 flex flex-col sm:flex-row justify-center gap-4">
-            <Link 
-              to="/services/solutions" 
+            <Link
+              to="/contact"
               className="bg-accent text-navy px-8 py-4 rounded-full font-bold text-lg hover:bg-yellow-400 transition-all transform hover:scale-105 shadow-[0_0_20px_rgba(255,209,0,0.3)]"
             >
-              View Our Solutions
+              Book a Free Consultation
             </Link>
-            <Link 
-              to="/services/training" 
+            <Link
+              to="/services/solutions"
               className="bg-white/10 backdrop-blur-md text-white border border-white/30 px-8 py-4 rounded-full font-bold text-lg hover:bg-white hover:text-navy transition-all"
             >
-              Browse Training Catalog
+              View Our Solutions
             </Link>
           </div>
         </div>
