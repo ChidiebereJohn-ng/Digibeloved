@@ -13,6 +13,7 @@ const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
     { name: 'Training', path: '/services/training' },
     { name: 'Consulting', path: '/services/consulting' },
     { name: 'About', path: '/about' },
+    { name: 'Tools', path: '/tools/prompt-polisher' },
     { name: 'Contact', path: '/contact' },
   ];
 

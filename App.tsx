@@ -8,6 +8,7 @@ import Training from './pages/Training';
 import Consultation from './pages/Consultation';
 import About from './pages/About';
 import Contact from './pages/Contact';
+import PromptPolisher from './pages/PromptPolisher';
 
 // Scroll to top on route change
 const ScrollToTop = () => {
@@ -32,6 +33,7 @@ const App: React.FC = () => {
         <Route path="/services/consulting" element={<Layout><Consultation /></Layout>} />
         <Route path="/about" element={<Layout><About /></Layout>} />
         <Route path="/contact" element={<Layout><Contact /></Layout>} />
+        <Route path="/tools/prompt-polisher" element={<Layout><PromptPolisher /></Layout>} />
       </Routes>
     </BrowserRouter>
   );
