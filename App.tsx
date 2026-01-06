@@ -5,6 +5,7 @@ import Home from './pages/Home';
 import ServicesHub from './pages/ServicesHub';
 import DigitalSolutions from './pages/DigitalSolutions';
 import Training from './pages/Training';
+import CourseDetail from './pages/CourseDetail';
 import Consultation from './pages/Consultation';
 import About from './pages/About';
 import Contact from './pages/Contact';
@@ -30,6 +31,7 @@ const App: React.FC = () => {
         <Route path="/services" element={<Layout><ServicesHub /></Layout>} />
         <Route path="/services/solutions" element={<Layout><DigitalSolutions /></Layout>} />
         <Route path="/services/training" element={<Layout><Training /></Layout>} />
+        <Route path="/services/training/:id" element={<Layout><CourseDetail /></Layout>} /> {/* Added new route */}
         <Route path="/services/consulting" element={<Layout><Consultation /></Layout>} />
         <Route path="/about" element={<Layout><About /></Layout>} />
         <Route path="/contact" element={<Layout><Contact /></Layout>} />

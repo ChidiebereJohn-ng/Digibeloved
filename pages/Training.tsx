@@ -102,11 +102,13 @@ const Training: React.FC = () => {
                 <h3 className="text-2xl font-bold text-navy">FOR BUSINESS & OPERATIONS</h3>
               </div>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <CourseCard
-                  title="Applied AI for Business"
-                  promise="Turn AI into your best employee. Reclaim 10+ hours a week."
-                  outcome="Build a 'Business Autopilot System.'"
-                />
+                <Link to="/services/training/ai-research-data" className="block h-full cursor-pointer hover:no-underline">
+                  <CourseCard
+                    title="Applied AI for Research & Data Analysis"
+                    promise="Stop Reading PDF Files One By One. It Is A Waste Of Your Time."
+                    outcome="Read 50 Papers In Minutes & Analyze Data Without Coding."
+                  />
+                </Link>
                 <CourseCard
                   title="Applied AI for Agency & Consultancy"
                   promise="Scale service delivery. Stop trading time for money."
