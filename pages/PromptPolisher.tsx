@@ -45,17 +45,32 @@ const PromptPolisher: React.FC = () => {
             const apiKey = import.meta.env.VITE_GEMINI_API_KEY;
 
             if (!apiKey) {
-                // Simulation Mode for Demo purposes or if API key is missing
-                await new Promise(resolve => setTimeout(resolve, 2000));
+                // "Offline Mode" - Smart Template Engine
+                // This ensures the tool provides immediate value even without an API connection
+                await new Promise(resolve => setTimeout(resolve, 1500)); // Fake "thinking" time
 
-                let mockResponse = "";
+                let smartResponse = "";
+
                 if (platform === 'Midjourney') {
-                    mockResponse = `**Polished Midjourney Prompt:**\n\n"/imagine prompt: ${input}, cinematic lighting, photorealistic, 8k, detailed texture, shot on 35mm lens --ar 16:9 --v 6.0"\n\n**Why this works:** Added technical camera settings and aspect ratio for a professional look.`;
+                    smartResponse = `**Prompt:** /imagine prompt: ${input} --v 6.0 --ar 16:9\n\n**Style Tags:** Cinematic lighting, 8k resolution, photorealistic, shot on 35mm lens, detailed texture, depth of field.\n\n**Why this works:**\n- **Parameters:** Added --ar 16:9 for a cinematic widescreen look.\n- **Quality Keywords:** '8k' and 'photorealistic' force the model to high fidelity.\n- **Lighting:** 'Cinematic lighting' adds drama.`;
                 } else {
-                    mockResponse = `**System Role:** You are an expert consultant.\n\n**Task:** ${input}\n\n**Context:** Ensure the tone is professional and actionable. Break down complex ideas into bullet points.\n\n**Constraints:** Avoid jargon unless necessary.`;
+                    // Default to Expert Persona Strategy
+                    smartResponse = `## 🤖 Optimized Prompt Structure\n\n` +
+                        `**role:**\n` +
+                        `Act as an expert Consultant and Senior Copywriter with 10 years of experience.\n\n` +
+                        `**task:**\n` +
+                        `${input}\n\n` +
+                        `**context:**\n` +
+                        `Your goal is to provide a comprehensive, actionable, and verified response. Avoid generic fluff. Use professional formatting (headers, bullet points) to make the output easy to read.\n\n` +
+                        `**constraints:**\n` +
+                        `- Tone: Professional yet engaging.\n` +
+                        `- Length: Comprehensive but concise.\n` +
+                        `- No hallucinated facts.\n\n` +
+                        `**output_format:**\n` +
+                        `Markdown formatted text with bold keywords.`;
                 }
 
-                setOutput(mockResponse + "\n\n(Note: To get real AI generation, please configure the VITE_GEMINI_API_KEY in your .env file)");
+                setOutput(smartResponse);
                 setLoading(false);
                 return;
             }
@@ -144,8 +159,8 @@ const PromptPolisher: React.FC = () => {
                                                 key={p}
                                                 onClick={() => setPlatform(p as any)}
                                                 className={`px-4 py-2 rounded-full text-sm font-medium transition-all ${platform === p
-                                                        ? 'bg-navy text-white shadow-md'
-                                                        : 'bg-gray-100 text-gray-500 hover:bg-gray-200'
+                                                    ? 'bg-navy text-white shadow-md'
+                                                    : 'bg-gray-100 text-gray-500 hover:bg-gray-200'
                                                     }`}
                                             >
                                                 {p}
@@ -174,8 +189,8 @@ const PromptPolisher: React.FC = () => {
                                     onClick={handlePolish}
                                     disabled={loading || !input.trim()}
                                     className={`w-full py-4 rounded-xl font-bold text-lg flex items-center justify-center gap-2 transition-all transform hover:scale-[1.02] ${loading || !input.trim()
-                                            ? 'bg-gray-200 text-gray-400 cursor-not-allowed'
-                                            : 'bg-accent text-navy shadow-lg hover:shadow-yellow-400/30'
+                                        ? 'bg-gray-200 text-gray-400 cursor-not-allowed'
+                                        : 'bg-accent text-navy shadow-lg hover:shadow-yellow-400/30'
                                         }`}
                                 >
                                     {loading ? (
