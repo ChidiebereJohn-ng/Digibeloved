@@ -30,7 +30,7 @@ const Contact: React.FC = () => {
     "name": "DigiBeloved",
     "image": "https://res.cloudinary.com/dn2mgiges/image/upload/v1754587273/DigiBeloved.png",
     "telephone": "+2348067628656",
-    "email": "info@digibeloved.com",
+    "email": "digibeloved@gmail.com",
     "address": {
       "@type": "PostalAddress",
       "streetAddress": "No 3 Maitama",
@@ -55,7 +55,7 @@ const Contact: React.FC = () => {
     <>
       <SchemaScript schema={schema} />
       <div className="bg-white min-h-screen pt-20">
-        
+
         {/* Header */}
         <div className="text-center py-16 px-4 bg-slate-50 border-b border-gray-100">
           <h1 className="text-4xl md:text-5xl font-bold text-navy mb-4">Let’s Build Your Future.</h1>
@@ -64,11 +64,11 @@ const Contact: React.FC = () => {
 
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-24 pt-12">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 bg-white rounded-3xl overflow-hidden border border-gray-100 shadow-2xl">
-            
+
             {/* Contact Data & Map */}
             <div className="p-10 bg-navy text-white">
               <h3 className="text-2xl font-bold text-accent mb-8">Official Contact Data</h3>
-              
+
               <div className="space-y-8">
                 <div className="flex items-start">
                   <MapPin className="h-6 w-6 text-accent mr-4 mt-1" />
@@ -90,7 +90,7 @@ const Contact: React.FC = () => {
                   <Mail className="h-6 w-6 text-accent mr-4 mt-1" />
                   <div>
                     <h4 className="font-bold text-lg">Email</h4>
-                    <a href="mailto:info@digibeloved.com" className="text-gray-300 hover:text-white transition-colors">info@digibeloved.com</a>
+                    <a href="mailto:digibeloved@gmail.com" className="text-gray-300 hover:text-white transition-colors">digibeloved@gmail.com</a>
                   </div>
                 </div>
 
@@ -107,7 +107,7 @@ const Contact: React.FC = () => {
               <div className="mt-12 h-64 bg-navy-light/50 rounded-xl overflow-hidden relative border border-white/10">
                 <img src="https://picsum.photos/seed/map/600/400" alt="Map showing DigiBeloved office location in Abuja" className="w-full h-full object-cover opacity-80" />
                 <div className="absolute inset-0 flex items-center justify-center">
-                   <div className="bg-white text-navy px-4 py-2 rounded shadow-lg text-sm font-bold">Google Maps Embed Placeholder</div>
+                  <div className="bg-white text-navy px-4 py-2 rounded shadow-lg text-sm font-bold">Google Maps Embed Placeholder</div>
                 </div>
               </div>
 

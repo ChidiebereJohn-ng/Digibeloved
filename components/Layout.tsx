@@ -149,7 +149,7 @@ const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
                   <a href="tel:+2348067628656" className="hover:text-white transition-colors">+2348067628656</a>
                 </li>
                 <li>
-                  <a href="mailto:info@digibeloved.com" className="hover:text-white transition-colors">info@digibeloved.com</a>
+                  <a href="mailto:digibeloved@gmail.com" className="hover:text-white transition-colors">digibeloved@gmail.com</a>
                 </li>
               </ul>
             </div>
