@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { Code, GraduationCap, Briefcase, ArrowRight } from 'lucide-react';
 import SchemaScript from '../components/SchemaScript';
+import PortfolioGrid from '../components/PortfolioGrid';
 
 const Home: React.FC = () => {
   // Schema for Home Page: Organization
@@ -166,6 +167,9 @@ const Home: React.FC = () => {
           </div>
         </div>
       </section>
+
+      {/* Portfolio Grid Section */}
+      <PortfolioGrid />
 
       {/* Tri-Sector Overview (Bento Grid Style) */}
       <section className="py-24 bg-white border-t border-gray-100">
