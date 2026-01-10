@@ -1,28 +1,20 @@
 import { initializeApp } from "firebase/app";
-import { getFirestore } from "firebase/firestore";
 import { getAnalytics } from "firebase/analytics";
+import { getFirestore } from "firebase/firestore";
 
-/**
- * INSTRUCTIONS FOR GEMINI AI:
- * 1. Go to Firebase Console -> Project Settings.
- * 2. Copy the Web App configuration.
- * 3. Replace the placeholder values below.
- */
 const firebaseConfig = {
-  apiKey: "REPLACE_WITH_YOUR_API_KEY",
-  authDomain: "digibeloved-web.firebaseapp.com",
-  projectId: "digibeloved-web",
-  storageBucket: "digibeloved-web.appspot.com",
-  messagingSenderId: "REPLACE_WITH_ID",
-  appId: "REPLACE_WITH_APP_ID",
-  measurementId: "REPLACE_WITH_MEASUREMENT_ID"
+  apiKey: "AIzaSyBPSdMl_GlSjv0oLdjA2gL0leyKZuJKxw4",
+  authDomain: "digibeloved-db7cd.firebaseapp.com",
+  projectId: "digibeloved-db7cd",
+  storageBucket: "digibeloved-db7cd.firebasestorage.app",
+  messagingSenderId: "167126197274",
+  appId: "1:167126197274:web:7d87372f610243efb7dda3",
+  measurementId: "G-CTLF2VTJEE"
 };
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
 
-// Initialize Analytics
+// Initialize services
 export const analytics = getAnalytics(app);
-
-// Export Firestore database for use in Contact.tsx
 export const db = getFirestore(app);

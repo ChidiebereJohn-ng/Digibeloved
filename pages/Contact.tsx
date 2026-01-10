@@ -1,27 +1,47 @@
-import React, { useState } from 'react';
-import { MapPin, Phone, Mail, Clock } from 'lucide-react';
-import SchemaScript from '../components/SchemaScript';
+import emailjs from '@emailjs/browser';
+
+// ... existing imports
 
 const Contact: React.FC = () => {
-  const [formData, setFormData] = useState({
-    name: '',
-    organization: '',
-    email: '',
-    interest: 'Training',
-    message: ''
-  });
+  // ... state
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
-    setFormData({
-      ...formData,
-      [e.target.name]: e.target.value
-    });
-  };
-
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    console.log('Form submitted:', formData);
-    alert('Thank you. Your message has been received.');
+    setIsSubmitting(true);
+
+    try {
+      // 1. Save to Firestore (Database Record)
+      await addDoc(collection(db, "contacts"), {
+        ...formData,
+        createdAt: serverTimestamp(),
+      });
+
+      // 2. Send Email via EmailJS
+      const serviceId = 'service_4vy4fmg';
+      const templateId = 'template_2cccsyp';
+      const publicKey = 'cf0WzKgyDjGSK7run';
+
+      await emailjs.send(
+        serviceId,
+        templateId,
+        {
+          from_name: formData.name,
+          from_email: formData.email,
+          organization: formData.organization,
+          interest: formData.interest,
+          message: formData.message,
+        },
+        publicKey
+      );
+
+      alert('Thank you! Your message has been sent successfully.');
+      setFormData({ name: '', organization: '', email: '', interest: 'Training', message: '' });
+    } catch (error) {
+      console.error("Error sending message: ", error);
+      alert('Error sending message. Please try again or email us directly at digibeloved@gmail.com');
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const schema = {
@@ -183,8 +203,11 @@ const Contact: React.FC = () => {
                   ></textarea>
                 </div>
 
-                <button type="submit" className="w-full bg-accent text-navy font-bold py-4 rounded-lg hover:bg-yellow-400 transition-colors shadow-lg">
-                  Send Message
+                <button
+                  type="submit"
+                  disabled={isSubmitting}
+                  className="w-full bg-accent text-navy font-bold py-4 rounded-lg hover:bg-yellow-400 transition-colors shadow-lg disabled:opacity-50 disabled:cursor-not-allowed">
+                  {isSubmitting ? 'Sending...' : 'Send Message'}
                 </button>
               </form>
             </div>
