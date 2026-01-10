@@ -1,9 +1,24 @@
 import React from 'react';
+import { analytics } from '../src/firebase';
+import { logEvent } from "firebase/analytics";
 import { Link } from 'react-router-dom';
 import { BookOpen, CheckCircle, Download, ArrowRight } from 'lucide-react';
 import SchemaScript from '../components/SchemaScript';
 
 const Training: React.FC = () => {
+
+  const handleEnrollClick = () => {
+    if (analytics) {
+      logEvent(analytics, 'begin_checkout', {
+        value: 0,
+        currency: 'NGN',
+        items: [{
+          item_id: 'training_general',
+          item_name: 'General Training Enrollment'
+        }]
+      });
+    }
+  };
 
   const schema = {
     "@context": "https://schema.org",
@@ -203,7 +218,7 @@ const Training: React.FC = () => {
               <button className="flex items-center justify-center px-8 py-4 border border-navy text-navy rounded-full font-bold hover:bg-navy hover:text-white transition-colors">
                 <Download className="mr-2 h-5 w-5" /> Download Course Brochure
               </button>
-              <Link to="/contact" className="flex items-center justify-center px-8 py-4 bg-accent text-navy rounded-full font-bold hover:bg-yellow-400 transition-colors shadow-lg">
+              <Link to="/contact" onClick={handleEnrollClick} className="flex items-center justify-center px-8 py-4 bg-accent text-navy rounded-full font-bold hover:bg-yellow-400 transition-colors shadow-lg">
                 Enroll Now <ArrowRight className="ml-2 h-5 w-5" />
               </Link>
             </div>

@@ -1,5 +1,6 @@
 import { initializeApp } from "firebase/app";
 import { getFirestore } from "firebase/firestore";
+import { getAnalytics } from "firebase/analytics";
 
 /**
  * INSTRUCTIONS FOR GEMINI AI:
@@ -13,11 +14,15 @@ const firebaseConfig = {
   projectId: "digibeloved-web",
   storageBucket: "digibeloved-web.appspot.com",
   messagingSenderId: "REPLACE_WITH_ID",
-  appId: "REPLACE_WITH_APP_ID"
+  appId: "REPLACE_WITH_APP_ID",
+  measurementId: "REPLACE_WITH_MEASUREMENT_ID"
 };
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
+
+// Initialize Analytics
+export const analytics = getAnalytics(app);
 
 // Export Firestore database for use in Contact.tsx
 export const db = getFirestore(app);
