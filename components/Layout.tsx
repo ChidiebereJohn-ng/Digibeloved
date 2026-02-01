@@ -13,6 +13,7 @@ const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
     { name: 'Training', path: '/services/training' },
     { name: 'Consulting', path: '/services/consulting' },
     { name: 'About', path: '/about' },
+    { name: 'Blog', path: '/blog' },
     { name: 'Tools', path: '/tools/prompt-polisher' },
     { name: 'Contact', path: '/contact' },
   ];
@@ -136,6 +137,7 @@ const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
                 <li><Link to="/services/training" className="text-gray-400 hover:text-white transition-colors">Applied AI Training</Link></li>
                 <li><Link to="/services/consulting" className="text-gray-400 hover:text-white transition-colors">Strategy & Consulting</Link></li>
                 <li><Link to="/about" className="text-gray-400 hover:text-white transition-colors">About Us</Link></li>
+                <li><Link to="/blog" className="text-gray-400 hover:text-white transition-colors">Blog</Link></li>
               </ul>
             </div>
 
