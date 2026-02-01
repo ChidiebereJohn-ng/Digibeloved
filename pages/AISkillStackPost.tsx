@@ -16,9 +16,12 @@ const AISkillStackPost: React.FC = () => {
                     <Link to="/blog" className="inline-flex items-center text-accent hover:text-white mb-8 transition-colors">
                         <ArrowLeft className="h-4 w-4 mr-2" /> Back to Insights
                     </Link>
-                    <h1 className="text-4xl md:text-5xl font-extrabold tracking-tight mb-6 leading-tight">
-                        THE 2026 AI SKILL STACK
+                    <h1 className="text-4xl md:text-6xl font-extrabold tracking-tight mb-6 leading-tight">
+                        🔑 7 AI Skills You Need in 2026
                     </h1>
+                    <p className="text-2xl text-accent font-bold mb-4">
+                        Learn these or get replaced.
+                    </p>
                     <p className="text-xl text-gray-300 max-w-2xl mx-auto">
                         Stop treating AI like a buffet. Build a systematic progression from beginner to native with this compounded skill stack.
                     </p>
@@ -155,6 +158,35 @@ const AISkillStackPost: React.FC = () => {
                     <p className="text-gray-600 mb-4">
                         Vibe coding = AI-assisted product building. You describe what you want. The AI builds it. Product building is no longer gated by technical skills.
                     </p>
+
+                    <div className="bg-orange-50 rounded-xl p-6 border border-orange-100 mb-6">
+                        <h3 className="font-bold text-orange-800 mb-3 flex items-center">
+                            <Code className="h-5 w-5 mr-2" /> Modern AI Capabilities
+                        </h3>
+                        <ul className="space-y-3 text-sm text-gray-700">
+                            <li className="flex gap-2">
+                                <span className="font-bold whitespace-nowrap">Real-time Building:</span>
+                                <span>Using HTML, Tailwind CSS, and JavaScript in real-time.</span>
+                            </li>
+                            <li className="flex gap-2">
+                                <span className="font-bold whitespace-nowrap">Visual Layouts:</span>
+                                <span>Information is organized into cards, tabs, and clickable components.</span>
+                            </li>
+                            <li className="flex gap-2">
+                                <span className="font-bold whitespace-nowrap">Customization:</span>
+                                <span>Unique experiences are created for specific, complex, or creative prompts.</span>
+                            </li>
+                            <li className="flex gap-2">
+                                <span className="font-bold whitespace-nowrap">Integrated Media:</span>
+                                <span>Interactive images, videos, and maps can be displayed.</span>
+                            </li>
+                            <li className="flex gap-2">
+                                <span className="font-bold whitespace-nowrap">Complex Tasks:</span>
+                                <span>Designed for learning, planning, analyzing, and visualizing data rather than quick, simple questions.</span>
+                            </li>
+                        </ul>
+                    </div>
+
                     <div className="grid grid-cols-1 md:grid-cols-3 gap-4 text-center">
                         <div className="p-4 bg-gray-50 rounded-lg">
                             <span className="block font-bold text-navy">No-code</span>

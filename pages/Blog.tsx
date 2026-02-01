@@ -6,8 +6,8 @@ const Blog: React.FC = () => {
     const posts = [
         {
             id: 'ai-skill-stack-2026',
-            title: 'THE 2026 AI SKILL STACK',
-            excerpt: "Most people treat AI skills like a buffet. A little prompting here. A tool demo there. No system. No progression. That's why they plateau. Discover the systematic skill stack to move from tourist to native.",
+            title: '🔑 7 AI Skills You Need in 2026',
+            excerpt: "Learn these or get replaced. Most people treat AI skills like a buffet. No system. No progression. Discover the systematic skill stack to move from tourist to native.",
             date: 'February 1, 2026',
             author: 'DigiBeloved',
             image: 'https://images.unsplash.com/photo-1677442136019-21780ecad995?ixlib=rb-4.0.3&auto=format&fit=crop&w=1632&q=80', // detailed AI abstract image
