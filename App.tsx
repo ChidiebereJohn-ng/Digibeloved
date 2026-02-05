@@ -12,6 +12,7 @@ import Contact from './pages/Contact';
 import PromptPolisher from './pages/PromptPolisher';
 import Blog from './pages/Blog';
 import AISkillStackPost from './pages/AISkillStackPost';
+import AIGraphicDesignCourse from './pages/AIGraphicDesignCourse';
 
 // Scroll to top on route change
 const ScrollToTop = () => {
@@ -40,6 +41,7 @@ const App: React.FC = () => {
         <Route path="/tools/prompt-polisher" element={<Layout><PromptPolisher /></Layout>} />
         <Route path="/blog" element={<Layout><Blog /></Layout>} />
         <Route path="/blog/ai-skill-stack-2026" element={<Layout><AISkillStackPost /></Layout>} />
+        <Route path="/courses/ai-graphic-design" element={<Layout><AIGraphicDesignCourse /></Layout>} />
       </Routes>
     </BrowserRouter>
   );
