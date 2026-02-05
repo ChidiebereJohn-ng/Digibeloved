@@ -144,6 +144,13 @@ const Training: React.FC = () => {
                   promise="The 'Infinite Content' Engine. Quality at scale."
                   outcome="Build a repurposing pipeline that turns 1 idea into 20 assets."
                 />
+                <Link to="/courses/ai-graphic-design" className="block h-full cursor-pointer hover:no-underline">
+                  <CourseCard
+                    title="AI Powered Graphic Design"
+                    promise="Designers who ignore AI will be replaced."
+                    outcome="Create professional ads and brand visuals in minutes using Firefly & Gemini."
+                  />
+                </Link>
               </div>
             </div>
 
