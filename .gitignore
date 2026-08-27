@@ -27,3 +27,8 @@ dist-ssr
 # Firebase
 .firebase
 firebase-debug.log
+
+# Environment & Private scripts
+.env
+.env.*
+scripts/*.cjs

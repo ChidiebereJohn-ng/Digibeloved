@@ -506,7 +506,7 @@ const staticContent = `
 </div>
 `;
 
-// Inject into template root
+// Inject into template root for /ai-presentation-system
 const finalHtml = template.replace('<div id="root"></div>', `<div id="root">${staticContent}</div>`);
 
 // Output destination 1: dist/ai-presentation-system/index.html
@@ -519,4 +519,21 @@ fs.writeFileSync(path.join(targetDir, "index.html"), finalHtml, "utf-8");
 // Output destination 2: dist/ai-presentation-system.html
 fs.writeFileSync(path.join(distDir, "ai-presentation-system.html"), finalHtml, "utf-8");
 
-console.log("Successfully pre-rendered static HTML for /ai-presentation-system with full crawlable content!");
+// Output destination 3: dist/free-blueprint/index.html
+const bpDir = path.join(distDir, "free-blueprint");
+if (!fs.existsSync(bpDir)) {
+  fs.mkdirSync(bpDir, { recursive: true });
+}
+fs.writeFileSync(path.join(bpDir, "index.html"), template, "utf-8");
+
+// Output destination 4: dist/free-blueprint/thank-you/index.html
+const tyDir = path.join(bpDir, "thank-you");
+if (!fs.existsSync(tyDir)) {
+  fs.mkdirSync(tyDir, { recursive: true });
+}
+fs.writeFileSync(path.join(tyDir, "index.html"), template, "utf-8");
+
+// Output destination 5: dist/404.html (Cloudflare Pages SPA fallback)
+fs.writeFileSync(path.join(distDir, "404.html"), fs.readFileSync(indexPath, "utf-8"), "utf-8");
+
+console.log("Successfully pre-rendered static HTML for /ai-presentation-system, /free-blueprint, and /free-blueprint/thank-you!");

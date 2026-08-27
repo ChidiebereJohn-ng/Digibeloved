@@ -14,6 +14,8 @@ import Blog from './pages/Blog';
 import AISkillStackPost from './pages/AISkillStackPost';
 import AIGraphicDesignCourse from './pages/AIGraphicDesignCourse';
 import AIPresentationSystem from './pages/AIPresentationSystem';
+import FreeBlueprint from './pages/FreeBlueprint';
+import BlueprintThankYou from './pages/BlueprintThankYou';
 
 // Scroll to top on route change
 const ScrollToTop = () => {
@@ -44,6 +46,8 @@ const App: React.FC = () => {
         <Route path="/blog/ai-skill-stack-2026" element={<Layout><AISkillStackPost /></Layout>} />
         <Route path="/courses/ai-graphic-design" element={<Layout><AIGraphicDesignCourse /></Layout>} />
         <Route path="/ai-presentation-system" element={<AIPresentationSystem />} />
+        <Route path="/free-blueprint" element={<FreeBlueprint />} />
+        <Route path="/free-blueprint/thank-you" element={<BlueprintThankYou />} />
       </Routes>
     </BrowserRouter>
   );
