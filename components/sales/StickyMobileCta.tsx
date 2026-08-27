@@ -1,4 +1,4 @@
-﻿
+
 import React, { useEffect, useState } from "react";
 import { ArrowRight } from "lucide-react";
 import { SALES_CONFIG } from "../../data/salesConfig";
@@ -50,7 +50,7 @@ export default function StickyMobileCta() {
           onClick={handleCtaClick}
           className="inline-flex items-center space-x-1.5 bg-[#FFD100] hover:bg-yellow-400 text-[#0A1F44] font-black text-xs px-4 py-2.5 rounded-xl shadow-lg transition-transform active:scale-95 cursor-pointer"
         >
-          <span>Get the System</span>
+          <span>Get the AI Presentation System</span>
           <ArrowRight className="w-3.5 h-3.5" />
         </a>
       </div>

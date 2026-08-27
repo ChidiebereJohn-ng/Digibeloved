@@ -1,40 +1,27 @@
 import React, { useEffect } from "react";
 import SalesHeader from "../components/sales/SalesHeader";
-import SalesHero from "../components/sales/SalesHero";
-import TrustStrip from "../components/sales/TrustStrip";
-import ProblemSection from "../components/sales/ProblemSection";
-import TheProblemIsTheBridge from "../components/sales/TheProblemIsTheBridge";
-import AIObjectionSection from "../components/sales/AIObjectionSection";
-import DynamicSkillSection from "../components/sales/DynamicSkillSection";
-import ContentControlSection from "../components/sales/ContentControlSection";
-import WorkflowsSection from "../components/sales/WorkflowsSection";
-import BeforeAfterProof from "../components/sales/BeforeAfterProof";
-import ContextAdaptationSection from "../components/sales/ContextAdaptationSection";
-import NonDesignerSection from "../components/sales/NonDesignerSection";
-import UseCasesSection from "../components/sales/UseCasesSection";
-import OfferStackSection from "../components/sales/OfferStackSection";
-import BenefitsSection from "../components/sales/BenefitsSection";
-import OptionComparisonSection from "../components/sales/OptionComparisonSection";
-import WhoItIsForSection from "../components/sales/WhoItIsForSection";
-import FounderAuthoritySection from "../components/sales/FounderAuthoritySection";
-import ProductProofSection from "../components/sales/ProductProofSection";
-import SocialProofSection from "../components/sales/SocialProofSection";
-import MonetizationSection from "../components/sales/MonetizationSection";
-import PricingSection from "../components/sales/PricingSection";
-import UrgencySection from "../components/sales/UrgencySection";
-import GuaranteeSection from "../components/sales/GuaranteeSection";
-import FAQSection from "../components/sales/FAQSection";
-import FinalCloseSection from "../components/sales/FinalCloseSection";
+import HeroV2 from "../components/sales/HeroV2";
+import ProblemV2 from "../components/sales/ProblemV2";
+import MechanismV2 from "../components/sales/MechanismV2";
+import ContentControlV2 from "../components/sales/ContentControlV2";
+import WorkflowsV2 from "../components/sales/WorkflowsV2";
+import ProofV2 from "../components/sales/ProofV2";
+import OfferStackV2 from "../components/sales/OfferStackV2";
+import MonetizationV2 from "../components/sales/MonetizationV2";
+import PricingGuaranteeV2 from "../components/sales/PricingGuaranteeV2";
+import FAQV2 from "../components/sales/FAQV2";
+import FinalCloseV2 from "../components/sales/FinalCloseV2";
 import MinimalFooter from "../components/sales/MinimalFooter";
 import StickyMobileCta from "../components/sales/StickyMobileCta";
 import { trackSalesEvent } from "../src/salesAnalytics";
 
 const AIPresentationSystem: React.FC = () => {
   useEffect(() => {
-    // Set page title
-    document.title = "DigiBeloved AI Presentation System | Turn Content Into Professional Slides";
+    // 1. Page Title
+    document.title =
+      "Turn Your Content Into Professional PowerPoint Presentations With AI | DigiBeloved";
 
-    // Set meta description
+    // 2. Meta Description
     let metaDesc = document.querySelector('meta[name="description"]');
     if (!metaDesc) {
       metaDesc = document.createElement("meta");
@@ -43,100 +30,96 @@ const AIPresentationSystem: React.FC = () => {
     }
     metaDesc.setAttribute(
       "content",
-      "Turn raw documents, research, and ideas into professional PowerPoint presentations using AI. Master the Dynamic Presentation Skill and four practical workflows."
+      "Use the DigiBeloved Dynamic Presentation Skill + four practical workflows to turn your content, ideas, visual inspiration, or existing slides into professional presentations using AI."
     );
+
+    // 3. Canonical URL
+    let canonical = document.querySelector('link[rel="canonical"]');
+    if (!canonical) {
+      canonical = document.createElement("link");
+      canonical.setAttribute("rel", "canonical");
+      document.head.appendChild(canonical);
+    }
+    canonical.setAttribute("href", "https://digibeloved.com/ai-presentation-system");
+
+    // 4. Schema.org Product Structured Data
+    const scriptId = "product-schema-ai-presentation";
+    let schemaScript = document.getElementById(scriptId);
+    if (!schemaScript) {
+      schemaScript = document.createElement("script");
+      schemaScript.id = scriptId;
+      schemaScript.setAttribute("type", "application/ld+json");
+      schemaScript.textContent = JSON.stringify({
+        "@context": "https://schema.org",
+        "@type": "Product",
+        name: "DigiBeloved AI Presentation System",
+        image: "https://digibeloved.com/playbook-cover.png",
+        description:
+          "Use the DigiBeloved Dynamic Presentation Skill + four practical workflows to turn your content, ideas, visual inspiration, or existing slides into professional presentations using AI.",
+        brand: {
+          "@type": "Brand",
+          name: "DigiBeloved",
+        },
+        offers: {
+          "@type": "Offer",
+          url: "https://selar.com/7q8715st85",
+          priceCurrency: "USD",
+          price: "29",
+          availability: "https://schema.org/InStock",
+        },
+      });
+      document.head.appendChild(schemaScript);
+    }
 
     // Scroll to top on load
     window.scrollTo(0, 0);
 
-    // Analytics event
+    // Analytics: track sales page view
     trackSalesEvent("sales_page_view");
   }, []);
 
   return (
     <div className="min-h-screen bg-white text-navy font-sans antialiased selection:bg-accent selection:text-navy">
-      {/* 1. Minimal Header */}
+      {/* Minimal Brand Identifier (Zero Navigation) */}
       <SalesHeader />
 
-      {/* 2. Above The Fold Hero Section */}
-      <SalesHero />
+      {/* 1. Hero (Above the Fold) */}
+      <HeroV2 />
 
-      {/* 3. Core Input Trust Strip */}
-      <TrustStrip />
+      {/* 2. Problem: You Already Have the Hard Part */}
+      <ProblemV2 />
 
-      {/* 4. Problem Contrast Section */}
-      <ProblemSection />
+      {/* 3. AI / New Mechanism: Can't I Just Ask AI? + The Equation */}
+      <MechanismV2 />
 
-      {/* 5. Six Presentation Failure Modes */}
-      <TheProblemIsTheBridge />
+      {/* 4. Content Control: Verbatim / Refine / Optimize */}
+      <ContentControlV2 />
 
-      {/* 6. Addressing The Generic AI Prompt Objection */}
-      <AIObjectionSection />
+      {/* 5. Four Workflows A–D */}
+      <WorkflowsV2 />
 
-      {/* 7. The Proprietary Solution: Dynamic Presentation Skill */}
-      <DynamicSkillSection />
+      {/* 6. Before/After and Product Proof (+ Mid-Page CTA) */}
+      <ProofV2 />
 
-      {/* 8. Content Control: Verbatim, Refine, Optimize */}
-      <ContentControlSection />
+      {/* 7. Offer Stack: 5 Core Deliverables */}
+      <OfferStackV2 />
 
-      {/* 9. The Four Comprehensive Workflows */}
-      <WorkflowsSection />
+      {/* 8. Short Monetization Section: Commercial Services & Many Uses */}
+      <MonetizationV2 />
 
-      {/* 10. Visual Transformation Proof & Case Studies */}
-      <BeforeAfterProof />
+      {/* 9. Pricing (₦19,900 / $29) + 7-Day Implementation Guarantee */}
+      <PricingGuaranteeV2 />
 
-      {/* 11. Context Adaptation Across Audiences */}
-      <ContextAdaptationSection />
+      {/* 10. Frequently Asked Questions */}
+      <FAQV2 />
 
-      {/* 12. Knowledge Transfer for Non-Designers */}
-      <NonDesignerSection />
+      {/* 11. Final Close & Primary CTA */}
+      <FinalCloseV2 />
 
-      {/* 13. Day-to-Day Contextual Scenarios */}
-      <UseCasesSection />
-
-      {/* 14. Full Stack Product Offer Breakdown */}
-      <OfferStackSection />
-
-      {/* 15. Six Transformational Benefits */}
-      <BenefitsSection />
-
-      {/* 16. Objective Option Comparison Matrix */}
-      <OptionComparisonSection />
-
-      {/* 17. Ten Audience Profiles */}
-      <WhoItIsForSection />
-
-      {/* 18. Founder Authority & Institutional Origin */}
-      <FounderAuthoritySection />
-
-      {/* 19. Product Proof & Look Inside */}
-      <ProductProofSection />
-
-      {/* 20. Social Proof (Hidden until verified) */}
-      <SocialProofSection />
-
-      {/* 21. Commercial Monetization Paths & Disclaimers */}
-      <MonetizationSection />
-
-      {/* 22. Founding Launch Offer & Pricing */}
-      <PricingSection />
-
-      {/* 23. Real Urgency Deadline (Conditional) */}
-      <UrgencySection />
-
-      {/* 24. 7-Day Implementation Guarantee */}
-      <GuaranteeSection />
-
-      {/* 25. Detailed FAQ Accordion */}
-      <FAQSection />
-
-      {/* 26. Final Close & P.S. */}
-      <FinalCloseSection />
-
-      {/* 27. Minimal Trust & Legal Footer */}
+      {/* Minimal Legal Footer */}
       <MinimalFooter />
 
-      {/* 28. Floating Sticky Mobile Purchase CTA */}
+      {/* Restrained Sticky Mobile Purchase CTA */}
       <StickyMobileCta />
     </div>
   );

@@ -21,25 +21,25 @@ export default function MinimalFooter() {
         </div>
 
         {/* Minimal Legal / Trust Links */}
-        <div className="flex flex-wrap items-center justify-center gap-6 text-slate-400">
-          <Link
-            href="/contact"
-            className="hover:text-white transition-colors"
-          >
-            Contact Support
+        <div className="flex flex-wrap items-center justify-center gap-5 text-slate-400">
+          <Link to="/contact" className="hover:text-white transition-colors">
+            Privacy Policy
           </Link>
-          <a
-            href="#pricing"
-            className="hover:text-white transition-colors"
-          >
+          <span className="text-slate-600">•</span>
+          <Link to="/contact" className="hover:text-white transition-colors">
+            Terms
+          </Link>
+          <span className="text-slate-600">•</span>
+          <a href="#pricing" className="hover:text-white transition-colors">
             Refund Policy
           </a>
-          <span className="text-slate-600">â€¢</span>
-          <span className="text-slate-500">Maitama, Abuja, Nigeria</span>
+          <span className="text-slate-600">•</span>
+          <Link to="/contact" className="hover:text-white transition-colors">
+            Support
+          </Link>
         </div>
 
       </div>
     </footer>
   );
 }
-
