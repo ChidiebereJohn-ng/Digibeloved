@@ -79,25 +79,25 @@ export default function FreeBlueprint() {
                 <div className="flex items-start space-x-3">
                   <CheckCircle2 className="w-5 h-5 text-accent flex-shrink-0 mt-0.5" />
                   <span className="text-sm sm:text-base font-semibold text-slate-800">
-                    The 4-Step Hero Equation: <code>Content × Context × Skill × AI</code>
+                    <strong>01 &amp; 02: Context Engine:</strong> How to feed AI your exact Audience, Objective, Tone, Brand, and Content Control mode (Verbatim / Refine / Optimize).
                   </span>
                 </div>
                 <div className="flex items-start space-x-3">
                   <CheckCircle2 className="w-5 h-5 text-accent flex-shrink-0 mt-0.5" />
                   <span className="text-sm sm:text-base font-semibold text-slate-800">
-                    The 3 Content Control Modes (Verbatim, Refine, Optimize)
+                    <strong>03: Copy-Paste Starter Prompt:</strong> Ready-to-use master prompt with pre-generation quality guardrails.
                   </span>
                 </div>
                 <div className="flex items-start space-x-3">
                   <CheckCircle2 className="w-5 h-5 text-accent flex-shrink-0 mt-0.5" />
                   <span className="text-sm sm:text-base font-semibold text-slate-800">
-                    Workflows A through D quick-action decision matrix
+                    <strong>04: Quick Review Checklist:</strong> 5 essential checks for slide clarity, hierarchy, and accuracy.
                   </span>
                 </div>
                 <div className="flex items-start space-x-3">
                   <CheckCircle2 className="w-5 h-5 text-accent flex-shrink-0 mt-0.5" />
                   <span className="text-sm sm:text-base font-semibold text-slate-800">
-                    Instant PDF delivery directly to your inbox
+                    <strong>05: 5 Quick-Fix Prompts:</strong> Rapid fixes for <em>Too Much Text</em>, <em>Generic Design</em>, <em>AI Changed Content</em>, and <em>Too Casual</em>.
                   </span>
                 </div>
               </div>
