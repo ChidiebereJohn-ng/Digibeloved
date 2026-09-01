@@ -2,6 +2,7 @@ import React from "react";
 import { ArrowRight, CheckCircle2 } from "lucide-react";
 import { SALES_CONFIG } from "../../data/salesConfig";
 import { trackSalesEvent } from "../../src/salesAnalytics";
+import { buildTrackedUrl } from "../../src/services/metaPixel";
 
 export default function FinalCloseV2() {
   const { finalClose, selarCheckoutUrl } = SALES_CONFIG;
@@ -46,7 +47,7 @@ export default function FinalCloseV2() {
         {/* Final CTA Button */}
         <div className="flex flex-col items-center justify-center gap-3 mb-4">
           <a
-            href={selarCheckoutUrl}
+            href={buildTrackedUrl(selarCheckoutUrl)}
             onClick={handleCtaClick}
             className="w-full sm:w-auto inline-flex items-center justify-center bg-accent text-navy px-10 py-5 rounded-xl font-extrabold text-lg sm:text-xl tracking-wide hover:bg-yellow-400 active:scale-[0.99] transition-all shadow-[0_12px_30px_rgba(255,209,0,0.3)] group"
           >

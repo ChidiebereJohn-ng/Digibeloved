@@ -2,6 +2,7 @@ import React from "react";
 import { ArrowRight, Check, ShieldCheck, Zap } from "lucide-react";
 import { SALES_CONFIG } from "../../data/salesConfig";
 import { trackSalesEvent } from "../../src/salesAnalytics";
+import { buildTrackedUrl } from "../../src/services/metaPixel";
 
 export default function PricingGuaranteeV2() {
   const { pricing, selarCheckoutUrl, hero, guarantee } = SALES_CONFIG;
@@ -68,7 +69,7 @@ export default function PricingGuaranteeV2() {
 
             {/* Primary Purchase CTA */}
             <a
-              href={selarCheckoutUrl}
+              href={buildTrackedUrl(selarCheckoutUrl)}
               onClick={handleCtaClick}
               className="w-full inline-flex items-center justify-center bg-accent text-navy py-4 sm:py-5 px-6 rounded-xl font-extrabold text-base sm:text-lg tracking-wide hover:bg-yellow-400 active:scale-[0.99] transition-all shadow-[0_10px_25px_rgba(255,209,0,0.3)] group mb-3"
             >

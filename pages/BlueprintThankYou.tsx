@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { CheckCircle2, Download, ArrowRight, BookOpen, Sparkles } from "lucide-react";
 import SalesHeader from "../components/sales/SalesHeader";
 import MinimalFooter from "../components/sales/MinimalFooter";
+import { trackBlueprintDownload, buildTrackedUrl } from "../src/services/metaPixel";
 
 export default function BlueprintThankYou() {
   const [firstName, setFirstName] = useState("Friend");
@@ -14,6 +15,10 @@ export default function BlueprintThankYou() {
     }
     window.scrollTo(0, 0);
   }, []);
+
+  const handleDownloadClick = () => {
+    trackBlueprintDownload({ location: "thank_you_page" });
+  };
 
   return (
     <div className="min-h-screen bg-white text-navy font-sans antialiased selection:bg-accent selection:text-navy flex flex-col justify-between">
@@ -57,7 +62,8 @@ export default function BlueprintThankYou() {
                 download="DigiBeloved-AI-Presentation-Starter-Blueprint.pdf"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-full sm:w-auto inline-flex items-center justify-center bg-navy text-white px-6 py-3 rounded-xl font-bold text-sm hover:bg-slate-800 transition-colors shadow-sm"
+                onClick={handleDownloadClick}
+                className="w-full sm:w-auto inline-flex items-center justify-center bg-navy text-white px-6 py-3 rounded-xl font-bold text-sm hover:bg-slate-800 transition-colors shadow-sm cursor-pointer"
               >
                 <span>Download PDF</span>
                 <Download className="ml-2 w-4 h-4 text-accent" />

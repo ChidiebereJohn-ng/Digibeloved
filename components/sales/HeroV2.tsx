@@ -2,6 +2,7 @@ import React from "react";
 import { ArrowRight, ShieldCheck, Zap } from "lucide-react";
 import { SALES_CONFIG } from "../../data/salesConfig";
 import { trackSalesEvent } from "../../src/salesAnalytics";
+import { buildTrackedUrl } from "../../src/services/metaPixel";
 
 export default function HeroV2() {
   const { hero, selarCheckoutUrl } = SALES_CONFIG;
@@ -51,7 +52,7 @@ export default function HeroV2() {
             {/* Primary Action Block */}
             <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-4 mb-4">
               <a
-                href={selarCheckoutUrl}
+                href={buildTrackedUrl(selarCheckoutUrl)}
                 onClick={handleCtaClick}
                 className="inline-flex items-center justify-center bg-accent text-navy px-8 py-4 rounded-xl font-extrabold text-base md:text-lg tracking-wide hover:bg-yellow-400 active:scale-[0.99] transition-all shadow-[0_10px_25px_rgba(255,209,0,0.25)] group"
               >

@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { ArrowRight, CheckCircle2, ShieldCheck, Sparkles, AlertCircle } from "lucide-react";
 import SalesHeader from "../components/sales/SalesHeader";
 import MinimalFooter from "../components/sales/MinimalFooter";
+import { trackLead } from "../src/services/metaPixel";
 
 export default function FreeBlueprint() {
   const [firstName, setFirstName] = useState("");
@@ -31,16 +32,12 @@ export default function FreeBlueprint() {
 
       const data = await res.json().catch(() => ({}));
 
-      if (!res.ok && data?.error) {
-        throw new Error(data.error);
+      if (!res.ok || data?.success === false) {
+        throw new Error(data?.error || "Submission failed. Please try again.");
       }
 
-      // Track Lead event in Meta Pixel
-      if (typeof (window as any).fbq === "function") {
-        (window as any).fbq("track", "Lead", {
-          content_name: "AI Presentation Starter Blueprint",
-        });
-      }
+      // 2. Fire Meta Pixel 'Lead' event ONLY after verified successful server response
+      trackLead({ firstName, email });
 
       // Store subscriber's first name for thank you page personalization
       sessionStorage.setItem("subscriber_first_name", firstName || "Friend");
@@ -49,9 +46,7 @@ export default function FreeBlueprint() {
       navigate("/free-blueprint/thank-you");
     } catch (err: any) {
       console.error("Submission error:", err);
-      // Fallback: If network issue, still redirect so the user can download their PDF immediately!
-      sessionStorage.setItem("subscriber_first_name", firstName || "Friend");
-      navigate("/free-blueprint/thank-you");
+      setError(err.message || "Failed to submit form. Please check your connection and try again.");
     } finally {
       setLoading(false);
     }

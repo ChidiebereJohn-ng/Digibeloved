@@ -5,6 +5,11 @@
  * Emits zero errors if tracking scripts are not installed.
  */
 
+import {
+  trackViewContent,
+  trackSelarCheckoutClick,
+} from "./services/metaPixel";
+
 export type SalesEventName =
   | "sales_page_view"
   | "hero_cta_click"
@@ -53,27 +58,24 @@ export function trackSalesEvent(
       win.gtag("event", eventName, payload as Record<string, unknown>);
     }
 
-    // 3. Meta Pixel (fbq)
+    // 3. Meta Pixel (via centralized service)
+    if (
+      eventName === "checkout_click" ||
+      eventName === "hero_cta_click" ||
+      eventName === "sticky_mobile_cta_click"
+    ) {
+      trackSelarCheckoutClick(payload.cta_location || eventName);
+    } else if (eventName === "sales_page_view") {
+      trackViewContent();
+    }
+
+    // Also record semantic event to fbq if available
     if (typeof win.fbq === "function") {
-      if (eventName === "checkout_click" || eventName === "hero_cta_click" || eventName === "sticky_mobile_cta_click") {
-        win.fbq("track", "InitiateCheckout", {
-          content_name: "DigiBeloved AI Presentation System",
-          value: 29,
-          currency: "USD",
-        });
-      } else if (eventName === "sales_page_view") {
-        win.fbq("track", "ViewContent", {
-          content_name: "DigiBeloved AI Presentation System",
-          content_type: "product",
-          value: 29,
-          currency: "USD",
-        });
-      }
-      // Also record custom semantic event
       win.fbq("trackCustom", eventName, payload as Record<string, unknown>);
     }
   } catch (error) {
-    // Fail silently in production
-    console.debug("[Sales Analytics]", eventName, error);
+    if (import.meta.env.DEV) {
+      console.debug("[Sales Analytics]", eventName, error);
+    }
   }
 }

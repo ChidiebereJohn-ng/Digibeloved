@@ -17,17 +17,23 @@ import AIPresentationSystem from './pages/AIPresentationSystem';
 import FreeBlueprint from './pages/FreeBlueprint';
 import BlueprintThankYou from './pages/BlueprintThankYou';
 
-// Scroll to top and fire PageView on route change
-const ScrollToTop = () => {
+import {
+  captureAndPersistUtmParams,
+  trackPageView,
+} from './src/services/metaPixel';
+
+// Scroll to top, capture UTMs, and fire PageView on route change
+const NavigationTracker = () => {
   const { pathname } = useLocation();
 
   React.useEffect(() => {
     window.scrollTo(0, 0);
 
-    // Track SPA route change in Meta Pixel
-    if (typeof (window as any).fbq === "function") {
-      (window as any).fbq("track", "PageView");
-    }
+    // 1. Capture and persist UTMs / fbclid across the funnel
+    captureAndPersistUtmParams();
+
+    // 2. Track SPA route change in Meta Pixel
+    trackPageView(pathname);
   }, [pathname]);
 
   return null;
@@ -36,7 +42,7 @@ const ScrollToTop = () => {
 const App: React.FC = () => {
   return (
     <BrowserRouter>
-      <ScrollToTop />
+      <NavigationTracker />
       <Routes>
         <Route path="/" element={<Layout><Home /></Layout>} />
         <Route path="/services" element={<Layout><ServicesHub /></Layout>} />
