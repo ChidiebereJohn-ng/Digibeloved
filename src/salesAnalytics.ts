@@ -55,15 +55,22 @@ export function trackSalesEvent(
 
     // 3. Meta Pixel (fbq)
     if (typeof win.fbq === "function") {
-      if (eventName === "checkout_click") {
+      if (eventName === "checkout_click" || eventName === "hero_cta_click" || eventName === "sticky_mobile_cta_click") {
         win.fbq("track", "InitiateCheckout", {
           content_name: "DigiBeloved AI Presentation System",
           value: 29,
           currency: "USD",
         });
-      } else {
-        win.fbq("trackCustom", eventName, payload as Record<string, unknown>);
+      } else if (eventName === "sales_page_view") {
+        win.fbq("track", "ViewContent", {
+          content_name: "DigiBeloved AI Presentation System",
+          content_type: "product",
+          value: 29,
+          currency: "USD",
+        });
       }
+      // Also record custom semantic event
+      win.fbq("trackCustom", eventName, payload as Record<string, unknown>);
     }
   } catch (error) {
     // Fail silently in production

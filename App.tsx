@@ -17,12 +17,17 @@ import AIPresentationSystem from './pages/AIPresentationSystem';
 import FreeBlueprint from './pages/FreeBlueprint';
 import BlueprintThankYou from './pages/BlueprintThankYou';
 
-// Scroll to top on route change
+// Scroll to top and fire PageView on route change
 const ScrollToTop = () => {
   const { pathname } = useLocation();
 
   React.useEffect(() => {
     window.scrollTo(0, 0);
+
+    // Track SPA route change in Meta Pixel
+    if (typeof (window as any).fbq === "function") {
+      (window as any).fbq("track", "PageView");
+    }
   }, [pathname]);
 
   return null;

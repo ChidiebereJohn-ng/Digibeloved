@@ -35,6 +35,13 @@ export default function FreeBlueprint() {
         throw new Error(data.error);
       }
 
+      // Track Lead event in Meta Pixel
+      if (typeof (window as any).fbq === "function") {
+        (window as any).fbq("track", "Lead", {
+          content_name: "AI Presentation Starter Blueprint",
+        });
+      }
+
       // Store subscriber's first name for thank you page personalization
       sessionStorage.setItem("subscriber_first_name", firstName || "Friend");
 
