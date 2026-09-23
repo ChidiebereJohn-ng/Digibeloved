@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { 
   BarChart3, 
   Workflow, 
@@ -19,13 +19,27 @@ import {
   Clock,
   BookOpen,
   Zap,
-  ShoppingBag
+  ShoppingBag,
+  Sliders,
+  CheckCheck,
+  AlertTriangle,
+  Flame,
+  FileSpreadsheet,
+  FileCheck2,
+  Lock,
+  ChevronRight
 } from 'lucide-react';
 import SchemaScript from '../components/SchemaScript';
 import { trackCtaClick } from '../src/services/metaPixel';
 
 const Home: React.FC = () => {
+  const navigate = useNavigate();
   const [openFaq, setOpenFaq] = useState<number | null>(0);
+  const [activeFrictionTab, setActiveFrictionTab] = useState<'friction' | 'solution'>('solution');
+  
+  // Interactive 2-Click Project Scoper State
+  const [scoperService, setScoperService] = useState<string>('data-analysis');
+  const [scoperTimeline, setScoperTimeline] = useState<string>('Within 2-4 weeks');
 
   const homeSchema = {
     "@context": "https://schema.org",
@@ -52,59 +66,11 @@ const Home: React.FC = () => {
     ]
   };
 
-  const services = [
-    {
-      icon: BarChart3,
-      tag: "Research & Analytics",
-      title: "Research & Data Analysis",
-      headline: "Turn raw data into defensible results.",
-      desc: "Comprehensive cleaning, hypothesis testing, APA publication tables, and plain-English interpretation for scholars, M&E teams, and NGOs.",
-      link: "/data-analysis",
-      cta: "Explore Data Analysis",
-      metrics: "100% Defensible • Zero Ghostwriting"
-    },
-    {
-      icon: Workflow,
-      tag: "Process Automation",
-      title: "AI & Workflow Automation",
-      headline: "Replace repetitive manual work.",
-      desc: "Connect your Forms, Google Sheets, Excel, email, and WhatsApp into automated pipelines with built-in error alerts and zero manual copy-pasting.",
-      link: "/ai-automation",
-      cta: "Explore Automation",
-      metrics: "Save 10+ Hours / Week"
-    },
-    {
-      icon: Code2,
-      tag: "Software Engineering",
-      title: "Custom Software Development",
-      headline: "Software built around how you work.",
-      desc: "Internal operational portals, executive dashboards, and bespoke web apps. Full source code ownership with zero recurring per-user SaaS taxes.",
-      link: "/custom-software-development",
-      cta: "Explore Software",
-      metrics: "100% Code Ownership"
-    }
-  ];
-
-  const marketplaceSpotlight = [
-    {
-      title: "The AI Presentation System & Playbook",
-      price: "₦19,900 / $29",
-      badge: "Bestseller",
-      desc: "Turn dense documents, research reports, or raw notes into high-impact PowerPoint slides using 4 proven AI workflows.",
-      link: "/ai-presentation-system",
-      cta: "View System",
-      hasCover: true
-    },
-    {
-      title: "The AI Presentation Starter Blueprint",
-      price: "FREE",
-      badge: "Free Download",
-      desc: "The 4-step rapid framework + copy-paste master prompt to immediately turn complex notes into clean slide decks.",
-      link: "/free-blueprint",
-      cta: "Download Free",
-      hasCover: false
-    }
-  ];
+  const handleScoperSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    trackCtaClick(`2-Click Scoper - ${scoperService}`, '/');
+    navigate(`/contact?service=${scoperService}&timeline=${encodeURIComponent(scoperTimeline)}`);
+  };
 
   const workSteps = [
     {
@@ -183,7 +149,7 @@ const Home: React.FC = () => {
       <SchemaScript schema={homeSchema} />
 
       {/* 1. AZURO DIGITAL STYLE HERO SECTION */}
-      <section className="relative bg-white pt-16 pb-20 md:pt-28 md:pb-28 px-4 sm:px-6 lg:px-8 overflow-hidden border-b border-slate-100">
+      <section className="relative bg-white pt-16 pb-16 md:pt-28 md:pb-24 px-4 sm:px-6 lg:px-8 overflow-hidden">
         
         {/* Subtle grid background */}
         <div className="absolute inset-0 opacity-[0.03] bg-[radial-gradient(#07152E_1px,transparent_1px)] [background-size:24px_24px] pointer-events-none" />
@@ -207,7 +173,7 @@ const Home: React.FC = () => {
           </p>
 
           {/* Sleek dual CTAs */}
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-14">
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-12">
             <Link
               to="/contact"
               onClick={() => trackCtaClick('Discuss Your Project - Hero', '/')}
@@ -224,26 +190,53 @@ const Home: React.FC = () => {
             </a>
           </div>
 
-          {/* Trust badges */}
-          <div className="flex flex-wrap items-center justify-center gap-6 sm:gap-10 text-xs sm:text-sm font-semibold text-slate-500 pt-6 border-t border-slate-100">
-            <span className="flex items-center">
-              <ShieldCheck className="w-4 h-4 text-emerald-600 mr-2" />
-              Methodologically Defensible
-            </span>
-            <span className="flex items-center">
-              <Check className="w-4 h-4 text-emerald-600 mr-2" />
-              100% Code &amp; Data Ownership
-            </span>
-            <span className="flex items-center">
-              <span className="w-2 h-2 rounded-full bg-navy mr-2" />
-              Based in Abuja • Serving Globally
-            </span>
+        </div>
+      </section>
+
+      {/* 2. HIGH-IMPACT QUANTITATIVE METRIC BAR (Directly Below Hero) */}
+      <section className="bg-slate-900 text-white py-8 px-4 sm:px-6 lg:px-8 border-y border-slate-800">
+        <div className="max-w-7xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
+          
+          <div className="p-3">
+            <div className="text-3xl sm:text-4xl font-extrabold text-accent font-mono tracking-tight">
+              1,400+
+            </div>
+            <p className="text-xs sm:text-sm text-slate-300 font-medium mt-1">
+              Survey Records Modeled
+            </p>
+          </div>
+
+          <div className="p-3 border-l border-slate-800">
+            <div className="text-3xl sm:text-4xl font-extrabold text-emerald-400 font-mono tracking-tight">
+              12h → 20m
+            </div>
+            <p className="text-xs sm:text-sm text-slate-300 font-medium mt-1">
+              Weekly Manual Time Reclaimed
+            </p>
+          </div>
+
+          <div className="p-3 border-l-0 md:border-l border-slate-800">
+            <div className="text-3xl sm:text-4xl font-extrabold text-white font-mono tracking-tight">
+              100%
+            </div>
+            <p className="text-xs sm:text-sm text-slate-300 font-medium mt-1">
+              Code &amp; IP Asset Custody
+            </p>
+          </div>
+
+          <div className="p-3 border-l border-slate-800">
+            <div className="text-3xl sm:text-4xl font-extrabold text-accent font-mono tracking-tight">
+              &lt; 24h
+            </div>
+            <p className="text-xs sm:text-sm text-slate-300 font-medium mt-1">
+              Scoping &amp; Proposal Feedback
+            </p>
           </div>
 
         </div>
       </section>
 
-      {/* 2. CORE DONE-FOR-YOU SOLUTIONS (Azuro 3-Card Bento) */}
+      {/* 3. CORE DONE-FOR-YOU SOLUTIONS (With Embedded UI Mini-Mockups) */}
       <section id="solutions" className="py-20 md:py-28 bg-slate-50 border-b border-slate-200/80 px-4 sm:px-6 lg:px-8">
         <div className="max-w-7xl mx-auto">
           
@@ -260,56 +253,425 @@ const Home: React.FC = () => {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {services.map((item, idx) => {
-              const Icon = item.icon;
-              return (
-                <div
-                  key={idx}
-                  className="bg-white border border-slate-200/90 rounded-3xl p-8 sm:p-10 shadow-sm hover:shadow-2xl hover:-translate-y-1.5 transition-all duration-300 flex flex-col justify-between group"
-                >
-                  <div>
-                    {/* Top Tag & Icon */}
-                    <div className="flex items-center justify-between mb-8">
-                      <div className="w-14 h-14 rounded-2xl bg-navy/5 text-navy flex items-center justify-center group-hover:bg-navy group-hover:text-accent transition-colors duration-300">
-                        <Icon className="w-7 h-7" />
-                      </div>
-                      <span className="text-[11px] font-bold uppercase tracking-wider bg-slate-100 text-slate-700 px-3 py-1 rounded-full">
-                        {item.tag}
-                      </span>
-                    </div>
-
-                    <h3 className="text-2xl font-extrabold text-navy tracking-tight mb-2">
-                      {item.title}
-                    </h3>
-                    <p className="text-sm font-bold text-accent bg-navy inline-block px-2.5 py-1 rounded-lg mb-4">
-                      {item.headline}
-                    </p>
-                    <p className="text-sm text-slate-600 leading-relaxed mb-8">
-                      {item.desc}
-                    </p>
+            
+            {/* 1. Research & Data Analysis Card with Embedded Statistical Widget */}
+            <div className="bg-white border border-slate-200/90 rounded-3xl p-8 shadow-sm hover:shadow-2xl hover:-translate-y-1.5 transition-all duration-300 flex flex-col justify-between group">
+              <div>
+                {/* Embedded UI Mini-Mockup: Statistical Panel */}
+                <div className="mb-6 bg-[#07152E] rounded-2xl p-4 text-white font-mono text-[11px] border border-slate-800 shadow-inner">
+                  <div className="flex items-center justify-between text-[10px] text-slate-400 mb-2 pb-2 border-b border-white/10">
+                    <span>SPSS / Python Model</span>
+                    <span className="text-emerald-400 font-bold">n = 1,420</span>
                   </div>
-
-                  <div className="pt-6 border-t border-slate-100 flex items-center justify-between">
-                    <span className="text-xs font-semibold text-slate-400">
-                      {item.metrics}
-                    </span>
-                    <Link
-                      to={item.link}
-                      className="inline-flex items-center text-sm font-bold text-navy group-hover:text-accent transition-colors"
-                    >
-                      <span>Explore</span>
-                      <ArrowRight className="w-4 h-4 ml-1.5 group-hover:translate-x-1 transition-transform" />
-                    </Link>
+                  <div className="space-y-1 text-slate-300">
+                    <div className="flex justify-between">
+                      <span>Normality &amp; Scale:</span>
+                      <span className="text-emerald-400">Validated ✓</span>
+                    </div>
+                    <div className="flex justify-between">
+                      <span>Multivariate Regression:</span>
+                      <span className="text-accent font-bold">R² = 0.842</span>
+                    </div>
+                    <div className="flex justify-between text-[10px] text-slate-400 pt-1">
+                      <span>Significance:</span>
+                      <span className="text-emerald-400">p &lt; 0.001</span>
+                    </div>
+                  </div>
+                  <div className="mt-2.5 pt-2 border-t border-white/10 flex items-center justify-between text-[10px] text-slate-400">
+                    <span>APA Publication Table</span>
+                    <span className="text-accent">Output Ready</span>
                   </div>
                 </div>
-              );
-            })}
+
+                <div className="flex items-center justify-between mb-4">
+                  <div className="w-10 h-10 rounded-xl bg-navy/5 text-navy flex items-center justify-center group-hover:bg-navy group-hover:text-accent transition-colors">
+                    <BarChart3 className="w-5 h-5" />
+                  </div>
+                  <span className="text-[10px] font-bold uppercase tracking-wider bg-slate-100 text-slate-700 px-3 py-1 rounded-full">
+                    Research &amp; Analytics
+                  </span>
+                </div>
+
+                <h3 className="text-xl font-extrabold text-navy tracking-tight mb-2">
+                  Research &amp; Data Analysis
+                </h3>
+                <p className="text-xs font-bold text-accent bg-navy inline-block px-2.5 py-1 rounded-lg mb-3">
+                  Turn raw data into defensible results.
+                </p>
+                <p className="text-xs sm:text-sm text-slate-600 leading-relaxed mb-6">
+                  Comprehensive cleaning, hypothesis testing, APA publication tables, and plain-English interpretation for scholars, M&amp;E teams, and NGOs.
+                </p>
+              </div>
+
+              <div className="pt-4 border-t border-slate-100 flex items-center justify-between">
+                <span className="text-xs font-semibold text-slate-400">
+                  100% Defensible • Zero Ghostwriting
+                </span>
+                <Link
+                  to="/data-analysis"
+                  className="inline-flex items-center text-xs font-bold text-navy group-hover:text-accent transition-colors"
+                >
+                  <span>Explore</span>
+                  <ArrowRight className="w-3.5 h-3.5 ml-1.5 group-hover:translate-x-1 transition-transform" />
+                </Link>
+              </div>
+            </div>
+
+            {/* 2. AI & Workflow Automation Card with Embedded Pipeline Diagram */}
+            <div className="bg-white border border-slate-200/90 rounded-3xl p-8 shadow-sm hover:shadow-2xl hover:-translate-y-1.5 transition-all duration-300 flex flex-col justify-between group">
+              <div>
+                {/* Embedded UI Mini-Mockup: Pipeline Visual */}
+                <div className="mb-6 bg-[#07152E] rounded-2xl p-4 text-white font-mono text-[11px] border border-slate-800 shadow-inner">
+                  <div className="flex items-center justify-between text-[10px] text-slate-400 mb-2 pb-2 border-b border-white/10">
+                    <span>Active Webhook Pipeline</span>
+                    <span className="text-emerald-400 font-bold">Live 24/7</span>
+                  </div>
+                  <div className="space-y-1.5 text-xs">
+                    <div className="flex items-center space-x-2 text-slate-300">
+                      <span className="w-1.5 h-1.5 rounded-full bg-emerald-400" />
+                      <span className="text-[11px]">Google Form Trigger Received</span>
+                    </div>
+                    <div className="flex items-center space-x-2 text-slate-300">
+                      <span className="w-1.5 h-1.5 rounded-full bg-emerald-400" />
+                      <span className="text-[11px]">Sync to Master Inventory Sheet</span>
+                    </div>
+                    <div className="flex items-center space-x-2 text-accent font-bold">
+                      <Zap className="w-3 h-3 text-accent flex-shrink-0" />
+                      <span className="text-[11px]">WhatsApp Alert Dispatched (1.2s)</span>
+                    </div>
+                  </div>
+                  <div className="mt-2.5 pt-2 border-t border-white/10 flex items-center justify-between text-[10px] text-slate-400">
+                    <span>Manual Reconciliation:</span>
+                    <span className="text-emerald-400 font-bold">0 mins</span>
+                  </div>
+                </div>
+
+                <div className="flex items-center justify-between mb-4">
+                  <div className="w-10 h-10 rounded-xl bg-navy/5 text-navy flex items-center justify-center group-hover:bg-navy group-hover:text-accent transition-colors">
+                    <Workflow className="w-5 h-5" />
+                  </div>
+                  <span className="text-[10px] font-bold uppercase tracking-wider bg-slate-100 text-slate-700 px-3 py-1 rounded-full">
+                    Process Automation
+                  </span>
+                </div>
+
+                <h3 className="text-xl font-extrabold text-navy tracking-tight mb-2">
+                  AI &amp; Workflow Automation
+                </h3>
+                <p className="text-xs font-bold text-accent bg-navy inline-block px-2.5 py-1 rounded-lg mb-3">
+                  Replace repetitive manual work.
+                </p>
+                <p className="text-xs sm:text-sm text-slate-600 leading-relaxed mb-6">
+                  Connect your Forms, Google Sheets, Excel, email, and WhatsApp into automated pipelines with built-in error alerts and zero manual copy-pasting.
+                </p>
+              </div>
+
+              <div className="pt-4 border-t border-slate-100 flex items-center justify-between">
+                <span className="text-xs font-semibold text-slate-400">
+                  Save 10+ Hours / Week
+                </span>
+                <Link
+                  to="/ai-automation"
+                  className="inline-flex items-center text-xs font-bold text-navy group-hover:text-accent transition-colors"
+                >
+                  <span>Explore</span>
+                  <ArrowRight className="w-3.5 h-3.5 ml-1.5 group-hover:translate-x-1 transition-transform" />
+                </Link>
+              </div>
+            </div>
+
+            {/* 3. Custom Software Development Card with Embedded Browser Window */}
+            <div className="bg-white border border-slate-200/90 rounded-3xl p-8 shadow-sm hover:shadow-2xl hover:-translate-y-1.5 transition-all duration-300 flex flex-col justify-between group">
+              <div>
+                {/* Embedded UI Mini-Mockup: Browser Portal */}
+                <div className="mb-6 bg-[#07152E] rounded-2xl p-4 text-white font-mono text-[11px] border border-slate-800 shadow-inner">
+                  <div className="flex items-center justify-between text-[10px] text-slate-400 mb-2 pb-2 border-b border-white/10">
+                    <div className="flex items-center space-x-1">
+                      <span className="w-2 h-2 rounded-full bg-red-400 inline-block" />
+                      <span className="w-2 h-2 rounded-full bg-yellow-400 inline-block" />
+                      <span className="w-2 h-2 rounded-full bg-emerald-400 inline-block" />
+                    </div>
+                    <span className="text-[10px] text-slate-400">app.portal.internal</span>
+                  </div>
+                  <div className="space-y-1.5 text-xs text-slate-300">
+                    <div className="flex justify-between items-center bg-white/5 p-1.5 rounded-lg text-[11px]">
+                      <span>Role-Based Access:</span>
+                      <span className="text-emerald-400">Admin / Client</span>
+                    </div>
+                    <div className="flex justify-between items-center bg-white/5 p-1.5 rounded-lg text-[11px]">
+                      <span>Monthly Per-Seat Fee:</span>
+                      <span className="text-accent font-bold">$0.00 Forever</span>
+                    </div>
+                  </div>
+                  <div className="mt-2.5 pt-2 border-t border-white/10 flex items-center justify-between text-[10px] text-slate-400">
+                    <span>Source Code Handover:</span>
+                    <span className="text-accent font-bold">100% Owned</span>
+                  </div>
+                </div>
+
+                <div className="flex items-center justify-between mb-4">
+                  <div className="w-10 h-10 rounded-xl bg-navy/5 text-navy flex items-center justify-center group-hover:bg-navy group-hover:text-accent transition-colors">
+                    <Code2 className="w-5 h-5" />
+                  </div>
+                  <span className="text-[10px] font-bold uppercase tracking-wider bg-slate-100 text-slate-700 px-3 py-1 rounded-full">
+                    Software Engineering
+                  </span>
+                </div>
+
+                <h3 className="text-xl font-extrabold text-navy tracking-tight mb-2">
+                  Custom Software Development
+                </h3>
+                <p className="text-xs font-bold text-accent bg-navy inline-block px-2.5 py-1 rounded-lg mb-3">
+                  Software built around how you work.
+                </p>
+                <p className="text-xs sm:text-sm text-slate-600 leading-relaxed mb-6">
+                  Internal operational portals, executive dashboards, and bespoke web apps. Full source code ownership with zero recurring per-user SaaS taxes.
+                </p>
+              </div>
+
+              <div className="pt-4 border-t border-slate-100 flex items-center justify-between">
+                <span className="text-xs font-semibold text-slate-400">
+                  100% Code Ownership
+                </span>
+                <Link
+                  to="/custom-software-development"
+                  className="inline-flex items-center text-xs font-bold text-navy group-hover:text-accent transition-colors"
+                >
+                  <span>Explore</span>
+                  <ArrowRight className="w-3.5 h-3.5 ml-1.5 group-hover:translate-x-1 transition-transform" />
+                </Link>
+              </div>
+            </div>
+
           </div>
 
         </div>
       </section>
 
-      {/* 3. BUSINESS MARKETPLACE SPOTLIGHT (Azuro Clean Visual Cards) */}
+      {/* 4. INTERACTIVE "FRICTION VS SOLUTION" VISUAL TOGGLE (Cuts copy, maximizes contrast) */}
+      <section className="py-20 md:py-28 bg-white px-4 sm:px-6 lg:px-8 border-b border-slate-100">
+        <div className="max-w-6xl mx-auto">
+          
+          <div className="text-center max-w-2xl mx-auto mb-12">
+            <span className="text-xs font-bold text-navy uppercase tracking-widest bg-slate-100 px-3.5 py-1.5 rounded-full inline-block mb-3">
+              The Visual Contrast
+            </span>
+            <h2 className="text-3xl sm:text-5xl font-extrabold text-navy tracking-tight">
+              Before vs. After DigiBeloved
+            </h2>
+            <p className="text-slate-600 mt-3 text-base">
+              See the exact operational transformation when you replace manual friction with an engineered system.
+            </p>
+          </div>
+
+          {/* Interactive Toggle Switch */}
+          <div className="flex justify-center mb-12">
+            <div className="inline-flex p-1.5 bg-slate-100 rounded-2xl border border-slate-200">
+              <button
+                onClick={() => setActiveFrictionTab('friction')}
+                className={`flex items-center space-x-2 px-5 py-2.5 rounded-xl text-xs sm:text-sm font-bold transition-all ${
+                  activeFrictionTab === 'friction'
+                    ? 'bg-red-50 text-red-700 shadow-sm border border-red-200'
+                    : 'text-slate-600 hover:text-navy'
+                }`}
+              >
+                <AlertTriangle className="w-4 h-4 text-red-500" />
+                <span>The Operational Friction (Before)</span>
+              </button>
+              <button
+                onClick={() => setActiveFrictionTab('solution')}
+                className={`flex items-center space-x-2 px-5 py-2.5 rounded-xl text-xs sm:text-sm font-bold transition-all ${
+                  activeFrictionTab === 'solution'
+                    ? 'bg-navy text-white shadow-sm'
+                    : 'text-slate-600 hover:text-navy'
+                }`}
+              >
+                <CheckCircle2 className="w-4 h-4 text-accent" />
+                <span>The DigiBeloved Output (After)</span>
+              </button>
+            </div>
+          </div>
+
+          {/* Tab 1: The Friction (Before) */}
+          {activeFrictionTab === 'friction' && (
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 animate-in fade-in duration-200">
+              <div className="bg-red-50/50 border border-red-200/80 rounded-3xl p-7">
+                <span className="text-xs font-bold text-red-600 uppercase tracking-wider block mb-2">01. Research Risk</span>
+                <h3 className="text-lg font-bold text-navy mb-2">Dubious Tests &amp; Missing Data</h3>
+                <p className="text-xs sm:text-sm text-slate-600 leading-relaxed mb-4">
+                  18% missing entries and questionable normality assumptions risking rejection by academic or donor committees.
+                </p>
+                <div className="p-3 bg-white rounded-xl border border-red-200 text-xs text-red-700 font-mono">
+                  ✕ Warning: Methodological objection
+                </div>
+              </div>
+
+              <div className="bg-red-50/50 border border-red-200/80 rounded-3xl p-7">
+                <span className="text-xs font-bold text-red-600 uppercase tracking-wider block mb-2">02. Operational Drag</span>
+                <h3 className="text-lg font-bold text-navy mb-2">Spreadsheet Copy-Paste Fatigue</h3>
+                <p className="text-xs sm:text-sm text-slate-600 leading-relaxed mb-4">
+                  12 hours lost every week manually transferring dispatch receipts into sheets, resulting in stockouts and delays.
+                </p>
+                <div className="p-3 bg-white rounded-xl border border-red-200 text-xs text-red-700 font-mono">
+                  ✕ 12 hours wasted weekly
+                </div>
+              </div>
+
+              <div className="bg-red-50/50 border border-red-200/80 rounded-3xl p-7">
+                <span className="text-xs font-bold text-red-600 uppercase tracking-wider block mb-2">03. Escalating Costs</span>
+                <h3 className="text-lg font-bold text-navy mb-2">The Perpetual SaaS Seat Tax</h3>
+                <p className="text-xs sm:text-sm text-slate-600 leading-relaxed mb-4">
+                  Monthly software fees increase every time you hire, yet your team is forced to bend to generic templates.
+                </p>
+                <div className="p-3 bg-white rounded-xl border border-red-200 text-xs text-red-700 font-mono">
+                  ✕ $0 equity • Unending fees
+                </div>
+              </div>
+            </div>
+          )}
+
+          {/* Tab 2: The DigiBeloved Output (After) */}
+          {activeFrictionTab === 'solution' && (
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 animate-in fade-in duration-200">
+              <div className="bg-emerald-50/50 border border-emerald-200/80 rounded-3xl p-7">
+                <span className="text-xs font-bold text-emerald-700 uppercase tracking-wider block mb-2">01. Defensible Research</span>
+                <h3 className="text-lg font-bold text-navy mb-2">Defensible Empirical Report</h3>
+                <p className="text-xs sm:text-sm text-slate-600 leading-relaxed mb-4">
+                  Cleaned SPSS/Excel datasets, regression models, and APA publication tables approved 4 days ahead of deadline.
+                </p>
+                <div className="p-3 bg-white rounded-xl border border-emerald-200 text-xs text-emerald-800 font-mono font-bold flex items-center">
+                  <CheckCircle2 className="w-3.5 h-3.5 text-emerald-600 mr-1.5 flex-shrink-0" />
+                  <span>0 Reviewer Objections</span>
+                </div>
+              </div>
+
+              <div className="bg-emerald-50/50 border border-emerald-200/80 rounded-3xl p-7">
+                <span className="text-xs font-bold text-emerald-700 uppercase tracking-wider block mb-2">02. Automated Pipeline</span>
+                <h3 className="text-lg font-bold text-navy mb-2">Automated WhatsApp &amp; Sheets</h3>
+                <p className="text-xs sm:text-sm text-slate-600 leading-relaxed mb-4">
+                  Instant webhook pipeline that syncs branch stock levels and dispatches supplier purchase orders in 1.2 seconds.
+                </p>
+                <div className="p-3 bg-white rounded-xl border border-emerald-200 text-xs text-emerald-800 font-mono font-bold flex items-center">
+                  <CheckCircle2 className="w-3.5 h-3.5 text-emerald-600 mr-1.5 flex-shrink-0" />
+                  <span>12h weekly reduced to 20m</span>
+                </div>
+              </div>
+
+              <div className="bg-emerald-50/50 border border-emerald-200/80 rounded-3xl p-7">
+                <span className="text-xs font-bold text-emerald-700 uppercase tracking-wider block mb-2">03. Owned Architecture</span>
+                <h3 className="text-lg font-bold text-navy mb-2">100% Owned Custom Web Portal</h3>
+                <p className="text-xs sm:text-sm text-slate-600 leading-relaxed mb-4">
+                  Unified client vault with role-based permissions, private server hosting, and zero monthly per-seat licensing fees.
+                </p>
+                <div className="p-3 bg-white rounded-xl border border-emerald-200 text-xs text-emerald-800 font-mono font-bold flex items-center">
+                  <CheckCircle2 className="w-3.5 h-3.5 text-emerald-600 mr-1.5 flex-shrink-0" />
+                  <span>100% Source Code Transfer</span>
+                </div>
+              </div>
+            </div>
+          )}
+
+        </div>
+      </section>
+
+      {/* 5. INTERACTIVE 2-CLICK PROJECT SCOPER (Reduces form friction, drives conversion) */}
+      <section className="py-20 bg-slate-50 px-4 sm:px-6 lg:px-8 border-b border-slate-200/80">
+        <div className="max-w-4xl mx-auto bg-white border border-slate-200/90 rounded-3xl p-8 sm:p-12 shadow-sm">
+          
+          <div className="text-center max-w-xl mx-auto mb-10">
+            <span className="text-xs font-bold text-navy uppercase tracking-widest bg-slate-100 px-3 py-1 rounded-full inline-block mb-3">
+              Fast Estimation
+            </span>
+            <h2 className="text-2xl sm:text-3xl font-extrabold text-navy tracking-tight">
+              Get Scoping Feedback in 24 Hours
+            </h2>
+            <p className="text-xs sm:text-sm text-slate-600 mt-2">
+              Select your requirements below to instantly start your tailored consultation.
+            </p>
+          </div>
+
+          <form onSubmit={handleScoperSubmit} className="space-y-8">
+            
+            {/* Step 1: Select Service */}
+            <div>
+              <label className="block text-xs font-bold uppercase tracking-wider text-slate-500 mb-3">
+                1. What do you need help with?
+              </label>
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3">
+                {[
+                  { id: 'data-analysis', label: 'Data Analysis', icon: BarChart3 },
+                  { id: 'automation', label: 'Workflow Automation', icon: Workflow },
+                  { id: 'software', label: 'Custom Software', icon: Code2 },
+                  { id: 'training', label: 'Corporate AI Training', icon: Users },
+                ].map((item) => {
+                  const Icon = item.icon;
+                  const isSelected = scoperService === item.id;
+                  return (
+                    <button
+                      type="button"
+                      key={item.id}
+                      onClick={() => setScoperService(item.id)}
+                      className={`flex items-center space-x-3 p-3.5 rounded-2xl border text-xs sm:text-sm font-bold text-left transition-all ${
+                        isSelected 
+                          ? 'border-navy bg-navy text-white shadow-sm' 
+                          : 'border-slate-200 bg-slate-50 hover:bg-white text-navy'
+                      }`}
+                    >
+                      <Icon className={`w-4 h-4 ${isSelected ? 'text-accent' : 'text-slate-600'}`} />
+                      <span>{item.label}</span>
+                    </button>
+                  );
+                })}
+              </div>
+            </div>
+
+            {/* Step 2: Target Timeline */}
+            <div>
+              <label className="block text-xs font-bold uppercase tracking-wider text-slate-500 mb-3">
+                2. What is your target timeline?
+              </label>
+              <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
+                {[
+                  { id: 'Urgent: Within 2 weeks', label: 'Urgent (< 2 weeks)' },
+                  { id: 'Within 2-4 weeks', label: 'Standard (2 to 4 weeks)' },
+                  { id: 'Flexible / Discovery phase', label: 'Flexible / Planning' },
+                ].map((t) => {
+                  const isSelected = scoperTimeline === t.id;
+                  return (
+                    <button
+                      type="button"
+                      key={t.id}
+                      onClick={() => setScoperTimeline(t.id)}
+                      className={`p-3 rounded-2xl border text-xs sm:text-sm font-bold text-center transition-all ${
+                        isSelected 
+                          ? 'border-navy bg-navy text-white shadow-sm' 
+                          : 'border-slate-200 bg-slate-50 hover:bg-white text-navy'
+                      }`}
+                    >
+                      {t.label}
+                    </button>
+                  );
+                })}
+              </div>
+            </div>
+
+            {/* Action Button */}
+            <div className="text-center pt-2">
+              <button
+                type="submit"
+                className="w-full sm:w-auto inline-flex items-center justify-center bg-accent text-navy px-10 py-4 rounded-xl font-extrabold text-sm sm:text-base hover:bg-yellow-400 active:scale-[0.98] transition-all shadow-[0_8px_20px_rgba(255,209,0,0.3)]"
+              >
+                <span>Continue to Project Consultation</span>
+                <ArrowRight className="w-4 h-4 ml-2" />
+              </button>
+            </div>
+
+          </form>
+
+        </div>
+      </section>
+
+      {/* 6. BUSINESS MARKETPLACE SPOTLIGHT */}
       <section className="py-20 md:py-28 bg-white px-4 sm:px-6 lg:px-8 border-b border-slate-100">
         <div className="max-w-7xl mx-auto">
           
@@ -336,44 +698,77 @@ const Home: React.FC = () => {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
-            {marketplaceSpotlight.map((prod, idx) => (
-              <div
-                key={idx}
-                className="bg-slate-50 border border-slate-200/90 rounded-3xl p-8 sm:p-10 flex flex-col justify-between hover:bg-white hover:shadow-xl transition-all duration-300 group"
-              >
-                <div>
-                  <div className="flex items-center justify-between mb-6">
-                    <span className="text-xs font-bold uppercase tracking-wider bg-white border border-slate-200 px-3 py-1 rounded-full text-navy">
-                      {prod.badge}
-                    </span>
-                    <span className="text-sm font-mono font-extrabold text-navy">
-                      {prod.price}
-                    </span>
-                  </div>
-
-                  <h3 className="text-2xl font-bold text-navy mb-3 group-hover:text-accent-hover transition-colors">
-                    {prod.title}
-                  </h3>
-
-                  <p className="text-sm text-slate-600 leading-relaxed mb-6">
-                    {prod.desc}
-                  </p>
-                </div>
-
-                <div className="pt-6 border-t border-slate-200/70 flex items-center justify-between">
-                  <span className="text-xs font-semibold text-slate-500">
-                    Instant Digital Access
+            
+            {/* The AI Presentation System & Playbook */}
+            <div className="bg-slate-50 border border-slate-200/90 rounded-3xl p-8 sm:p-10 flex flex-col justify-between hover:bg-white hover:shadow-xl transition-all duration-300 group">
+              <div>
+                <div className="flex items-center justify-between mb-6">
+                  <span className="text-xs font-bold uppercase tracking-wider bg-white border border-slate-200 px-3 py-1 rounded-full text-navy">
+                    Bestseller
                   </span>
-                  <Link
-                    to={prod.link}
-                    className="inline-flex items-center bg-navy text-white group-hover:bg-accent group-hover:text-navy px-5 py-2.5 rounded-xl font-bold text-xs transition-colors"
-                  >
-                    <span>{prod.cta}</span>
-                    <ArrowRight className="w-3.5 h-3.5 ml-1.5" />
-                  </Link>
+                  <span className="text-sm font-mono font-extrabold text-navy">
+                    ₦19,900 / $29
+                  </span>
                 </div>
+
+                <h3 className="text-2xl font-bold text-navy mb-3 group-hover:text-accent-hover transition-colors">
+                  The AI Presentation System &amp; Playbook
+                </h3>
+
+                <p className="text-sm text-slate-600 leading-relaxed mb-6">
+                  Turn dense documents, research reports, or raw notes into high-impact PowerPoint slides using 4 proven AI workflows.
+                </p>
               </div>
-            ))}
+
+              <div className="pt-6 border-t border-slate-200/70 flex items-center justify-between">
+                <span className="text-xs font-semibold text-slate-500">
+                  Instant Digital Access
+                </span>
+                <Link
+                  to="/ai-presentation-system"
+                  className="inline-flex items-center bg-navy text-white group-hover:bg-accent group-hover:text-navy px-5 py-2.5 rounded-xl font-bold text-xs transition-colors"
+                >
+                  <span>View System</span>
+                  <ArrowRight className="w-3.5 h-3.5 ml-1.5" />
+                </Link>
+              </div>
+            </div>
+
+            {/* The AI Presentation Starter Blueprint */}
+            <div className="bg-slate-50 border border-slate-200/90 rounded-3xl p-8 sm:p-10 flex flex-col justify-between hover:bg-white hover:shadow-xl transition-all duration-300 group">
+              <div>
+                <div className="flex items-center justify-between mb-6">
+                  <span className="text-xs font-bold uppercase tracking-wider bg-white border border-slate-200 px-3 py-1 rounded-full text-navy">
+                    Free Download
+                  </span>
+                  <span className="text-sm font-mono font-extrabold text-emerald-600">
+                    FREE
+                  </span>
+                </div>
+
+                <h3 className="text-2xl font-bold text-navy mb-3 group-hover:text-accent-hover transition-colors">
+                  The AI Presentation Starter Blueprint
+                </h3>
+
+                <p className="text-sm text-slate-600 leading-relaxed mb-6">
+                  The 4-step rapid framework + copy-paste master prompt to immediately turn complex notes into clean slide decks.
+                </p>
+              </div>
+
+              <div className="pt-6 border-t border-slate-200/70 flex items-center justify-between">
+                <span className="text-xs font-semibold text-slate-500">
+                  Instant PDF Download
+                </span>
+                <Link
+                  to="/free-blueprint"
+                  className="inline-flex items-center bg-navy text-white group-hover:bg-accent group-hover:text-navy px-5 py-2.5 rounded-xl font-bold text-xs transition-colors"
+                >
+                  <span>Download Free</span>
+                  <ArrowRight className="w-3.5 h-3.5 ml-1.5" />
+                </Link>
+              </div>
+            </div>
+
           </div>
 
           <div className="text-center">
@@ -389,88 +784,12 @@ const Home: React.FC = () => {
         </div>
       </section>
 
-      {/* 4. PROBLEM RECOGNITION (Azuro Clean Visual Bento) */}
+      {/* 7. HOW WE WORK (Azuro 4-Step Process) */}
       <section className="py-20 md:py-28 bg-slate-50 px-4 sm:px-6 lg:px-8 border-b border-slate-200/80">
-        <div className="max-w-6xl mx-auto">
-          
-          <div className="max-w-3xl mb-14">
-            <span className="text-xs font-bold text-navy uppercase tracking-widest bg-white border border-slate-200 px-3.5 py-1.5 rounded-full inline-block mb-3">
-              Operational Reality
-            </span>
-            <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-navy tracking-tight leading-tight">
-              If the process is slow, repetitive, or unclear, there is a better system.
-            </h2>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            
-            <div className="bg-white p-8 rounded-3xl border border-slate-200/80 shadow-xs flex items-start space-x-5">
-              <div className="w-10 h-10 rounded-xl bg-red-50 text-red-600 flex items-center justify-center flex-shrink-0 font-bold text-sm">
-                01
-              </div>
-              <div>
-                <h3 className="text-lg font-bold text-navy mb-2">
-                  Uncertain Statistical Methodology
-                </h3>
-                <p className="text-sm text-slate-600 leading-relaxed">
-                  Surveys collected, but your team is unsure which tests satisfy normality, multicollinearity, or reviewer scrutiny.
-                </p>
-              </div>
-            </div>
-
-            <div className="bg-white p-8 rounded-3xl border border-slate-200/80 shadow-xs flex items-start space-x-5">
-              <div className="w-10 h-10 rounded-xl bg-red-50 text-red-600 flex items-center justify-center flex-shrink-0 font-bold text-sm">
-                02
-              </div>
-              <div>
-                <h3 className="text-lg font-bold text-navy mb-2">
-                  Spreadsheet Copy-Paste Fatigue
-                </h3>
-                <p className="text-sm text-slate-600 leading-relaxed">
-                  Hours lost every week transferring receipts, dispatch notes, and numbers between forms, Sheets, and messaging apps.
-                </p>
-              </div>
-            </div>
-
-            <div className="bg-white p-8 rounded-3xl border border-slate-200/80 shadow-xs flex items-start space-x-5">
-              <div className="w-10 h-10 rounded-xl bg-red-50 text-red-600 flex items-center justify-center flex-shrink-0 font-bold text-sm">
-                03
-              </div>
-              <div>
-                <h3 className="text-lg font-bold text-navy mb-2">
-                  SaaS Subscription Trap
-                </h3>
-                <p className="text-sm text-slate-600 leading-relaxed">
-                  Paying escalating monthly per-user fees for generic software that forces your team to bend to rigid external templates.
-                </p>
-              </div>
-            </div>
-
-            <div className="bg-white p-8 rounded-3xl border border-slate-200/80 shadow-xs flex items-start space-x-5">
-              <div className="w-10 h-10 rounded-xl bg-red-50 text-red-600 flex items-center justify-center flex-shrink-0 font-bold text-sm">
-                04
-              </div>
-              <div>
-                <h3 className="text-lg font-bold text-navy mb-2">
-                  Superficial AI Adoption
-                </h3>
-                <p className="text-sm text-slate-600 leading-relaxed">
-                  Staff experimenting with random chatbot prompts without standard operating procedures, creating confidentiality risks.
-                </p>
-              </div>
-            </div>
-
-          </div>
-
-        </div>
-      </section>
-
-      {/* 5. HOW WE WORK (Azuro 4-Step Process) */}
-      <section className="py-20 md:py-28 bg-white px-4 sm:px-6 lg:px-8 border-b border-slate-100">
         <div className="max-w-7xl mx-auto">
           
           <div className="text-center max-w-2xl mx-auto mb-16">
-            <span className="text-xs font-bold text-navy uppercase tracking-widest bg-slate-100 px-3.5 py-1.5 rounded-full inline-block mb-3">
+            <span className="text-xs font-bold text-navy uppercase tracking-widest bg-white border border-slate-200 px-3.5 py-1.5 rounded-full inline-block mb-3">
               Delivery Framework
             </span>
             <h2 className="text-3xl sm:text-5xl font-extrabold text-navy tracking-tight">
@@ -485,7 +804,7 @@ const Home: React.FC = () => {
             {workSteps.map((step, idx) => (
               <div
                 key={idx}
-                className="bg-slate-50 border border-slate-200/80 rounded-3xl p-8 hover:bg-white hover:shadow-lg transition-all duration-200"
+                className="bg-white border border-slate-200/80 rounded-3xl p-8 hover:shadow-lg transition-all duration-200"
               >
                 <div className="text-3xl font-extrabold font-mono text-navy/30 mb-6">
                   {step.num}
@@ -503,13 +822,13 @@ const Home: React.FC = () => {
         </div>
       </section>
 
-      {/* 6. VERIFIED PROOF & CASE STUDIES (Azuro Browser Frame Style) */}
-      <section className="py-20 md:py-28 bg-slate-50 px-4 sm:px-6 lg:px-8 border-b border-slate-200/80">
+      {/* 8. VERIFIED PROOF & CASE STUDIES (Azuro Browser Frame Style) */}
+      <section className="py-20 md:py-28 bg-white px-4 sm:px-6 lg:px-8 border-b border-slate-100">
         <div className="max-w-7xl mx-auto">
           
           <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-6">
             <div className="max-w-2xl">
-              <span className="text-xs font-bold text-navy uppercase tracking-widest bg-white border border-slate-200 px-3.5 py-1.5 rounded-full inline-block mb-3">
+              <span className="text-xs font-bold text-navy uppercase tracking-widest bg-slate-100 px-3.5 py-1.5 rounded-full inline-block mb-3">
                 Documented Proof
               </span>
               <h2 className="text-3xl sm:text-5xl font-extrabold text-navy tracking-tight">
@@ -529,7 +848,7 @@ const Home: React.FC = () => {
             {featuredProjects.map((cs, idx) => (
               <div
                 key={idx}
-                className="bg-white border border-slate-200/90 rounded-3xl overflow-hidden shadow-xs hover:shadow-xl transition-all duration-300 flex flex-col justify-between"
+                className="bg-slate-50 border border-slate-200/90 rounded-3xl overflow-hidden shadow-xs hover:shadow-xl transition-all duration-300 flex flex-col justify-between"
               >
                 {/* Browser Mockup Top Bar */}
                 <div className="bg-[#0B1B38] px-5 py-3 flex items-center justify-between border-b border-white/10">
@@ -545,7 +864,7 @@ const Home: React.FC = () => {
 
                 <div className="p-7 flex flex-col justify-between flex-grow">
                   <div>
-                    <span className="text-[10px] font-bold uppercase tracking-wider text-navy bg-slate-100 px-2.5 py-1 rounded-md mb-4 inline-block">
+                    <span className="text-[10px] font-bold uppercase tracking-wider text-navy bg-white border border-slate-200 px-2.5 py-1 rounded-md mb-4 inline-block">
                       {cs.tag}
                     </span>
                     <h3 className="text-lg font-bold text-navy mb-3 leading-snug">
@@ -559,7 +878,7 @@ const Home: React.FC = () => {
                     </p>
                   </div>
 
-                  <div className="pt-4 border-t border-slate-100 flex items-center justify-between">
+                  <div className="pt-4 border-t border-slate-200/70 flex items-center justify-between">
                     <span className="text-xs font-bold text-emerald-700 bg-emerald-50 px-2.5 py-1 rounded-md">
                       {cs.metric}
                     </span>
@@ -579,7 +898,7 @@ const Home: React.FC = () => {
         </div>
       </section>
 
-      {/* 7. CORPORATE AI TRAINING BANNER (Azuro Dark Feature Style) */}
+      {/* 9. CORPORATE AI TRAINING BANNER (Azuro Dark Feature Style) */}
       <section className="py-20 md:py-24 bg-[#07152E] text-white px-4 sm:px-6 lg:px-8 border-b border-white/10 relative overflow-hidden">
         <div className="absolute right-0 top-0 w-96 h-96 bg-accent/10 rounded-full blur-3xl pointer-events-none" />
         
@@ -625,7 +944,7 @@ const Home: React.FC = () => {
         </div>
       </section>
 
-      {/* 8. INTERACTIVE ACCORDION FAQ (Azuro Style) */}
+      {/* 10. INTERACTIVE ACCORDION FAQ (Azuro Style) */}
       <section className="py-20 md:py-28 bg-slate-50 px-4 sm:px-6 lg:px-8 border-b border-slate-200/80">
         <div className="max-w-4xl mx-auto">
           
@@ -672,7 +991,7 @@ const Home: React.FC = () => {
         </div>
       </section>
 
-      {/* 9. FINAL CONVERSION CLOSE (Azuro Style) */}
+      {/* 11. FINAL CONVERSION CLOSE (Azuro Style) */}
       <section className="py-20 md:py-28 bg-[#07152E] text-white px-4 sm:px-6 lg:px-8 text-center">
         <div className="max-w-3xl mx-auto">
           <h2 className="text-3xl sm:text-5xl font-extrabold text-white tracking-tight leading-tight mb-6">

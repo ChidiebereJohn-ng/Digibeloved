@@ -12,7 +12,11 @@ import {
   Zap, 
   Filter,
   Layers,
-  ExternalLink
+  ExternalLink,
+  Eye,
+  X,
+  FileText,
+  Lock
 } from 'lucide-react';
 import SchemaScript from '../components/SchemaScript';
 import { marketplaceProducts, MarketplaceProduct } from '../data/products';
@@ -21,6 +25,7 @@ import { trackCtaClick } from '../src/services/metaPixel';
 const Products: React.FC = () => {
   const [selectedCategory, setSelectedCategory] = useState<string>('All');
   const [searchQuery, setSearchQuery] = useState<string>('');
+  const [previewModalOpen, setPreviewModalOpen] = useState<boolean>(false);
 
   const categories = [
     'All',
@@ -157,7 +162,7 @@ const Products: React.FC = () => {
               {filteredProducts.map((prod) => (
                 <div
                   key={prod.id}
-                  className={`bg-white border rounded-3xl p-7 flex flex-col justify-between transition-all duration-300 hover:shadow-xl group ${
+                  className={`bg-white border rounded-3xl p-7 flex flex-col justify-between transition-all duration-300 hover:shadow-2xl hover:-translate-y-1 group ${
                     prod.featured 
                       ? 'border-accent ring-1 ring-accent/30 shadow-md' 
                       : 'border-slate-200/90 hover:border-slate-300 shadow-xs'
@@ -165,20 +170,33 @@ const Products: React.FC = () => {
                 >
                   <div>
                     
-                    {/* Visual Asset if exists */}
+                    {/* Visual 3D Asset Mockup */}
                     {prod.image ? (
-                      <div className="mb-6 rounded-2xl overflow-hidden bg-[#07152E] border border-slate-100 p-3 flex items-center justify-center">
+                      <div className="mb-6 rounded-2xl overflow-hidden bg-gradient-to-b from-[#0B1B38] to-[#07152E] border border-slate-100 p-4 flex items-center justify-center relative shadow-inner">
                         <img 
                           src={prod.image} 
                           alt={prod.title}
-                          className="w-full h-44 object-contain rounded-lg group-hover:scale-105 transition-transform duration-300"
+                          className="w-full h-48 object-contain rounded-lg transform group-hover:scale-105 group-hover:-rotate-1 transition-all duration-300 shadow-xl"
                         />
+                        <span className="absolute top-3 right-3 text-[10px] font-mono bg-accent text-navy font-bold px-2 py-0.5 rounded-md shadow-xs">
+                          v2.0 Release
+                        </span>
                       </div>
                     ) : (
-                      <div className="mb-6 h-28 rounded-2xl bg-slate-50 border border-slate-200/80 flex items-center justify-center text-slate-400">
-                        <div className="w-12 h-12 rounded-xl bg-navy/5 text-navy flex items-center justify-center">
-                          <BookOpen className="w-6 h-6" />
+                      <div className="mb-6 h-32 rounded-2xl bg-gradient-to-br from-slate-50 to-slate-100 border border-slate-200/80 flex items-center justify-center text-slate-400 relative">
+                        <div className="w-14 h-14 rounded-2xl bg-navy/5 text-navy flex items-center justify-center group-hover:bg-navy group-hover:text-accent transition-colors">
+                          <BookOpen className="w-7 h-7" />
                         </div>
+                        {prod.id === 'ai-presentation-starter-blueprint' && (
+                          <button
+                            type="button"
+                            onClick={() => setPreviewModalOpen(true)}
+                            className="absolute bottom-2.5 right-2.5 inline-flex items-center space-x-1 text-[11px] font-bold text-navy bg-white border border-slate-200 px-2.5 py-1 rounded-lg hover:bg-slate-50 transition-colors shadow-2xs"
+                          >
+                            <Eye className="w-3.5 h-3.5 text-accent" />
+                            <span>Preview</span>
+                          </button>
+                        )}
                       </div>
                     )}
 
@@ -207,7 +225,7 @@ const Products: React.FC = () => {
                         ))}
                       </div>
                       <span className="font-bold text-slate-700">{prod.rating}</span>
-                      <span className="text-slate-400 text-[11px]">({prod.ratingCount})</span>
+                      <span className="text-slate-400 text-[11px]">({prod.ratingCount} reviews)</span>
                     </div>
 
                     <h3 className="text-xl font-extrabold text-navy tracking-tight mb-2 group-hover:text-accent-hover transition-colors">
@@ -231,11 +249,11 @@ const Products: React.FC = () => {
                   </div>
 
                   {/* Card Bottom CTA */}
-                  <div className="pt-4 border-t border-slate-100">
+                  <div className="pt-4 border-t border-slate-100 flex items-center gap-2">
                     <Link
                       to={prod.link}
                       onClick={() => trackCtaClick(`Marketplace - ${prod.title}`, '/products')}
-                      className={`w-full inline-flex items-center justify-center px-5 py-3 rounded-xl font-bold text-xs sm:text-sm tracking-wide transition-all shadow-xs ${
+                      className={`flex-1 inline-flex items-center justify-center px-5 py-3 rounded-xl font-bold text-xs sm:text-sm tracking-wide transition-all shadow-xs ${
                         prod.featured
                           ? 'bg-accent text-navy hover:bg-yellow-400 active:scale-[0.98]'
                           : 'bg-navy text-white hover:bg-navy-light'
@@ -244,6 +262,16 @@ const Products: React.FC = () => {
                       <span>{prod.ctaText}</span>
                       <ArrowRight className="w-4 h-4 ml-2" />
                     </Link>
+                    {prod.id === 'ai-presentation-starter-blueprint' && (
+                      <button
+                        type="button"
+                        onClick={() => setPreviewModalOpen(true)}
+                        className="p-3 rounded-xl bg-slate-100 text-slate-700 hover:bg-slate-200 transition-colors"
+                        title="Preview Table of Contents"
+                      >
+                        <Eye className="w-4 h-4" />
+                      </button>
+                    )}
                   </div>
                 </div>
               ))}
@@ -296,6 +324,72 @@ const Products: React.FC = () => {
           </Link>
         </div>
       </section>
+
+      {/* Quick Preview Modal for Free Blueprint */}
+      {previewModalOpen && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-navy/70 backdrop-blur-xs animate-in fade-in duration-200">
+          <div className="bg-white rounded-3xl max-w-lg w-full p-6 sm:p-8 shadow-2xl border border-slate-200 relative">
+            <button
+              onClick={() => setPreviewModalOpen(false)}
+              className="absolute top-5 right-5 text-slate-400 hover:text-navy p-1 rounded-full hover:bg-slate-100 transition-colors"
+            >
+              <X className="w-5 h-5" />
+            </button>
+
+            <div className="flex items-center space-x-2 text-xs font-bold text-accent bg-navy px-3 py-1 rounded-full w-max mb-4">
+              <FileText className="w-3.5 h-3.5" />
+              <span>Blueprint Preview</span>
+            </div>
+
+            <h3 className="text-2xl font-extrabold text-navy tracking-tight mb-2">
+              The AI Presentation Starter Blueprint
+            </h3>
+            <p className="text-xs sm:text-sm text-slate-600 mb-6">
+              A 6-page practical guide revealing the 4 repeatable presentation workflows:
+            </p>
+
+            <div className="space-y-3 bg-slate-50 p-4 rounded-2xl border border-slate-200 mb-6 text-xs text-slate-700">
+              <div className="flex items-start">
+                <CheckCircle2 className="w-4 h-4 text-emerald-600 mr-2 flex-shrink-0 mt-0.5" />
+                <span><strong>Workflow A:</strong> Raw Content / Notes → Complete Deck</span>
+              </div>
+              <div className="flex items-start">
+                <CheckCircle2 className="w-4 h-4 text-emerald-600 mr-2 flex-shrink-0 mt-0.5" />
+                <span><strong>Workflow B:</strong> Ugly / Outdated Slides → Executive Redesign</span>
+              </div>
+              <div className="flex items-start">
+                <CheckCircle2 className="w-4 h-4 text-emerald-600 mr-2 flex-shrink-0 mt-0.5" />
+                <span><strong>Workflow C:</strong> Visual Inspiration → Reusable Slide Hierarchy</span>
+              </div>
+              <div className="flex items-start">
+                <CheckCircle2 className="w-4 h-4 text-emerald-600 mr-2 flex-shrink-0 mt-0.5" />
+                <span><strong>Workflow D:</strong> Topic / Idea → Structured Keynote Outline</span>
+              </div>
+              <div className="flex items-start">
+                <CheckCircle2 className="w-4 h-4 text-accent mr-2 flex-shrink-0 mt-0.5" />
+                <span><strong>Bonus:</strong> Master Prompt Template &amp; 5 Quick-Fix Prompts</span>
+              </div>
+            </div>
+
+            <div className="flex flex-col sm:flex-row gap-3">
+              <Link
+                to="/free-blueprint"
+                onClick={() => setPreviewModalOpen(false)}
+                className="flex-1 inline-flex items-center justify-center bg-accent text-navy px-6 py-3.5 rounded-xl font-bold text-sm hover:bg-yellow-400 transition-colors shadow-sm"
+              >
+                <span>Download Free PDF Guide</span>
+                <ArrowRight className="w-4 h-4 ml-1.5" />
+              </Link>
+              <button
+                onClick={() => setPreviewModalOpen(false)}
+                className="px-5 py-3.5 rounded-xl text-xs font-semibold text-slate-600 hover:text-navy hover:bg-slate-100 transition-colors"
+              >
+                Close
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
 
     </div>
   );
