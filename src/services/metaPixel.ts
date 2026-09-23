@@ -198,3 +198,47 @@ export function trackSelarCheckoutClick(ctaLocation: string = "unknown"): void {
     currency: PRODUCT_CONFIG.currency,
   });
 }
+
+/**
+ * 7. Custom Event: CtaClick
+ * Fired when a primary or secondary CTA button is clicked on money pages.
+ */
+export function trackCtaClick(ctaName: string, location: string): void {
+  callFbq("trackCustom", "CtaClick", {
+    cta_name: ctaName,
+    location: location,
+    timestamp: new Date().toISOString(),
+  });
+}
+
+/**
+ * 8. Custom Event: FormStart
+ * Fired when user interacts with or starts filling an enquiry form.
+ */
+export function trackFormStart(formName: string, service?: string): void {
+  callFbq("trackCustom", "FormStart", {
+    form_name: formName,
+    service: service || "General",
+    timestamp: new Date().toISOString(),
+  });
+}
+
+/**
+ * 9. Event: QualifiedEnquiry
+ * Fired upon successful lead submission with project scope and budget data.
+ */
+export function trackQualifiedEnquiry(payload: {
+  service: string;
+  budget?: string;
+  organization?: string;
+  country?: string;
+}): void {
+  callFbq("trackCustom", "QualifiedEnquiry", {
+    ...payload,
+    timestamp: new Date().toISOString(),
+  });
+  callFbq("track", "Contact", {
+    service: payload.service,
+  });
+}
+

@@ -1,63 +1,89 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <!-- Homepage -->
   <url>
     <loc>https://digibeloved.com/</loc>
-    <lastmod>2024-03-20</lastmod>
+    <lastmod>2026-09-23</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
+  <!-- Done-for-You Money Pages -->
   <url>
-    <loc>https://digibeloved.com/about</loc>
-    <lastmod>2024-03-20</lastmod>
+    <loc>https://digibeloved.com/data-analysis</loc>
+    <lastmod>2026-09-23</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.95</priority>
+  </url>
+  <url>
+    <loc>https://digibeloved.com/ai-automation</loc>
+    <lastmod>2026-09-23</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.95</priority>
+  </url>
+  <url>
+    <loc>https://digibeloved.com/custom-software-development</loc>
+    <lastmod>2026-09-23</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.95</priority>
+  </url>
+  <!-- Organizational Capability -->
+  <url>
+    <loc>https://digibeloved.com/ai-training-for-organizations</loc>
+    <lastmod>2026-09-23</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <!-- Individual Learning -->
+  <url>
+    <loc>https://digibeloved.com/academy</loc>
+    <lastmod>2026-09-23</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.85</priority>
+  </url>
+  <!-- Proof & Case Studies -->
+  <url>
+    <loc>https://digibeloved.com/case-studies</loc>
+    <lastmod>2026-09-23</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.85</priority>
+  </url>
+  <!-- Conversion & Contact -->
+  <url>
+    <loc>https://digibeloved.com/contact</loc>
+    <lastmod>2026-09-23</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://digibeloved.com/services</loc>
-    <lastmod>2024-03-20</lastmod>
+    <loc>https://digibeloved.com/about</loc>
+    <lastmod>2026-09-23</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <!-- Insights / Blog -->
+  <url>
+    <loc>https://digibeloved.com/insights</loc>
+    <lastmod>2026-09-23</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.9</priority>
+    <priority>0.75</priority>
   </url>
   <url>
-    <loc>https://digibeloved.com/services/solutions</loc>
-    <lastmod>2024-03-20</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.9</priority>
-  </url>
-  <url>
-    <loc>https://digibeloved.com/services/training</loc>
-    <lastmod>2024-03-20</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.9</priority>
-  </url>
-  <url>
-    <loc>https://digibeloved.com/services/consulting</loc>
-    <lastmod>2024-03-20</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.9</priority>
-  </url>
-  <url>
-    <loc>https://digibeloved.com/contact</loc>
-    <lastmod>2024-03-20</lastmod>
+    <loc>https://digibeloved.com/blog/ai-skill-stack-2026</loc>
+    <lastmod>2026-09-23</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
+  <!-- Existing Funnels -->
   <url>
     <loc>https://digibeloved.com/ai-presentation-system</loc>
-    <lastmod>2026-08-27</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>1.0</priority>
-  </url>
-  <url>
-    <loc>https://digibeloved.com/free-blueprint</loc>
-    <lastmod>2026-08-27</lastmod>
+    <lastmod>2026-09-23</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://digibeloved.com/free-blueprint/thank-you</loc>
-    <lastmod>2026-08-27</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
+    <loc>https://digibeloved.com/free-blueprint</loc>
+    <lastmod>2026-09-23</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
   </url>
 </urlset>

@@ -536,4 +536,88 @@ fs.writeFileSync(path.join(tyDir, "index.html"), template, "utf-8");
 // Output destination 5: dist/404.html (Cloudflare Pages SPA fallback)
 fs.writeFileSync(path.join(distDir, "404.html"), fs.readFileSync(indexPath, "utf-8"), "utf-8");
 
-console.log("Successfully pre-rendered static HTML for /ai-presentation-system, /free-blueprint, and /free-blueprint/thank-you!");
+// Output destinations for Core Money Pages & Routes
+const corePages = [
+  {
+    route: "data-analysis",
+    title: "Research & Data Analysis Services | DigiBeloved Nigeria",
+    description: "Turn raw data into defensible results. Professional statistical data analysis, survey cleaning, inferential testing, and report-ready outputs.",
+    canonical: "https://digibeloved.com/data-analysis"
+  },
+  {
+    route: "ai-automation",
+    title: "AI & Workflow Automation Services | DigiBeloved Nigeria",
+    description: "Replace repetitive manual work with reliable automated workflows across Google Sheets, Excel, Forms, email, and documents.",
+    canonical: "https://digibeloved.com/ai-automation"
+  },
+  {
+    route: "custom-software-development",
+    title: "Custom Software Development | DigiBeloved Abuja Nigeria",
+    description: "Bespoke web applications, internal tools, executive dashboards, and client portals built around the way your organization actually works.",
+    canonical: "https://digibeloved.com/custom-software-development"
+  },
+  {
+    route: "ai-training-for-organizations",
+    title: "Corporate Generative AI Training | DigiBeloved Nigeria",
+    description: "Practical Generative AI workshops and capability training built around your team's real operational workflows. Onsite and virtual cohorts.",
+    canonical: "https://digibeloved.com/ai-training-for-organizations"
+  },
+  {
+    route: "academy",
+    title: "DigiBeloved Academy | Practical AI Skills & Playbooks",
+    description: "Learn practical AI skills, step-by-step playbooks, and reusable workflows you can apply immediately in your work or career.",
+    canonical: "https://digibeloved.com/academy"
+  },
+  {
+    route: "case-studies",
+    title: "Case Studies & Verified Client Outcomes | DigiBeloved",
+    description: "Explore verified client case studies in research data analysis, process automation, custom software development, and corporate AI training.",
+    canonical: "https://digibeloved.com/case-studies"
+  },
+  {
+    route: "contact",
+    title: "Discuss Your Project & Request a Quote | DigiBeloved",
+    description: "Tell us about your research objective, repetitive workflow, or software project. Flexible project-based pricing and fast scoping.",
+    canonical: "https://digibeloved.com/contact"
+  },
+  {
+    route: "about",
+    title: "About DigiBeloved | Applied AI, Data & Software Solutions",
+    description: "Learn about DigiBeloved, our applied AI philosophy, founder Chukwuemeka John Chidiebere, and our headquarters in Maitama, Abuja.",
+    canonical: "https://digibeloved.com/about"
+  },
+  {
+    route: "insights",
+    title: "Insights & Applied AI Articles | DigiBeloved",
+    description: "Practical guides, breakdowns, and strategic insights on data analysis, process automation, and applied artificial intelligence.",
+    canonical: "https://digibeloved.com/insights"
+  }
+];
+
+const baseHtml = fs.readFileSync(indexPath, "utf-8");
+
+corePages.forEach((page) => {
+  let pageHtml = baseHtml;
+  pageHtml = pageHtml.replace(/<title>.*?<\/title>/i, `<title>${page.title}</title>`);
+  pageHtml = pageHtml.replace(/<meta\s+name=["']description["'][\s\S]*?>/i, `<meta name="description" content="${page.description}" />`);
+  pageHtml = pageHtml.replace(/<meta\s+property=["']og:title["'][\s\S]*?>/i, `<meta property="og:title" content="${page.title}" />`);
+  pageHtml = pageHtml.replace(/<meta\s+property=["']og:description["'][\s\S]*?>/i, `<meta property="og:description" content="${page.description}" />`);
+  pageHtml = pageHtml.replace(/<meta\s+property=["']og:url["'][\s\S]*?>/i, `<meta property="og:url" content="${page.canonical}" />`);
+  pageHtml = pageHtml.replace(/<meta\s+name=["']twitter:title["'][\s\S]*?>/i, `<meta name="twitter:title" content="${page.title}" />`);
+  pageHtml = pageHtml.replace(/<meta\s+name=["']twitter:description["'][\s\S]*?>/i, `<meta name="twitter:description" content="${page.description}" />`);
+  
+  if (pageHtml.includes('<link rel="canonical"')) {
+    pageHtml = pageHtml.replace(/<link rel="canonical" href=".*?" \/>/i, `<link rel="canonical" href="${page.canonical}" />`);
+  } else {
+    pageHtml = pageHtml.replace('</head>', `  <link rel="canonical" href="${page.canonical}" />\n</head>`);
+  }
+
+  const pageDir = path.join(distDir, page.route);
+  if (!fs.existsSync(pageDir)) {
+    fs.mkdirSync(pageDir, { recursive: true });
+  }
+  fs.writeFileSync(path.join(pageDir, "index.html"), pageHtml, "utf-8");
+});
+
+console.log("Successfully pre-rendered static HTML for all core money pages, funnels, and fallback routes!");
+
