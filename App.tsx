@@ -72,8 +72,10 @@ const App: React.FC = () => {
         
         {/* Utilities & Individual Courses */}
         <Route path="/tools/prompt-polisher" element={<Layout><PromptPolisher /></Layout>} />
+        <Route path="/prompt-polisher" element={<Layout><PromptPolisher /></Layout>} />
         <Route path="/courses/ai-graphic-design" element={<Layout><AIGraphicDesignCourse /></Layout>} />
         <Route path="/services/training/:id" element={<Layout><CourseDetail /></Layout>} />
+        <Route path="/academy/:id" element={<Layout><CourseDetail /></Layout>} />
         
         {/* Preserved High-Converting Lead Funnels */}
         <Route path="/ai-presentation-system" element={<AIPresentationSystem />} />
