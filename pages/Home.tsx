@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { 
   BarChart3, 
@@ -6,22 +6,25 @@ import {
   Code2, 
   ArrowRight, 
   CheckCircle2, 
-  ShieldCheck, 
-  Clock, 
-  Users, 
-  FileSpreadsheet, 
+  Plus, 
+  Minus,
   Layers, 
-  Building2, 
-  GraduationCap, 
+  Users, 
   ChevronRight,
-  BookOpen,
-  Sparkles
+  Sparkles,
+  ExternalLink,
+  Laptop,
+  Check,
+  TrendingUp,
+  ShieldCheck,
+  Clock
 } from 'lucide-react';
 import SchemaScript from '../components/SchemaScript';
 import { trackCtaClick } from '../src/services/metaPixel';
 
 const Home: React.FC = () => {
-  // Rich Structured Data: Organization & LocalBusiness
+  const [openFaq, setOpenFaq] = useState<number | null>(0);
+
   const homeSchema = {
     "@context": "https://schema.org",
     "@graph": [
@@ -42,386 +45,340 @@ const Home: React.FC = () => {
           "streetAddress": "No 3 Maitama",
           "addressLocality": "Abuja",
           "addressCountry": "Nigeria"
-        },
-        "contactPoint": {
-          "@type": "ContactPoint",
-          "telephone": "+2348067628656",
-          "contactType": "customer service",
-          "email": "digibeloved@gmail.com",
-          "areaServed": ["NG", "Global"]
-        }
-      },
-      {
-        "@type": "WebSite",
-        "@id": "https://digibeloved.com/#website",
-        "url": "https://digibeloved.com",
-        "name": "DigiBeloved",
-        "publisher": {
-          "@id": "https://digibeloved.com/#organization"
         }
       }
     ]
   };
 
-  const problemScenarios = [
+  const services = [
     {
-      title: "Research data is difficult to clean, test, or interpret",
-      description: "You finished data collection, but SPSS outputs are ambiguous, deadlines are looming, or reviewers requested methodologically defensible revisions."
+      icon: BarChart3,
+      tag: "Research & Analytics",
+      title: "Research & Data Analysis",
+      headline: "Turn raw data into defensible results.",
+      desc: "Comprehensive cleaning, hypothesis testing, APA publication tables, and plain-English interpretation for scholars, M&E teams, and NGOs.",
+      link: "/data-analysis",
+      cta: "Explore Data Analysis",
+      metrics: "100% Defensible • Zero Ghostwriting"
     },
     {
-      title: "Weekly reports assembled by hand across spreadsheets",
-      description: "Team members spend entire mornings copy-pasting numbers from Excel and Forms into presentations and status summaries."
+      icon: Workflow,
+      tag: "Process Automation",
+      title: "AI & Workflow Automation",
+      headline: "Replace repetitive manual work.",
+      desc: "Connect your Forms, Google Sheets, Excel, email, and WhatsApp into automated pipelines with built-in error alerts and zero manual copy-pasting.",
+      link: "/ai-automation",
+      cta: "Explore Automation",
+      metrics: "Save 10+ Hours / Week"
     },
     {
-      title: "Information manually moved between tools",
-      description: "Data enters via Google Forms, gets pasted into Sheets, emailed to managers, and re-typed into a database with zero synchronization."
-    },
-    {
-      title: "Staff constantly chasing approvals or email follow-ups",
-      description: "Critical requests stall in inboxes because there is no automated routing, deadline triggers, or visible status tracking."
-    },
-    {
-      title: "Your organization has outgrown spreadsheets",
-      description: "Multiple people edit the same broken workbook, formulas get corrupted, and nobody has a secure, single source of operational truth."
-    },
-    {
-      title: "A vital product or internal tool needs to be built properly",
-      description: "You have a validated workflow or client demand, but off-the-shelf software is rigid, bloated, and charges expensive seat licenses."
+      icon: Code2,
+      tag: "Software Engineering",
+      title: "Custom Software Development",
+      headline: "Software built around how you work.",
+      desc: "Internal operational portals, executive dashboards, and bespoke web apps. Full source code ownership with zero recurring per-user SaaS taxes.",
+      link: "/custom-software-development",
+      cta: "Explore Software",
+      metrics: "100% Code Ownership"
     }
   ];
 
   const workSteps = [
     {
-      step: "01",
-      title: "Understand the Objective",
-      description: "We identify the business goal, research hypothesis, or workflow bottleneck before touching any tool or code."
+      num: "01",
+      title: "Discover & Map",
+      desc: "We analyze your exact problem, dataset, or broken operational handoff."
     },
     {
-      step: "02",
-      title: "Map the Current Workflow & Data",
-      description: "We examine the existing datasets, spreadsheets, communication channels, and failure points in detail."
+      num: "02",
+      title: "Define & Scope",
+      desc: "Clear deliverables, validated methodology, and fixed milestones."
     },
     {
-      step: "03",
-      title: "Define the Right Solution & Scope",
-      description: "We propose a clear scope, defensible methodology, or system architecture with zero technical fluff."
+      num: "03",
+      title: "Build & Validate",
+      desc: "Rigorous statistical analysis or clean, reliable software engineering."
     },
     {
-      step: "04",
-      title: "Build or Analyze",
-      description: "We execute the rigorous statistical analysis, automate the target pipeline, or engineer the custom software."
-    },
-    {
-      step: "05",
-      title: "Validate & Review",
-      description: "Every dataset is cross-checked, every automated route is error-tested, and every software feature is verified."
-    },
-    {
-      step: "06",
-      title: "Deliver, Document & Support",
-      description: "We hand over clean report-ready outputs, documented codebases, and ongoing maintenance support."
+      num: "04",
+      title: "Deliver & Support",
+      desc: "Report-ready outputs, complete documentation, and post-launch support."
     }
   ];
 
-  const selectedCaseStudies = [
+  const featuredProjects = [
     {
-      category: "Research & Data Analysis",
-      title: "Multi-State Survey Cleaning, Inferential Modeling & Defensible Reporting",
-      problem: "A development research team had 1,400+ survey responses with missing data, inconsistent coding, and an urgent donor deadline.",
-      solution: "Implemented rigorous data cleansing, validated variable scales, ran multivariate regression models, and generated publication-ready APA tables.",
-      outcome: "Clean, defensible findings delivered 4 days ahead of deadline with zero supervisor corrections."
+      tag: "Research & Data Analysis",
+      title: "Multi-State Survey Cleansing & Inferential Modeling",
+      client: "Development Research Team",
+      problem: "1,400+ survey responses with missing entries and disputed statistical test selection ahead of donor review.",
+      outcome: "Delivered fully cleaned dataset, multivariate regression models, and APA tables 4 days ahead of deadline with zero revisions.",
+      metric: "100% Defensible Findings",
+      link: "/case-studies"
     },
     {
-      category: "AI & Workflow Automation",
-      title: "Automated Multi-Branch Inventory & Re-Order Alert Pipeline",
-      problem: "Operations staff spent 12+ hours weekly reconciling inventory sheets across three branches, leading to frequent stockouts.",
-      solution: "Engineered an automated Google Workspace & webhook pipeline linking daily form submissions to master inventory with automated WhatsApp & email re-order alerts.",
-      outcome: "Eliminated 100% of manual copy-paste errors and cut weekly administrative processing time from 12 hours to 20 minutes."
+      tag: "Workflow Automation",
+      title: "Automated Multi-Branch Inventory & Alert Pipeline",
+      client: "Regional Distribution Network",
+      problem: "12 hours lost weekly copy-pasting dispatch forms into spreadsheets, resulting in frequent branch stockouts.",
+      outcome: "Engineered automated Google Workspace and webhook pipeline with instant WhatsApp re-order alerts.",
+      metric: "-90% Administrative Time",
+      link: "/case-studies"
     },
     {
-      category: "Custom Software Development",
-      title: "Bespoke Operations & Client Management Portal",
-      problem: "A growing consulting firm struggled with fragmented client onboarding, insecure document sharing, and generic CRM clutter.",
-      solution: "Designed and deployed a responsive, secure web portal with role-based access control, automated milestone tracking, and client document handover.",
-      outcome: "Unified operations across the firm with zero monthly per-seat SaaS subscription fees."
+      tag: "Custom Software",
+      title: "Bespoke Multi-Role Operations & Client Portal",
+      client: "Consulting Practice",
+      problem: "Fragmented communication across email and drive links, paired with escalating per-seat monthly SaaS licensing fees.",
+      outcome: "Custom web portal with role-based access control, secure client vaults, and full source code handover.",
+      metric: "$0 Recurring Per-Seat Fees",
+      link: "/case-studies"
     }
   ];
 
-  const industries = [
-    { name: "Research & Higher Education", desc: "Postgraduate scholars, academic faculties, and independent investigators." },
-    { name: "NGOs & Development Programs", desc: "M&E teams, public health initiatives, and donor-funded project evaluations." },
-    { name: "SMEs & Professional Services", desc: "Agencies, legal, financial, and consultancy teams scaling operations." },
-    { name: "Founders & Startups", desc: "Entrepreneurs building MVPs, client portals, and bespoke internal tools." },
-    { name: "Public Sector & Institutions", desc: "Departments seeking responsible, practical AI literacy and workflow upgrades." }
+  const faqs = [
+    {
+      q: "What makes DigiBeloved different from typical software or AI agencies?",
+      a: "We start strictly from your business or research problem—not technical hype or buzzwords. Whether delivering statistically defensible research data, automating a manual spreadsheet bottleneck, or building custom software, we focus exclusively on measurable outcomes and permanent asset ownership."
+    },
+    {
+      q: "Does DigiBeloved provide academic ghostwriting?",
+      a: "No. We provide rigorous statistical analysis, data cleaning, methodology consultation, visualization, and analytical interpretation. We ensure your empirical results are methodologically valid and defensible. You conduct and own your intellectual research."
+    },
+    {
+      q: "How does your pricing work?",
+      a: "We operate on flexible project-based pricing scoped around your specific requirements, complexity, timeline, and available budget. We do not publish rigid fee tables or lock you into expensive per-seat licenses."
+    },
+    {
+      q: "Where is your team based, and do you work with international clients?",
+      a: "DigiBeloved is headquartered in Maitama, Abuja, Nigeria. We serve clients locally across Nigeria through onsite workshops and meetings, and globally across the UK, US, Canada, and Africa through secure digital collaboration."
+    },
+    {
+      q: "How do we get started on a project?",
+      a: "Click 'Discuss a Project' to share a brief overview of your objective, current process, and available budget. We review your requirements and provide a clear, actionable scoping recommendation within 24 hours."
+    }
   ];
 
   return (
     <>
       <SchemaScript schema={homeSchema} />
 
-      {/* 1. HERO SECTION (Phase 2) */}
-      <section className="relative bg-[#07152E] text-white pt-16 pb-20 md:pt-24 md:pb-28 px-4 sm:px-6 lg:px-8 overflow-hidden">
-        {/* Subtle decorative background glow */}
-        <div className="absolute top-1/4 left-1/2 -translate-x-1/2 w-[700px] h-[350px] bg-accent/5 blur-[120px] rounded-full pointer-events-none" />
-        
+      {/* 1. AZURO-STYLE HIGH-IMPACT HERO */}
+      <section className="relative bg-white text-navy pt-16 pb-20 md:pt-24 md:pb-32 px-4 sm:px-6 lg:px-8 overflow-hidden">
+        {/* Subtle grid background */}
+        <div className="absolute inset-0 bg-[linear-gradient(to_right,#f1f5f9_1px,transparent_1px),linear-gradient(to_bottom,#f1f5f9_1px,transparent_1px)] bg-[size:4rem_4rem] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_0%,#000_70%,transparent_100%)] opacity-60 pointer-events-none" />
+
         <div className="relative max-w-5xl mx-auto text-center">
           
-          {/* Eyebrow */}
-          <div className="inline-flex items-center space-x-2 bg-white/5 border border-white/10 px-4 py-1.5 rounded-full text-xs font-semibold tracking-wide text-accent mb-6 shadow-sm">
-            <span className="w-2 h-2 rounded-full bg-accent animate-pulse"></span>
-            <span>Applied AI, Data &amp; Software Solutions</span>
+          {/* Status pill badge with pulsing dot */}
+          <div className="inline-flex items-center space-x-2.5 bg-slate-50 border border-slate-200/80 px-4 py-1.5 rounded-full text-xs font-semibold text-slate-800 mb-8 shadow-xs">
+            <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
+            <span>Applied AI, Data &amp; Custom Software Solutions</span>
           </div>
 
-          {/* H1 */}
-          <h1 className="text-3xl sm:text-5xl md:text-6xl font-extrabold text-white tracking-tight leading-[1.12] mb-6">
-            Data Analysis, AI Automation &amp; Custom Software for Researchers and Organizations.
+          {/* Punchy, Bold H1 */}
+          <h1 className="text-4xl sm:text-6xl md:text-7xl font-extrabold text-navy tracking-tight leading-[1.08] mb-6">
+            Data Analysis, AI Automation &amp; Custom Software.
           </h1>
 
-          {/* Supporting Copy */}
-          <p className="text-lg sm:text-xl md:text-2xl text-slate-300 font-light max-w-3xl mx-auto leading-relaxed mb-10">
-            Turn raw data into defensible insights, repetitive processes into automated workflows, and business ideas into production-ready software.
+          {/* Crisp 1-sentence value statement */}
+          <p className="text-lg sm:text-xl md:text-2xl text-slate-600 font-normal max-w-3xl mx-auto leading-relaxed mb-10">
+            We help researchers and organizations turn raw data into defensible insights, repetitive tasks into automated workflows, and business ideas into production software.
           </p>
 
-          {/* CTA Group */}
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-10">
+          {/* Sleek dual CTAs */}
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-14">
             <Link
               to="/contact"
               onClick={() => trackCtaClick('Discuss Your Project - Hero', '/')}
-              className="w-full sm:w-auto inline-flex items-center justify-center bg-accent text-navy px-8 py-4 rounded-xl font-extrabold text-base sm:text-lg tracking-wide hover:bg-yellow-400 active:scale-[0.99] transition-all shadow-[0_10px_25px_rgba(255,209,0,0.3)]"
+              className="w-full sm:w-auto inline-flex items-center justify-center bg-accent text-navy px-8 py-4 rounded-2xl font-extrabold text-base tracking-wide hover:bg-yellow-400 active:scale-[0.98] transition-all shadow-[0_10px_25px_rgba(255,209,0,0.35)]"
             >
               <span>Discuss Your Project</span>
-              <ArrowRight className="w-5 h-5 ml-2" />
+              <ArrowRight className="w-4 h-4 ml-2" />
             </Link>
             <a
               href="#solutions"
-              className="w-full sm:w-auto inline-flex items-center justify-center bg-white/10 hover:bg-white/15 text-white border border-white/15 px-8 py-4 rounded-xl font-bold text-base sm:text-lg tracking-wide transition-all"
+              className="w-full sm:w-auto inline-flex items-center justify-center bg-slate-50 hover:bg-slate-100 text-slate-800 border border-slate-200/80 px-8 py-4 rounded-2xl font-bold text-base tracking-wide transition-all shadow-xs"
             >
               Explore Our Solutions
             </a>
           </div>
 
-          {/* Trust Line */}
-          <div className="text-xs sm:text-sm text-slate-400 font-medium tracking-wide">
-            Based in Abuja, Nigeria • Serving clients globally
+          {/* Trust badges */}
+          <div className="flex flex-wrap items-center justify-center gap-6 sm:gap-10 text-xs sm:text-sm font-semibold text-slate-500 pt-6 border-t border-slate-100">
+            <span className="flex items-center">
+              <ShieldCheck className="w-4 h-4 text-emerald-600 mr-2" />
+              Methodologically Defensible
+            </span>
+            <span className="flex items-center">
+              <Check className="w-4 h-4 text-emerald-600 mr-2" />
+              100% Code &amp; Data Ownership
+            </span>
+            <span className="flex items-center">
+              <span className="w-2 h-2 rounded-full bg-navy mr-2"></span>
+              Based in Abuja • Serving Globally
+            </span>
           </div>
 
         </div>
       </section>
 
-      {/* 2. THREE PRIMARY DONE-FOR-YOU SERVICES (Phase 3) */}
-      <section id="solutions" className="py-20 md:py-28 bg-white text-navy px-4 sm:px-6 lg:px-8">
+      {/* 2. CORE DONE-FOR-YOU SOLUTIONS (Azuro 3-Card Bento) */}
+      <section id="solutions" className="py-20 md:py-28 bg-slate-50 border-t border-slate-200/80 px-4 sm:px-6 lg:px-8">
         <div className="max-w-7xl mx-auto">
           
-          <div className="text-center max-w-3xl mx-auto mb-16">
-            <span className="text-xs font-bold text-navy uppercase tracking-widest bg-navy/5 px-3 py-1 rounded-full inline-block mb-3">
+          <div className="text-center max-w-2xl mx-auto mb-16">
+            <span className="text-xs font-bold text-navy uppercase tracking-widest bg-white border border-slate-200 px-3.5 py-1.5 rounded-full inline-block mb-3">
               Done-for-You Solutions
             </span>
-            <h2 className="text-3xl sm:text-4xl font-extrabold text-navy tracking-tight">
-              Choose the Outcome You Need
+            <h2 className="text-3xl sm:text-5xl font-extrabold text-navy tracking-tight">
+              Built Around Your Exact Goal
             </h2>
-            <p className="text-slate-600 mt-3 text-base sm:text-lg">
-              We don't sell generic technology hype. We build, analyze, and automate around your specific objectives.
+            <p className="text-slate-600 mt-3 text-base">
+              No bloated retainers or generic software. We engineer only what solves your specific operational bottleneck.
             </p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            
-            {/* Service 1: Research & Data Analysis */}
-            <div className="bg-slate-50 border border-slate-200/80 rounded-2xl p-8 hover:shadow-xl hover:border-slate-300 transition-all flex flex-col justify-between group">
-              <div>
-                <div className="w-12 h-12 rounded-xl bg-navy text-accent flex items-center justify-center mb-6 shadow-sm">
-                  <BarChart3 className="w-6 h-6" />
-                </div>
-                <span className="text-xs font-bold uppercase tracking-wider text-slate-400 block mb-2">
-                  Research &amp; Analytics
-                </span>
-                <h3 className="text-xl sm:text-2xl font-extrabold text-navy tracking-tight mb-4">
-                  Turn raw data into clear, defensible results.
-                </h3>
-                <p className="text-sm text-slate-600 leading-relaxed mb-6">
-                  For researchers and organizations that need data cleaning, statistical analysis, visualisation, interpretation, and professional reporting.
-                </p>
-                <ul className="space-y-2 mb-8 text-xs font-medium text-slate-700">
-                  <li className="flex items-center">
-                    <CheckCircle2 className="w-4 h-4 text-emerald-600 mr-2 flex-shrink-0" />
-                    <span>Survey &amp; experimental data cleaning</span>
-                  </li>
-                  <li className="flex items-center">
-                    <CheckCircle2 className="w-4 h-4 text-emerald-600 mr-2 flex-shrink-0" />
-                    <span>Hypothesis testing &amp; statistical modeling</span>
-                  </li>
-                  <li className="flex items-center">
-                    <CheckCircle2 className="w-4 h-4 text-emerald-600 mr-2 flex-shrink-0" />
-                    <span>Report-ready APA tables &amp; charts</span>
-                  </li>
-                </ul>
-              </div>
-              <Link
-                to="/data-analysis"
-                className="inline-flex items-center text-sm font-bold text-navy hover:text-navy-light group-hover:translate-x-1 transition-transform"
-              >
-                <span>Explore Data Analysis</span>
-                <ArrowRight className="w-4 h-4 ml-1.5 text-accent" />
-              </Link>
-            </div>
+            {services.map((item, idx) => {
+              const Icon = item.icon;
+              return (
+                <div
+                  key={idx}
+                  className="bg-white border border-slate-200/90 rounded-3xl p-8 sm:p-10 shadow-sm hover:shadow-2xl hover:-translate-y-1.5 transition-all duration-300 flex flex-col justify-between group"
+                >
+                  <div>
+                    {/* Top Tag & Icon */}
+                    <div className="flex items-center justify-between mb-8">
+                      <div className="w-14 h-14 rounded-2xl bg-navy/5 text-navy flex items-center justify-center group-hover:bg-navy group-hover:text-accent transition-colors duration-300">
+                        <Icon className="w-7 h-7" />
+                      </div>
+                      <span className="text-[11px] font-bold uppercase tracking-wider bg-slate-100 text-slate-700 px-3 py-1 rounded-full">
+                        {item.tag}
+                      </span>
+                    </div>
 
-            {/* Service 2: AI & Workflow Automation */}
-            <div className="bg-slate-50 border border-slate-200/80 rounded-2xl p-8 hover:shadow-xl hover:border-slate-300 transition-all flex flex-col justify-between group">
-              <div>
-                <div className="w-12 h-12 rounded-xl bg-navy text-accent flex items-center justify-center mb-6 shadow-sm">
-                  <Workflow className="w-6 h-6" />
-                </div>
-                <span className="text-xs font-bold uppercase tracking-wider text-slate-400 block mb-2">
-                  Process Automation
-                </span>
-                <h3 className="text-xl sm:text-2xl font-extrabold text-navy tracking-tight mb-4">
-                  Replace repetitive manual work with reliable workflows.
-                </h3>
-                <p className="text-sm text-slate-600 leading-relaxed mb-6">
-                  For teams relying on Forms, Sheets, Excel, email, documents, approvals, reporting, or disconnected systems.
-                </p>
-                <ul className="space-y-2 mb-8 text-xs font-medium text-slate-700">
-                  <li className="flex items-center">
-                    <CheckCircle2 className="w-4 h-4 text-emerald-600 mr-2 flex-shrink-0" />
-                    <span>End-to-end spreadsheet &amp; form automation</span>
-                  </li>
-                  <li className="flex items-center">
-                    <CheckCircle2 className="w-4 h-4 text-emerald-600 mr-2 flex-shrink-0" />
-                    <span>Document generation &amp; approval routing</span>
-                  </li>
-                  <li className="flex items-center">
-                    <CheckCircle2 className="w-4 h-4 text-emerald-600 mr-2 flex-shrink-0" />
-                    <span>WhatsApp, email &amp; webhook integrations</span>
-                  </li>
-                </ul>
-              </div>
-              <Link
-                to="/ai-automation"
-                className="inline-flex items-center text-sm font-bold text-navy hover:text-navy-light group-hover:translate-x-1 transition-transform"
-              >
-                <span>Explore Automation</span>
-                <ArrowRight className="w-4 h-4 ml-1.5 text-accent" />
-              </Link>
-            </div>
+                    <h3 className="text-2xl font-extrabold text-navy tracking-tight mb-2">
+                      {item.title}
+                    </h3>
+                    <p className="text-sm font-bold text-accent bg-navy inline-block px-2.5 py-1 rounded-lg mb-4">
+                      {item.headline}
+                    </p>
+                    <p className="text-sm text-slate-600 leading-relaxed mb-8">
+                      {item.desc}
+                    </p>
+                  </div>
 
-            {/* Service 3: Custom Software Development */}
-            <div className="bg-slate-50 border border-slate-200/80 rounded-2xl p-8 hover:shadow-xl hover:border-slate-300 transition-all flex flex-col justify-between group">
-              <div>
-                <div className="w-12 h-12 rounded-xl bg-navy text-accent flex items-center justify-center mb-6 shadow-sm">
-                  <Code2 className="w-6 h-6" />
+                  <div className="pt-6 border-t border-slate-100 flex items-center justify-between">
+                    <span className="text-xs font-semibold text-slate-400">
+                      {item.metrics}
+                    </span>
+                    <Link
+                      to={item.link}
+                      className="inline-flex items-center text-sm font-bold text-navy group-hover:text-accent transition-colors"
+                    >
+                      <span>Explore</span>
+                      <ArrowRight className="w-4 h-4 ml-1.5 group-hover:translate-x-1 transition-transform" />
+                    </Link>
+                  </div>
                 </div>
-                <span className="text-xs font-bold uppercase tracking-wider text-slate-400 block mb-2">
-                  Software Engineering
-                </span>
-                <h3 className="text-xl sm:text-2xl font-extrabold text-navy tracking-tight mb-4">
-                  Build software around the way your organization works.
-                </h3>
-                <p className="text-sm text-slate-600 leading-relaxed mb-6">
-                  For businesses, NGOs, institutions, and founders that need web apps, mobile apps, internal tools, dashboards, portals, or custom digital products.
-                </p>
-                <ul className="space-y-2 mb-8 text-xs font-medium text-slate-700">
-                  <li className="flex items-center">
-                    <CheckCircle2 className="w-4 h-4 text-emerald-600 mr-2 flex-shrink-0" />
-                    <span>Operational portals &amp; custom business tools</span>
-                  </li>
-                  <li className="flex items-center">
-                    <CheckCircle2 className="w-4 h-4 text-emerald-600 mr-2 flex-shrink-0" />
-                    <span>Role-based access &amp; executive dashboards</span>
-                  </li>
-                  <li className="flex items-center">
-                    <CheckCircle2 className="w-4 h-4 text-emerald-600 mr-2 flex-shrink-0" />
-                    <span>Full code ownership, docs &amp; handover</span>
-                  </li>
-                </ul>
-              </div>
-              <Link
-                to="/custom-software-development"
-                className="inline-flex items-center text-sm font-bold text-navy hover:text-navy-light group-hover:translate-x-1 transition-transform"
-              >
-                <span>Explore Software Development</span>
-                <ArrowRight className="w-4 h-4 ml-1.5 text-accent" />
-              </Link>
-            </div>
-
+              );
+            })}
           </div>
 
         </div>
       </section>
 
-      {/* 3. PROBLEM RECOGNITION (Phase 4) */}
-      <section className="py-20 md:py-24 bg-slate-50 border-y border-slate-200/80 px-4 sm:px-6 lg:px-8">
+      {/* 3. PROBLEM RECOGNITION (Azuro Clean Visual Bento) */}
+      <section className="py-20 md:py-28 bg-white px-4 sm:px-6 lg:px-8 border-b border-slate-100">
         <div className="max-w-6xl mx-auto">
           
-          <div className="max-w-3xl mb-12">
-            <span className="text-xs font-bold text-navy uppercase tracking-widest bg-white border border-slate-200 px-3 py-1 rounded-full inline-block mb-3">
+          <div className="max-w-3xl mb-14">
+            <span className="text-xs font-bold text-navy uppercase tracking-widest bg-slate-100 px-3.5 py-1.5 rounded-full inline-block mb-3">
               Operational Reality
             </span>
-            <h2 className="text-2xl sm:text-4xl font-extrabold text-navy tracking-tight leading-tight">
-              If the process is slow, repetitive, unclear, or difficult to scale, there is usually a better system.
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-navy tracking-tight leading-tight">
+              If the process is slow, repetitive, or difficult to scale, there is a better system.
             </h2>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
-            {problemScenarios.map((item, idx) => (
-              <div key={idx} className="bg-white p-6 rounded-2xl border border-slate-200/80 shadow-xs flex flex-col justify-between">
-                <div>
-                  <div className="w-2 h-2 rounded-full bg-accent mb-3"></div>
-                  <h3 className="text-base font-bold text-navy mb-2 leading-snug">
-                    {item.title}
-                  </h3>
-                  <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">
-                    {item.description}
-                  </p>
-                </div>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
+            {[
+              {
+                title: "Messy or Disputed Research Data",
+                desc: "Data collection is finished, but SPSS outputs are ambiguous, or review boards demand verified statistical models."
+              },
+              {
+                title: "Manual Weekly Report Assembly",
+                desc: "Valuable employees lose mornings copy-pasting numbers between spreadsheets, emails, and slide summaries."
+              },
+              {
+                title: "Information Trapped in Spreadsheets",
+                desc: "Teams have outgrown Excel. Multiple people edit corrupted files with zero centralized data visibility."
+              },
+              {
+                title: "Chasing Approvals & Follow-Ups",
+                desc: "Critical invoices and internal requests stall in inboxes because there is no automated status trigger."
+              },
+              {
+                title: "Escalating Per-User SaaS Taxes",
+                desc: "Generic off-the-shelf software charges expensive per-seat monthly fees without fitting your actual workflow."
+              },
+              {
+                title: "Need for a Production MVP or Tool",
+                desc: "You have a proven workflow or client demand, but lack the dedicated engineering team to build it cleanly."
+              }
+            ].map((p, i) => (
+              <div key={i} className="bg-slate-50 border border-slate-200/80 rounded-3xl p-6 sm:p-7 hover:border-slate-300 transition-colors">
+                <div className="w-2.5 h-2.5 rounded-full bg-accent mb-4" />
+                <h3 className="text-base font-bold text-navy mb-2 leading-snug">{p.title}</h3>
+                <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">{p.desc}</p>
               </div>
             ))}
           </div>
 
-          <div className="bg-white p-8 rounded-2xl border border-slate-200 shadow-sm flex flex-col sm:flex-row items-center justify-between gap-6">
+          <div className="bg-navy text-white rounded-3xl p-8 sm:p-10 flex flex-col md:flex-row items-center justify-between gap-6 shadow-xl">
             <div>
-              <h3 className="text-lg font-bold text-navy">Recognize your situation here?</h3>
-              <p className="text-sm text-slate-600 mt-1">Tell us what you are dealing with, and we will evaluate the most realistic solution.</p>
+              <h3 className="text-xl sm:text-2xl font-extrabold text-white">Recognize your challenge here?</h3>
+              <p className="text-slate-300 text-sm mt-1">Tell us what currently exists. We will evaluate the most practical next step.</p>
             </div>
             <Link
               to="/contact"
-              onClick={() => trackCtaClick('Tell Us What You Need - Problem Section', '/')}
-              className="inline-flex items-center justify-center bg-navy text-white px-6 py-3.5 rounded-xl font-bold text-sm hover:bg-navy-light transition-all flex-shrink-0"
+              onClick={() => trackCtaClick('Tell Us What You Need - Problem Banner', '/')}
+              className="inline-flex items-center justify-center bg-accent text-navy px-8 py-4 rounded-xl font-extrabold text-sm hover:bg-yellow-400 transition-all flex-shrink-0"
             >
               <span>Tell Us What You Need</span>
-              <ArrowRight className="w-4 h-4 ml-2 text-accent" />
+              <ArrowRight className="w-4 h-4 ml-2" />
             </Link>
           </div>
 
         </div>
       </section>
 
-      {/* 4. HOW DIGIBELOVED WORKS (Phase 5) */}
-      <section className="py-20 md:py-28 bg-white text-navy px-4 sm:px-6 lg:px-8">
+      {/* 4. HOW WE WORK (Azuro 4-Step Linear Roadmap) */}
+      <section className="py-20 md:py-28 bg-slate-50 px-4 sm:px-6 lg:px-8 border-b border-slate-200/80">
         <div className="max-w-6xl mx-auto">
           
-          <div className="text-center max-w-3xl mx-auto mb-16">
-            <span className="text-xs font-bold text-navy uppercase tracking-widest bg-navy/5 px-3 py-1 rounded-full inline-block mb-3">
+          <div className="text-center max-w-2xl mx-auto mb-16">
+            <span className="text-xs font-bold text-navy uppercase tracking-widest bg-white border border-slate-200 px-3.5 py-1.5 rounded-full inline-block mb-3">
               Risk Reduction Process
             </span>
             <h2 className="text-3xl sm:text-4xl font-extrabold text-navy tracking-tight">
               Start with the problem. Build only what solves it.
             </h2>
-            <p className="text-slate-600 mt-3 text-base">
-              We remove project uncertainty through transparent discovery, verified scoping, and continuous validation.
-            </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
             {workSteps.map((step) => (
-              <div key={step.step} className="bg-slate-50 border border-slate-200/80 rounded-2xl p-6 relative">
+              <div key={step.num} className="bg-white border border-slate-200/80 rounded-3xl p-6 sm:p-7 shadow-xs">
                 <span className="text-3xl font-extrabold text-slate-300 font-mono block mb-3">
-                  {step.step}
+                  {step.num}
                 </span>
                 <h3 className="text-lg font-bold text-navy mb-2">
                   {step.title}
                 </h3>
-                <p className="text-sm text-slate-600 leading-relaxed">
-                  {step.description}
+                <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">
+                  {step.desc}
                 </p>
               </div>
             ))}
@@ -430,16 +387,16 @@ const Home: React.FC = () => {
         </div>
       </section>
 
-      {/* 5. VERIFIED CASE STUDIES & PROOF (Phase 7) */}
-      <section className="py-20 md:py-24 bg-slate-50 border-t border-slate-200/80 px-4 sm:px-6 lg:px-8">
+      {/* 5. VISUAL SHOWCASE CASE STUDIES (Azuro Mockup Showcase) */}
+      <section className="py-20 md:py-28 bg-white px-4 sm:px-6 lg:px-8 border-b border-slate-100">
         <div className="max-w-6xl mx-auto">
           
-          <div className="flex flex-col md:flex-row md:items-end justify-between mb-12">
+          <div className="flex flex-col md:flex-row md:items-end justify-between mb-16">
             <div>
-              <span className="text-xs font-bold text-navy uppercase tracking-widest bg-white border border-slate-200 px-3 py-1 rounded-full inline-block mb-3">
-                Evidence of Execution
+              <span className="text-xs font-bold text-navy uppercase tracking-widest bg-slate-100 px-3.5 py-1.5 rounded-full inline-block mb-3">
+                Selected Proof
               </span>
-              <h2 className="text-3xl sm:text-4xl font-extrabold text-navy tracking-tight">
+              <h2 className="text-3xl sm:text-5xl font-extrabold text-navy tracking-tight">
                 Real Outcomes. Documented Evidence.
               </h2>
             </div>
@@ -452,37 +409,59 @@ const Home: React.FC = () => {
             </Link>
           </div>
 
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-            {selectedCaseStudies.map((cs, idx) => (
-              <div key={idx} className="bg-white border border-slate-200 rounded-2xl p-6 shadow-sm flex flex-col justify-between">
-                <div>
-                  <span className="text-[11px] font-bold text-slate-500 uppercase tracking-wider block mb-2">
-                    {cs.category}
+          <div className="space-y-12">
+            {featuredProjects.map((proj, idx) => (
+              <div
+                key={idx}
+                className="bg-slate-50 border border-slate-200/90 rounded-3xl p-6 sm:p-10 shadow-sm hover:shadow-xl transition-all duration-300"
+              >
+                {/* Browser Mockup Header Bar */}
+                <div className="flex items-center justify-between pb-6 mb-6 border-b border-slate-200/80">
+                  <div className="flex items-center space-x-2">
+                    <span className="w-3 h-3 rounded-full bg-red-400"></span>
+                    <span className="w-3 h-3 rounded-full bg-yellow-400"></span>
+                    <span className="w-3 h-3 rounded-full bg-emerald-400"></span>
+                    <span className="ml-3 text-xs font-bold text-slate-400 uppercase tracking-wider font-mono">
+                      {proj.client}
+                    </span>
+                  </div>
+                  <span className="text-xs font-bold uppercase tracking-wider bg-navy text-accent px-3 py-1 rounded-full">
+                    {proj.tag}
                   </span>
-                  <h3 className="text-lg font-bold text-navy mb-4 leading-snug">
-                    {cs.title}
-                  </h3>
-                  
-                  <div className="space-y-3 mb-6 text-xs text-slate-600">
-                    <div>
-                      <strong className="text-navy block mb-0.5">Problem:</strong>
-                      {cs.problem}
+                </div>
+
+                <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+                  <div className="lg:col-span-8">
+                    <h3 className="text-2xl sm:text-3xl font-extrabold text-navy tracking-tight mb-4">
+                      {proj.title}
+                    </h3>
+                    <div className="space-y-3 text-xs sm:text-sm text-slate-600 mb-6">
+                      <p><strong className="text-navy">Problem:</strong> {proj.problem}</p>
+                      <p><strong className="text-navy">Solution:</strong> {proj.outcome}</p>
                     </div>
-                    <div>
-                      <strong className="text-navy block mb-0.5">Solution:</strong>
-                      {cs.solution}
+                    <Link
+                      to={proj.link}
+                      className="inline-flex items-center text-xs sm:text-sm font-bold text-navy hover:underline"
+                    >
+                      <span>Read Case Study Breakdown</span>
+                      <ArrowRight className="w-3.5 h-3.5 ml-1.5" />
+                    </Link>
+                  </div>
+
+                  <div className="lg:col-span-4 bg-white p-6 rounded-2xl border border-slate-200 text-center shadow-xs">
+                    <span className="text-[11px] font-bold text-slate-400 uppercase tracking-wider block mb-1">
+                      Verified Result
+                    </span>
+                    <div className="text-2xl sm:text-3xl font-extrabold text-navy mb-1">
+                      {proj.metric}
                     </div>
+                    <span className="text-xs font-semibold text-emerald-600 flex items-center justify-center">
+                      <CheckCircle2 className="w-3.5 h-3.5 mr-1" />
+                      Verified in Production
+                    </span>
                   </div>
                 </div>
 
-                <div className="pt-4 border-t border-slate-100 bg-slate-50 -mx-6 -mb-6 p-6 rounded-b-2xl">
-                  <span className="text-[11px] font-bold uppercase tracking-wider text-emerald-700 block mb-1">
-                    Outcome
-                  </span>
-                  <p className="text-xs font-semibold text-slate-800 leading-relaxed">
-                    {cs.outcome}
-                  </p>
-                </div>
               </div>
             ))}
           </div>
@@ -490,59 +469,61 @@ const Home: React.FC = () => {
         </div>
       </section>
 
-      {/* 6. CORPORATE AI TRAINING SECTION (Phase 8) */}
-      <section className="py-20 md:py-24 bg-[#07152E] text-white px-4 sm:px-6 lg:px-8 relative overflow-hidden">
-        <div className="max-w-5xl mx-auto">
+      {/* 6. CORPORATE AI TRAINING (Azuro Dark High-Contrast Feature) */}
+      <section className="py-20 md:py-28 bg-[#07152E] text-white px-4 sm:px-6 lg:px-8 relative overflow-hidden">
+        <div className="max-w-6xl mx-auto">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
             
-            <div className="lg:col-span-8">
-              <span className="text-xs font-bold text-accent uppercase tracking-widest bg-white/5 border border-white/10 px-3 py-1 rounded-full inline-block mb-4">
+            <div className="lg:col-span-7">
+              <span className="text-xs font-bold text-accent uppercase tracking-widest bg-white/5 border border-white/10 px-3.5 py-1.5 rounded-full inline-block mb-4">
                 Organizational Capability Building
               </span>
               <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-white tracking-tight leading-tight mb-6">
-                Build Practical AI Capability Inside Your Organization
+                Build Practical AI Capability Inside Your Organization.
               </h2>
               <p className="text-base sm:text-lg text-slate-300 leading-relaxed mb-8">
-                Equip your team to use Generative AI productively, responsibly, and in workflows that match the work they actually do.
+                Equip your team to use Generative AI productively, responsibly, and in workflows that match the work they actually do—not generic prompts.
               </p>
-              
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs sm:text-sm text-slate-300 mb-8">
-                <div className="flex items-center space-x-2">
+
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-10 text-xs sm:text-sm">
+                <div className="flex items-center space-x-2 text-slate-300">
                   <CheckCircle2 className="w-4 h-4 text-accent flex-shrink-0" />
                   <span>Workplace Productivity &amp; Operations</span>
                 </div>
-                <div className="flex items-center space-x-2">
+                <div className="flex items-center space-x-2 text-slate-300">
                   <CheckCircle2 className="w-4 h-4 text-accent flex-shrink-0" />
                   <span>Applied AI for Research &amp; Analysis</span>
                 </div>
-                <div className="flex items-center space-x-2">
+                <div className="flex items-center space-x-2 text-slate-300">
                   <CheckCircle2 className="w-4 h-4 text-accent flex-shrink-0" />
                   <span>Executive AI &amp; Strategy Roadmaps</span>
                 </div>
-                <div className="flex items-center space-x-2">
+                <div className="flex items-center space-x-2 text-slate-300">
                   <CheckCircle2 className="w-4 h-4 text-accent flex-shrink-0" />
-                  <span>Data Privacy &amp; Responsible Usage</span>
+                  <span>Corporate Data Privacy &amp; Governance</span>
                 </div>
               </div>
 
               <Link
                 to="/ai-training-for-organizations"
-                onClick={() => trackCtaClick('Request Corporate AI Training - Homepage', '/')}
-                className="inline-flex items-center justify-center bg-accent text-navy px-8 py-4 rounded-xl font-extrabold text-base tracking-wide hover:bg-yellow-400 active:scale-[0.99] transition-all shadow-[0_10px_25px_rgba(255,209,0,0.25)]"
+                onClick={() => trackCtaClick('Request Corporate AI Training - Home Feature', '/')}
+                className="inline-flex items-center justify-center bg-accent text-navy px-8 py-4 rounded-2xl font-extrabold text-base tracking-wide hover:bg-yellow-400 active:scale-[0.98] transition-all shadow-[0_10px_25px_rgba(255,209,0,0.3)]"
               >
                 <span>Request Corporate AI Training</span>
                 <ArrowRight className="w-4 h-4 ml-2" />
               </Link>
             </div>
 
-            <div className="lg:col-span-4 bg-white/5 border border-white/10 rounded-2xl p-6 text-left">
-              <h3 className="text-sm font-bold text-accent uppercase tracking-wider mb-2">B2B Customized Programs</h3>
-              <p className="text-xs text-slate-400 leading-relaxed mb-4">
-                We deliver tailored in-person sessions across Abuja and Nigeria, as well as live virtual interactive training for remote teams globally.
+            <div className="lg:col-span-5 bg-white/5 border border-white/10 rounded-3xl p-8 text-left">
+              <span className="text-xs font-bold text-accent uppercase tracking-wider block mb-2">
+                Customized Onsite &amp; Virtual Workshops
+              </span>
+              <p className="text-xs sm:text-sm text-slate-300 leading-relaxed mb-6">
+                Delivered onsite in Abuja and throughout Nigeria, as well as live interactive cohorts globally. Employees bring their real operational documents and leave with repeatable workflows.
               </p>
-              <div className="pt-4 border-t border-white/10 text-xs text-slate-300">
-                <strong className="text-white block mb-1">Not a pre-recorded webinar:</strong>
-                Real employees bring their real operational documents and learn repeatable workflows they apply immediately.
+              <div className="p-4 bg-white/5 rounded-2xl border border-white/10 text-xs text-slate-400">
+                <strong className="text-white block mb-1">Zero Coding Required:</strong>
+                Tailored specifically for administrative, operational, research, and managerial teams.
               </div>
             </div>
 
@@ -550,37 +531,14 @@ const Home: React.FC = () => {
         </div>
       </section>
 
-      {/* 7. INDUSTRIES / BUYERS */}
-      <section className="py-20 md:py-24 bg-white text-navy px-4 sm:px-6 lg:px-8">
-        <div className="max-w-6xl mx-auto">
-          <div className="text-center max-w-3xl mx-auto mb-12">
-            <h2 className="text-2xl sm:text-3xl font-extrabold text-navy tracking-tight">
-              Organizations &amp; Professionals We Partner With
-            </h2>
-            <p className="text-slate-600 mt-2 text-sm">
-              Tailored engagements designed specifically for each sector's compliance, accuracy, and operational needs.
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4">
-            {industries.map((ind, idx) => (
-              <div key={idx} className="p-5 rounded-xl bg-slate-50 border border-slate-200/80 text-left">
-                <h3 className="text-sm font-bold text-navy mb-2">{ind.name}</h3>
-                <p className="text-xs text-slate-600 leading-relaxed">{ind.desc}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* 8. FOUNDER & TRUST */}
-      <section className="py-16 md:py-20 bg-slate-50 border-y border-slate-200/80 px-4 sm:px-6 lg:px-8">
+      {/* 7. FOUNDER CREDIBILITY & TRUST */}
+      <section className="py-20 md:py-24 bg-white px-4 sm:px-6 lg:px-8 border-b border-slate-100">
         <div className="max-w-5xl mx-auto">
-          <div className="bg-white rounded-3xl border border-slate-200 p-8 sm:p-12 shadow-sm">
+          <div className="bg-slate-50 border border-slate-200 rounded-3xl p-8 sm:p-12">
             <div className="grid grid-cols-1 md:grid-cols-12 gap-8 items-center">
               
-              <div className="md:col-span-4 flex flex-col items-center text-center">
-                <div className="w-32 h-32 rounded-full overflow-hidden border-4 border-slate-100 shadow-md mb-4 bg-navy">
+              <div className="md:col-span-4 text-center">
+                <div className="w-32 h-32 rounded-full overflow-hidden border-4 border-white shadow-md mx-auto mb-4 bg-navy">
                   <img
                     src="https://res.cloudinary.com/dn2mgiges/image/upload/v1754587273/DigiBeloved.png"
                     alt="Chukwuemeka John Chidiebere"
@@ -591,33 +549,28 @@ const Home: React.FC = () => {
                 <p className="text-xs font-semibold text-slate-500 uppercase tracking-wider mt-0.5">
                   Founder / Applied AI Strategist
                 </p>
-                <div className="mt-3 text-xs text-slate-400">
-                  Abuja, Nigeria
-                </div>
+                <span className="text-xs text-slate-400 block mt-1">Abuja, Nigeria</span>
               </div>
 
-              <div className="md:col-span-8 border-t md:border-t-0 md:border-l border-slate-100 pt-6 md:pt-0 md:pl-8">
-                <span className="text-xs font-bold text-navy uppercase tracking-widest bg-slate-100 px-3 py-1 rounded-full inline-block mb-3">
-                  Grounding &amp; Philosophy
-                </span>
-                <h4 className="text-xl font-extrabold text-navy mb-3">
+              <div className="md:col-span-8 border-t md:border-t-0 md:border-l border-slate-200 pt-6 md:pt-0 md:pl-8">
+                <h4 className="text-xl sm:text-2xl font-extrabold text-navy mb-3">
                   "Technology has no value until it simplifies a real person's work."
                 </h4>
-                <p className="text-sm text-slate-600 leading-relaxed mb-4">
-                  DigiBeloved was founded on a simple principle: bridge the gap between technical capability and everyday operational reality. Rather than selling buzzwords, we work directly with researchers, operations leads, and founders to solve their immediate analytical and software bottlenecks.
+                <p className="text-xs sm:text-sm text-slate-600 leading-relaxed mb-6">
+                  We don't sell buzzwords. We partner with research leads, operations managers, and founders to eliminate the analytical and digital roadblocks holding them back.
                 </p>
-                <div className="grid grid-cols-2 sm:grid-cols-3 gap-3 text-xs text-slate-700 font-medium">
-                  <div className="p-2.5 rounded-lg bg-slate-50 border border-slate-100">
-                    <span className="font-bold text-navy block">Data Rigor</span>
-                    Methodological correctness
+                <div className="grid grid-cols-3 gap-3 text-center text-xs">
+                  <div className="p-3 bg-white rounded-xl border border-slate-200">
+                    <strong className="text-navy block font-bold text-sm">Research</strong>
+                    <span>Valid statistical tests</span>
                   </div>
-                  <div className="p-2.5 rounded-lg bg-slate-50 border border-slate-100">
-                    <span className="font-bold text-navy block">Software Engineering</span>
-                    Production architectures
+                  <div className="p-3 bg-white rounded-xl border border-slate-200">
+                    <strong className="text-navy block font-bold text-sm">Automation</strong>
+                    <span>Resilient pipelines</span>
                   </div>
-                  <div className="p-2.5 rounded-lg bg-slate-50 border border-slate-100">
-                    <span className="font-bold text-navy block">Applied Workshops</span>
-                    Measurable productivity
+                  <div className="p-3 bg-white rounded-xl border border-slate-200">
+                    <strong className="text-navy block font-bold text-sm">Software</strong>
+                    <span>100% Code custody</span>
                   </div>
                 </div>
               </div>
@@ -627,62 +580,94 @@ const Home: React.FC = () => {
         </div>
       </section>
 
-      {/* 9. ACADEMY TEASER (Phase 9) */}
-      <section className="py-20 md:py-24 bg-white text-navy px-4 sm:px-6 lg:px-8 border-b border-slate-100">
-        <div className="max-w-4xl mx-auto text-center">
-          <span className="text-xs font-bold text-navy uppercase tracking-widest bg-navy/5 px-3 py-1 rounded-full inline-block mb-3">
-            Individual Learning
-          </span>
-          <h2 className="text-3xl sm:text-4xl font-extrabold text-navy tracking-tight mb-4">
-            Want to Learn the Systems Yourself?
-          </h2>
-          <p className="text-base sm:text-lg text-slate-600 max-w-2xl mx-auto leading-relaxed mb-8">
-            For scholars, entrepreneurs, and professionals who want step-by-step playbooks, practical skills, and tools they can apply independently to their daily work.
-          </p>
+      {/* 8. INTERACTIVE ACCORDION FAQ (Azuro Style) */}
+      <section className="py-20 md:py-28 bg-slate-50 px-4 sm:px-6 lg:px-8 border-b border-slate-200/80">
+        <div className="max-w-4xl mx-auto">
           
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 text-left max-w-2xl mx-auto mb-8">
-            <div className="bg-slate-50 p-5 rounded-2xl border border-slate-200/80">
-              <h3 className="font-bold text-navy text-sm mb-1">AI Presentation System</h3>
-              <p className="text-xs text-slate-600">Turn your research, report, or notes into executive PowerPoint slides using AI.</p>
-            </div>
-            <div className="bg-slate-50 p-5 rounded-2xl border border-slate-200/80">
-              <h3 className="font-bold text-navy text-sm mb-1">The Prompt Polisher</h3>
-              <p className="text-xs text-slate-600">Free utility to transform vague thoughts into engineer-grade AI instructions.</p>
-            </div>
+          <div className="text-center max-w-2xl mx-auto mb-16">
+            <span className="text-xs font-bold text-navy uppercase tracking-widest bg-white border border-slate-200 px-3.5 py-1.5 rounded-full inline-block mb-3">
+              Clarity &amp; Answers
+            </span>
+            <h2 className="text-3xl sm:text-5xl font-extrabold text-navy tracking-tight">
+              Frequently Asked Questions
+            </h2>
           </div>
 
+          <div className="space-y-4">
+            {faqs.map((faq, idx) => {
+              const isOpen = openFaq === idx;
+              return (
+                <div
+                  key={idx}
+                  className="bg-white border border-slate-200 rounded-2xl overflow-hidden transition-all duration-200"
+                >
+                  <button
+                    type="button"
+                    onClick={() => setOpenFaq(isOpen ? null : idx)}
+                    className="w-full p-6 text-left flex items-center justify-between space-x-4 focus:outline-none"
+                  >
+                    <span className="text-base sm:text-lg font-bold text-navy">
+                      {faq.q}
+                    </span>
+                    <div className="w-8 h-8 rounded-full bg-slate-100 flex items-center justify-center flex-shrink-0 text-navy">
+                      {isOpen ? <Minus className="w-4 h-4" /> : <Plus className="w-4 h-4" />}
+                    </div>
+                  </button>
+
+                  {isOpen && (
+                    <div className="px-6 pb-6 text-xs sm:text-sm text-slate-600 leading-relaxed border-t border-slate-100 pt-4 animate-in fade-in duration-150">
+                      {faq.a}
+                    </div>
+                  )}
+                </div>
+              );
+            })}
+          </div>
+
+        </div>
+      </section>
+
+      {/* 9. ACADEMY TEASER */}
+      <section className="py-16 bg-white px-4 sm:px-6 lg:px-8 border-b border-slate-100 text-center">
+        <div className="max-w-3xl mx-auto">
+          <span className="text-xs font-bold text-navy uppercase tracking-widest bg-slate-100 px-3 py-1 rounded-full inline-block mb-3">
+            Individual Mastery
+          </span>
+          <h2 className="text-2xl sm:text-3xl font-extrabold text-navy tracking-tight mb-3">
+            Want to Learn the Systems Yourself?
+          </h2>
+          <p className="text-sm text-slate-600 max-w-xl mx-auto mb-6">
+            Explore step-by-step playbooks, courses, and utilities for scholars and professionals in the DigiBeloved Academy.
+          </p>
           <Link
             to="/academy"
-            onClick={() => trackCtaClick('Explore DigiBeloved Academy - Teaser', '/')}
-            className="inline-flex items-center justify-center bg-navy text-white px-8 py-4 rounded-xl font-bold text-base hover:bg-navy-light transition-all shadow-md"
+            className="inline-flex items-center text-sm font-bold text-navy hover:underline"
           >
             <span>Explore DigiBeloved Academy</span>
-            <ArrowRight className="w-4 h-4 ml-2 text-accent" />
+            <ArrowRight className="w-4 h-4 ml-1.5 text-accent" />
           </Link>
         </div>
       </section>
 
-      {/* 10. FINAL CONVERSION CTA (Phase 6 / Final Close) */}
+      {/* 10. FINAL CONVERSION CLOSE */}
       <section className="py-20 md:py-28 bg-[#07152E] text-white px-4 sm:px-6 lg:px-8 text-center">
         <div className="max-w-3xl mx-auto">
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-white tracking-tight leading-tight mb-6">
-            Have a Project, Workflow, Dataset, or Team Challenge?
+          <h2 className="text-3xl sm:text-5xl font-extrabold text-white tracking-tight leading-tight mb-6">
+            Have a Project, Workflow, or Dataset Challenge?
           </h2>
-          <p className="text-base sm:text-lg md:text-xl text-slate-300 font-light leading-relaxed mb-10">
-            Tell us what you are trying to achieve, what currently exists, and your available budget. We will help you define the most practical next step.
+          <p className="text-base sm:text-lg text-slate-300 font-light leading-relaxed mb-10">
+            Tell us what you are trying to achieve, what currently exists, and your available budget. We will help define the most practical next step.
           </p>
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-            <Link
-              to="/contact"
-              onClick={() => trackCtaClick('Discuss Your Project - Final Close', '/')}
-              className="w-full sm:w-auto inline-flex items-center justify-center bg-accent text-navy px-10 py-5 rounded-xl font-extrabold text-lg tracking-wide hover:bg-yellow-400 active:scale-[0.99] transition-all shadow-[0_12px_30px_rgba(255,209,0,0.3)]"
-            >
-              <span>Discuss Your Project</span>
-              <ArrowRight className="w-5 h-5 ml-2" />
-            </Link>
-          </div>
+          <Link
+            to="/contact"
+            onClick={() => trackCtaClick('Discuss Your Project - Final Close', '/')}
+            className="inline-flex items-center justify-center bg-accent text-navy px-10 py-5 rounded-2xl font-extrabold text-lg tracking-wide hover:bg-yellow-400 active:scale-[0.98] transition-all shadow-[0_12px_30px_rgba(255,209,0,0.35)]"
+          >
+            <span>Discuss Your Project</span>
+            <ArrowRight className="w-5 h-5 ml-2" />
+          </Link>
           <div className="mt-6 text-xs text-slate-400">
-            Flexible project-based pricing • Clear deliverables • No obligation discovery
+            Flexible project-based pricing • Fast scoping feedback • Confidential
           </div>
         </div>
       </section>

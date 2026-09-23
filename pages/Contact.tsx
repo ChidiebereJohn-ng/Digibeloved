@@ -181,16 +181,26 @@ Notes: ${formData.additionalDetails}
       <SchemaScript schema={schema} />
 
       {/* Header */}
-      <section className="bg-[#07152E] text-white pt-16 pb-16 px-4 text-center">
-        <div className="max-w-4xl mx-auto">
-          <span className="text-xs font-bold text-accent uppercase tracking-widest bg-white/5 border border-white/10 px-4 py-1.5 rounded-full inline-block mb-4">
-            Project Scoping &amp; Quotes
-          </span>
-          <h1 className="text-3xl sm:text-5xl font-extrabold text-white tracking-tight leading-tight mb-4">
-            Discuss Your Project or Request a Quote
+      <section className="bg-[#07152E] text-white pt-20 pb-20 md:pt-28 md:pb-24 px-4 sm:px-6 lg:px-8 text-center relative overflow-hidden">
+        <div className="absolute inset-0 opacity-10 bg-[radial-gradient(#FFD100_1px,transparent_1px)] [background-size:24px_24px] pointer-events-none" />
+        
+        <div className="max-w-4xl mx-auto relative z-10">
+          <div className="inline-flex items-center space-x-2 bg-white/5 border border-white/10 px-4 py-1.5 rounded-full text-xs font-semibold text-slate-300 mb-8 backdrop-blur-xs">
+            <span className="w-2 h-2 rounded-full bg-accent animate-pulse" />
+            <span className="text-white">Project Scoping &amp; Quotes</span>
+            <span className="text-slate-500">•</span>
+            <span className="text-accent">24h Response</span>
+          </div>
+
+          <h1 className="text-4xl sm:text-6xl font-extrabold text-white tracking-tight leading-[1.1] mb-6">
+            Let's Discuss Your Project <br className="hidden sm:inline" />
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-accent via-yellow-200 to-white">
+              or Request a Quote
+            </span>
           </h1>
-          <p className="text-base sm:text-lg text-slate-300 max-w-2xl mx-auto leading-relaxed">
-            Tell us what you are trying to achieve, what currently exists, and your available budget. We will help define the most practical next step.
+
+          <p className="text-base sm:text-lg text-slate-300 font-light leading-relaxed max-w-2xl mx-auto">
+            Tell us what you are trying to achieve, what currently exists, and your available budget. We will recommend the most practical next step.
           </p>
         </div>
       </section>
