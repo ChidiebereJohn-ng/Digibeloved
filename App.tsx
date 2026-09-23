@@ -18,6 +18,7 @@ import AIGraphicDesignCourse from './pages/AIGraphicDesignCourse';
 import AIPresentationSystem from './pages/AIPresentationSystem';
 import FreeBlueprint from './pages/FreeBlueprint';
 import BlueprintThankYou from './pages/BlueprintThankYou';
+import Products from './pages/Products';
 
 import {
   captureAndPersistUtmParams,
@@ -58,6 +59,7 @@ const App: React.FC = () => {
         <Route path="/ai-training-for-organizations" element={<Layout><CorporateAITraining /></Layout>} />
         
         {/* Individual Learning & Proof */}
+        <Route path="/products" element={<Layout><Products /></Layout>} />
         <Route path="/academy" element={<Layout><Academy /></Layout>} />
         <Route path="/case-studies" element={<Layout><CaseStudies /></Layout>} />
         <Route path="/case-studies/:id" element={<Layout><CaseStudies /></Layout>} />

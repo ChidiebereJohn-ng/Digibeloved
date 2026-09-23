@@ -563,6 +563,12 @@ const corePages = [
     canonical: "https://digibeloved.com/ai-training-for-organizations"
   },
   {
+    route: "products",
+    title: "Digital Products & Systems Marketplace | DigiBeloved",
+    description: "Browse DigiBeloved practical AI systems, presentation playbooks, free blueprints, and software utilities built for professionals, researchers, and founders.",
+    canonical: "https://digibeloved.com/products"
+  },
+  {
     route: "academy",
     title: "DigiBeloved Academy | Practical AI Skills & Playbooks",
     description: "Learn practical AI skills, step-by-step playbooks, and reusable workflows you can apply immediately in your work or career.",

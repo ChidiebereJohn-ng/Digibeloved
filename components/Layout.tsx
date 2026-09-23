@@ -170,11 +170,11 @@ const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
                 Case Studies
               </Link>
 
-              {/* Products & Playbooks */}
+              {/* Products & Marketplace */}
               <Link
-                to="/ai-presentation-system"
+                to="/products"
                 className={`px-3 py-2 rounded-lg text-sm font-semibold transition-colors flex items-center space-x-1.5 ${
-                  location.pathname === '/ai-presentation-system' || location.pathname === '/free-blueprint'
+                  location.pathname === '/products' || location.pathname === '/ai-presentation-system' || location.pathname === '/free-blueprint'
                     ? 'text-navy font-bold bg-slate-50'
                     : 'text-slate-700 hover:text-navy hover:bg-slate-50'
                 }`}
@@ -292,11 +292,11 @@ const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
               </Link>
 
               <Link
-                to="/ai-presentation-system"
+                to="/products"
                 onClick={() => setIsMenuOpen(false)}
                 className="flex items-center justify-between px-3 py-2.5 rounded-lg text-sm font-semibold text-slate-700 hover:text-navy hover:bg-slate-50"
               >
-                <span>Products &amp; Playbooks</span>
+                <span>Products Marketplace</span>
                 <span className="text-[10px] font-extrabold uppercase bg-accent text-navy px-2 py-0.5 rounded-md">New</span>
               </Link>
 
