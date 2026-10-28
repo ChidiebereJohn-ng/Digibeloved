@@ -65,27 +65,30 @@ const Products: React.FC = () => {
       <SchemaScript schema={schema} />
 
       {/* Hero Header Section */}
-      <section className="bg-[#07152E] text-white pt-20 pb-20 md:pt-28 md:pb-24 px-4 sm:px-6 lg:px-8 text-center relative overflow-hidden">
-        <div className="absolute inset-0 opacity-10 bg-[radial-gradient(#FFD100_1px,transparent_1px)] [background-size:24px_24px] pointer-events-none" />
+      <section className="bg-gradient-to-b from-[#092755] via-[#092755] to-[#0d3470] text-white pt-20 pb-20 md:pt-28 md:pb-24 px-4 sm:px-6 lg:px-8 text-center relative overflow-hidden">
+        {/* Soft atmospheric gradient accents */}
+        <div className="absolute top-0 right-0 w-96 h-96 bg-[#FDD412]/10 rounded-full blur-3xl pointer-events-none" />
+        <div className="absolute bottom-0 left-0 w-80 h-80 bg-[#EEF3FB]/5 rounded-full blur-3xl pointer-events-none" />
+        <div className="absolute inset-0 opacity-10 bg-[radial-gradient(#FDD412_1px,transparent_1px)] [background-size:24px_24px] pointer-events-none" />
         
         <div className="max-w-4xl mx-auto relative z-10">
           
           {/* Micro-Pill Badge */}
-          <div className="inline-flex items-center space-x-2 bg-white/5 border border-white/10 px-4 py-1.5 rounded-full text-xs font-semibold text-slate-300 mb-8 backdrop-blur-xs">
-            <span className="w-2 h-2 rounded-full bg-accent animate-pulse" />
+          <div className="inline-flex items-center space-x-2 bg-white/10 border border-[#FDD412]/40 px-4 py-1.5 rounded-full text-xs font-bold text-[#FDD412] mb-8 backdrop-blur-xs">
+            <span className="w-2 h-2 rounded-full bg-[#FDD412] animate-pulse" />
             <span className="text-white">Business Marketplace</span>
-            <span className="text-slate-500">•</span>
-            <span className="text-accent">Systems, Playbooks &amp; Tools</span>
+            <span className="text-slate-400">•</span>
+            <span className="text-[#FDD412]">Systems, Playbooks &amp; Tools</span>
           </div>
 
-          <h1 className="text-4xl sm:text-6xl font-extrabold text-white tracking-tight leading-[1.08] mb-6">
+          <h1 className="text-4xl sm:text-6xl font-black text-white tracking-tight leading-[1.08] mb-6">
             Practical AI Systems &amp; <br className="hidden sm:inline" />
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-accent via-yellow-200 to-white">
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#FDD412] via-yellow-200 to-white">
               Digital Products
             </span>
           </h1>
 
-          <p className="text-base sm:text-lg text-slate-300 font-light leading-relaxed max-w-2xl mx-auto mb-10">
+          <p className="text-base sm:text-lg text-slate-200 font-normal leading-relaxed max-w-2xl mx-auto mb-10">
             Self-paced implementation systems, free blueprints, and automated software utilities engineered to turn complex workflows into fast, repeatable outcomes.
           </p>
 
@@ -97,7 +100,7 @@ const Products: React.FC = () => {
               placeholder="Search playbooks, tools, or courses..."
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
-              className="w-full bg-white/10 border border-white/20 text-white placeholder-slate-400 pl-12 pr-4 py-3.5 rounded-2xl text-sm focus:outline-none focus:ring-2 focus:ring-accent focus:bg-white/15 transition-all backdrop-blur-xs"
+              className="w-full bg-white/10 border border-white/20 text-white placeholder-slate-400 pl-12 pr-4 py-3.5 rounded-2xl text-sm focus:outline-none focus:ring-2 focus:ring-[#FDD412] focus:bg-white/15 transition-all backdrop-blur-xs"
             />
           </div>
 
@@ -105,7 +108,7 @@ const Products: React.FC = () => {
       </section>
 
       {/* Category Filter Tabs Bar */}
-      <section className="bg-slate-50 border-b border-slate-200/80 py-4 px-4 sticky top-16 sm:top-20 z-30 backdrop-blur-md bg-slate-50/95">
+      <section className="bg-[#EEF3FB]/95 border-b border-[#092755]/10 py-4 px-4 sticky top-16 sm:top-20 z-30 backdrop-blur-md">
         <div className="max-w-7xl mx-auto flex flex-wrap items-center justify-center gap-2 text-xs font-bold">
           {categories.map((cat) => (
             <button
@@ -113,7 +116,7 @@ const Products: React.FC = () => {
               onClick={() => setSelectedCategory(cat)}
               className={`px-4 py-2 rounded-xl transition-all ${
                 selectedCategory === cat
-                  ? 'bg-navy text-white shadow-sm'
+                  ? 'bg-[#092755] text-[#FDD412] font-black shadow-sm'
                   : 'bg-white text-slate-600 hover:text-navy border border-slate-200 hover:border-slate-300'
               }`}
             >
@@ -124,7 +127,7 @@ const Products: React.FC = () => {
       </section>
 
       {/* Marketplace Catalog Grid */}
-      <section className="py-16 md:py-24 bg-white px-4 sm:px-6 lg:px-8">
+      <section className="py-16 md:py-24 bg-[#EEF3FB] px-4 sm:px-6 lg:px-8">
         <div className="max-w-7xl mx-auto">
           
           <div className="flex items-center justify-between mb-10 pb-4 border-b border-slate-100">
@@ -172,7 +175,7 @@ const Products: React.FC = () => {
                     
                     {/* Visual 3D Asset Mockup */}
                     {prod.image ? (
-                      <div className="mb-6 rounded-2xl overflow-hidden bg-gradient-to-b from-[#0B1B38] to-[#07152E] border border-slate-100 p-4 flex items-center justify-center relative shadow-inner">
+                      <div className="mb-6 rounded-2xl overflow-hidden bg-gradient-to-b from-[#0e336d] to-[#092755] border border-slate-100 p-4 flex items-center justify-center relative shadow-inner">
                         <img 
                           src={prod.image} 
                           alt={prod.title}
@@ -303,7 +306,8 @@ const Products: React.FC = () => {
       </section>
 
       {/* Bottom Service Upsell Banner */}
-      <section className="py-20 bg-[#07152E] text-white px-4 sm:px-6 lg:px-8 text-center relative overflow-hidden">
+      <section className="py-20 bg-[#092755] text-white px-4 sm:px-6 lg:px-8 text-center relative overflow-hidden">
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-[#FDD412]/10 rounded-full blur-3xl pointer-events-none" />
         <div className="max-w-3xl mx-auto relative z-10">
           <span className="text-xs font-bold text-accent uppercase tracking-widest bg-white/5 border border-white/10 px-3.5 py-1.5 rounded-full inline-block mb-6">
             Custom Engineering

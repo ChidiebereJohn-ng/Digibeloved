@@ -96,10 +96,14 @@ const Academy: React.FC = () => {
       <SchemaScript schema={schema} />
 
       {/* Hero Section */}
-      <section className="bg-[#07152E] text-white pt-16 pb-20 md:pt-24 md:pb-28 px-4 sm:px-6 lg:px-8 relative overflow-hidden">
-        <div className="max-w-4xl mx-auto text-center">
+      <section className="bg-gradient-to-b from-[#092755] via-[#092755] to-[#0d3470] text-white pt-16 pb-20 md:pt-24 md:pb-28 px-4 sm:px-6 lg:px-8 relative overflow-hidden">
+        {/* Soft atmospheric gradient accents */}
+        <div className="absolute top-0 right-0 w-96 h-96 bg-[#FDD412]/10 rounded-full blur-3xl pointer-events-none" />
+        <div className="absolute bottom-0 left-0 w-80 h-80 bg-[#EEF3FB]/5 rounded-full blur-3xl pointer-events-none" />
+        
+        <div className="max-w-4xl mx-auto text-center relative z-10">
           
-          <div className="inline-flex items-center space-x-2 bg-white/5 border border-white/10 px-4 py-1.5 rounded-full text-xs font-semibold text-accent mb-6">
+          <div className="inline-flex items-center space-x-2 bg-white/10 border border-[#FDD412]/30 px-4 py-1.5 rounded-full text-xs font-bold text-[#FDD412] mb-6">
             <BookOpen className="w-3.5 h-3.5" />
             <span>DigiBeloved Academy — Individual Learning</span>
           </div>

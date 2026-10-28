@@ -9,15 +9,16 @@ export default {
   theme: {
     extend: {
       colors: {
-        navy: '#0D244F',
-        accent: '#FFD100',
-        'navy-light': '#1A3A6E',
+        navy: '#092755',
+        accent: '#FDD412',
+        'navy-light': '#0D3470',
         'brand-navy': '#092755',
         'brand-yellow': '#FDD412',
         'brand-ice': '#EEF3FB',
+        ice: '#EEF3FB',
       },
       fontFamily: {
-        sans: ['Inter', 'sans-serif'],
+        sans: ['Poppins', 'sans-serif'],
         poppins: ['Poppins', 'sans-serif'],
       }
     },

@@ -34,9 +34,13 @@ const About: React.FC = () => {
       <SchemaScript schema={schema} />
 
       {/* Header */}
-      <section className="bg-[#07152E] text-white pt-16 pb-20 md:pt-24 md:pb-28 px-4 text-center">
-        <div className="max-w-4xl mx-auto">
-          <span className="text-xs font-bold text-accent uppercase tracking-widest bg-white/5 border border-white/10 px-4 py-1.5 rounded-full inline-block mb-4">
+      <section className="bg-gradient-to-b from-[#092755] via-[#092755] to-[#0d3470] text-white pt-16 pb-20 md:pt-24 md:pb-28 px-4 text-center relative overflow-hidden">
+        {/* Soft atmospheric gradient accents */}
+        <div className="absolute top-0 right-0 w-96 h-96 bg-[#FDD412]/10 rounded-full blur-3xl pointer-events-none" />
+        <div className="absolute bottom-0 left-0 w-80 h-80 bg-[#EEF3FB]/5 rounded-full blur-3xl pointer-events-none" />
+        
+        <div className="max-w-4xl mx-auto relative z-10">
+          <span className="text-xs font-bold text-[#FDD412] uppercase tracking-widest bg-white/10 border border-[#FDD412]/30 px-4 py-1.5 rounded-full inline-block mb-4">
             Our Purpose &amp; Philosophy
           </span>
           <h1 className="text-3xl sm:text-5xl md:text-6xl font-extrabold text-white tracking-tight leading-tight mb-6">
@@ -207,8 +211,9 @@ const About: React.FC = () => {
       </section>
 
       {/* CTA */}
-      <section className="py-20 md:py-24 bg-[#07152E] text-white px-4 sm:px-6 lg:px-8 text-center">
-        <div className="max-w-3xl mx-auto">
+      <section className="py-20 md:py-24 bg-[#092755] text-white px-4 sm:px-6 lg:px-8 text-center relative overflow-hidden">
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-[#FDD412]/10 rounded-full blur-3xl pointer-events-none" />
+        <div className="max-w-3xl mx-auto relative z-10">
           <h2 className="text-3xl sm:text-4xl font-extrabold text-white tracking-tight mb-6">
             Let's Discuss How We Can Improve How You Work
           </h2>

@@ -13,7 +13,7 @@ export default function FinalCloseV2() {
   };
 
   return (
-    <section className="py-20 md:py-28 bg-[#07152E] text-white px-4 sm:px-6 lg:px-8 relative overflow-hidden text-center">
+    <section className="py-20 md:py-28 bg-[#092755] text-white px-4 sm:px-6 lg:px-8 relative overflow-hidden text-center">
       {/* Background ambient lighting */}
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full max-w-4xl h-80 bg-accent/5 rounded-full blur-3xl pointer-events-none" />
 

@@ -59,7 +59,7 @@ export default function PricingGuaranteeV2() {
                   {pricing.displayLaunchPrice}
                 </span>
               </div>
-              <p className="text-xs sm:text-sm font-bold text-accent bg-[#07152E] inline-block px-3 py-1 rounded-md mb-2">
+              <p className="text-xs sm:text-sm font-bold text-accent bg-[#092755] inline-block px-3 py-1 rounded-md mb-2">
                 {pricing.priceHeadline}
               </p>
               <p className="text-xs sm:text-sm text-slate-500 font-normal">

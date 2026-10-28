@@ -280,8 +280,9 @@ const AIAutomation: React.FC = () => {
       </section>
 
       {/* Final Close */}
-      <section className="py-20 md:py-28 bg-[#07152E] text-white px-4 sm:px-6 lg:px-8 text-center">
-        <div className="max-w-3xl mx-auto">
+      <section className="py-20 md:py-28 bg-[#092755] text-white px-4 sm:px-6 lg:px-8 text-center relative overflow-hidden">
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-[#FDD412]/10 rounded-full blur-3xl pointer-events-none" />
+        <div className="max-w-3xl mx-auto relative z-10">
           <h2 className="text-3xl sm:text-5xl font-extrabold text-white tracking-tight leading-tight mb-6">
             Show Us the Repetitive Process. We Will Engineer the System.
           </h2>

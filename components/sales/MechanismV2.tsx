@@ -48,7 +48,7 @@ export default function MechanismV2() {
             {mechanism.consequence}
           </p>
 
-          <div className="inline-block bg-[#07152E] text-accent px-4 py-2 rounded-lg font-bold text-sm sm:text-base tracking-wide">
+          <div className="inline-block bg-[#092755] text-accent px-4 py-2 rounded-lg font-bold text-sm sm:text-base tracking-wide">
             {mechanism.betterDirectionCallout}
           </div>
         </div>
@@ -65,7 +65,7 @@ export default function MechanismV2() {
           </h2>
 
           {/* Editorial Visual Equation Box */}
-          <div className="bg-[#07152E] text-white p-6 sm:p-10 rounded-2xl border border-white/10 shadow-xl mb-8">
+          <div className="bg-[#092755] text-white p-6 sm:p-10 rounded-2xl border border-white/10 shadow-xl mb-8">
             <div className="grid grid-cols-1 sm:grid-cols-4 gap-4 text-center items-center">
               
               <div className="bg-white/5 p-4 rounded-xl border border-white/10">

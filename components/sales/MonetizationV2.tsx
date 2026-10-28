@@ -58,7 +58,7 @@ export default function MonetizationV2() {
             {monetization.useCases.map((useCase, index) => (
               <span
                 key={index}
-                className="bg-[#07152E] text-white px-4 py-2 rounded-xl text-xs sm:text-sm font-extrabold tracking-wide shadow-xs"
+                className="bg-[#092755] text-white px-4 py-2 rounded-xl text-xs sm:text-sm font-extrabold tracking-wide shadow-xs"
               >
                 {useCase}
               </span>

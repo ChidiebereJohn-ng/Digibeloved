@@ -151,8 +151,12 @@ const Home: React.FC = () => {
       {/* 1. HERO SECTION */}
       <section className="relative bg-white pt-12 pb-16 md:pt-20 md:pb-24 px-4 sm:px-6 lg:px-8 overflow-hidden border-b border-slate-100">
         
+        {/* Soft atmospheric gradient accents */}
+        <div className="absolute top-0 right-0 w-96 h-96 bg-[#FDD412]/10 rounded-full blur-3xl pointer-events-none" />
+        <div className="absolute bottom-0 left-0 w-80 h-80 bg-[#EEF3FB]/70 rounded-full blur-3xl pointer-events-none" />
+
         {/* Subtle grid background */}
-        <div className="absolute inset-0 opacity-[0.03] bg-[radial-gradient(#07152E_1px,transparent_1px)] [background-size:24px_24px] pointer-events-none" />
+        <div className="absolute inset-0 opacity-[0.03] bg-[radial-gradient(#092755_1px,transparent_1px)] [background-size:24px_24px] pointer-events-none" />
 
         <div className="relative max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-center">
           
@@ -160,9 +164,9 @@ const Home: React.FC = () => {
           <div className="lg:col-span-7 flex flex-col items-center lg:items-start text-center lg:text-left">
             
             {/* Eyebrow */}
-            <div className="inline-flex items-center space-x-2.5 bg-slate-50 border border-slate-200/80 px-4 py-1.5 rounded-full text-xs font-semibold text-navy mb-6 shadow-xs">
-              <span className="w-2 h-2 rounded-full bg-navy" aria-hidden="true" />
-              <span>Data, automation and software for Nigerian organizations</span>
+            <div className="inline-flex items-center space-x-2.5 bg-[#EEF3FB] border border-[#092755]/10 px-4 py-1.5 rounded-full text-xs font-bold text-navy mb-6 shadow-xs">
+              <span className="w-2 h-2 rounded-full bg-[#FDD412] animate-pulse" aria-hidden="true" />
+              <span>Applied AI, Data &amp; Custom Software Solutions</span>
             </div>
 
             {/* Headline (Option A - recommended for mixed audience) */}
@@ -287,12 +291,16 @@ const Home: React.FC = () => {
       </section>
 
       {/* 2. PROOF STRIP (Labelled Numbers with Visible Sources) */}
-      <section aria-label="Verified project metrics" className="bg-[#07152E] text-white py-10 px-4 sm:px-6 lg:px-8 border-b border-navy">
-        <div className="max-w-7xl mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8">
+      <section aria-label="Verified project metrics" className="bg-[#092755] text-white py-12 px-4 sm:px-6 lg:px-8 border-b border-white/10 relative overflow-hidden">
+        {/* Soft atmospheric gradient accents */}
+        <div className="absolute top-0 right-0 w-96 h-96 bg-[#FDD412]/5 rounded-full blur-3xl pointer-events-none" />
+        <div className="absolute bottom-0 left-0 w-80 h-80 bg-[#EEF3FB]/5 rounded-full blur-3xl pointer-events-none" />
+
+        <div className="max-w-7xl mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8 relative z-10">
           
-          <div className="p-4 sm:p-5 rounded-2xl bg-white/[0.03] border border-white/10 flex flex-col justify-between">
+          <div className="p-5 rounded-2xl bg-white/[0.04] border border-white/15 flex flex-col justify-between hover:bg-white/[0.07] transition-all">
             <div>
-              <div className="text-3xl sm:text-4xl font-extrabold text-white font-mono tracking-tight">
+              <div className="text-3xl sm:text-4xl font-black text-[#FDD412] font-mono tracking-tight">
                 1,400+
               </div>
               <p className="text-sm text-slate-200 font-medium mt-2 leading-snug [text-wrap:pretty]">
@@ -308,9 +316,9 @@ const Home: React.FC = () => {
             </Link>
           </div>
 
-          <div className="p-4 sm:p-5 rounded-2xl bg-white/[0.03] border border-white/10 flex flex-col justify-between">
+          <div className="p-5 rounded-2xl bg-white/[0.04] border border-white/15 flex flex-col justify-between hover:bg-white/[0.07] transition-all">
             <div>
-              <div className="text-3xl sm:text-4xl font-extrabold text-white font-mono tracking-tight">
+              <div className="text-3xl sm:text-4xl font-black text-[#FDD412] font-mono tracking-tight">
                 12h → 20m
               </div>
               <p className="text-sm text-slate-200 font-medium mt-2 leading-snug [text-wrap:pretty]">
@@ -326,9 +334,9 @@ const Home: React.FC = () => {
             </Link>
           </div>
 
-          <div className="p-4 sm:p-5 rounded-2xl bg-white/[0.03] border border-white/10 flex flex-col justify-between">
+          <div className="p-5 rounded-2xl bg-white/[0.04] border border-white/15 flex flex-col justify-between hover:bg-white/[0.07] transition-all">
             <div>
-              <div className="text-3xl sm:text-4xl font-extrabold text-white font-mono tracking-tight">
+              <div className="text-3xl sm:text-4xl font-black text-[#FDD412] font-mono tracking-tight">
                 100%
               </div>
               <p className="text-sm text-slate-200 font-medium mt-2 leading-snug [text-wrap:pretty]">
@@ -344,9 +352,9 @@ const Home: React.FC = () => {
             </Link>
           </div>
 
-          <div className="p-4 sm:p-5 rounded-2xl bg-white/[0.03] border border-white/10 flex flex-col justify-between">
+          <div className="p-5 rounded-2xl bg-white/[0.04] border border-white/15 flex flex-col justify-between hover:bg-white/[0.07] transition-all">
             <div>
-              <div className="text-3xl sm:text-4xl font-extrabold text-white font-mono tracking-tight">
+              <div className="text-3xl sm:text-4xl font-black text-[#FDD412] font-mono tracking-tight">
                 &lt; 24h
               </div>
               <p className="text-sm text-slate-200 font-medium mt-2 leading-snug [text-wrap:pretty]">
@@ -366,11 +374,11 @@ const Home: React.FC = () => {
       </section>
 
       {/* 3. CORE DONE-FOR-YOU SOLUTIONS (With Embedded UI Mini-Mockups) */}
-      <section id="solutions" className="py-20 md:py-28 bg-slate-50 border-b border-slate-200/80 px-4 sm:px-6 lg:px-8">
+      <section id="solutions" className="py-20 md:py-28 bg-[#EEF3FB] border-b border-[#092755]/10 px-4 sm:px-6 lg:px-8">
         <div className="max-w-7xl mx-auto">
           
           <div className="text-center max-w-2xl mx-auto mb-16">
-            <span className="text-xs font-bold text-navy uppercase tracking-widest bg-white border border-slate-200 px-3.5 py-1.5 rounded-full inline-block mb-3">
+            <span className="text-xs font-bold text-navy uppercase tracking-widest bg-white border border-[#092755]/10 px-3.5 py-1.5 rounded-full inline-block mb-3 shadow-xs">
               Done-for-You Solutions
             </span>
             <h2 className="text-3xl sm:text-5xl font-extrabold text-navy tracking-tight">
@@ -384,10 +392,10 @@ const Home: React.FC = () => {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             
             {/* 1. Research & Data Analysis Card with Embedded Statistical Widget */}
-            <div className="bg-white border border-slate-200/90 rounded-3xl p-8 shadow-sm hover:shadow-2xl hover:-translate-y-1.5 transition-all duration-300 flex flex-col justify-between group">
+            <div className="bg-white border border-[#092755]/10 rounded-3xl p-8 shadow-sm hover:shadow-2xl hover:-translate-y-1.5 transition-all duration-300 flex flex-col justify-between group">
               <div>
                 {/* Embedded UI Mini-Mockup: Statistical Panel */}
-                <div className="mb-6 bg-[#07152E] rounded-2xl p-4 text-white font-mono text-[11px] border border-slate-800 shadow-inner">
+                <div className="mb-6 bg-[#092755] rounded-2xl p-4 text-white font-mono text-[11px] border border-white/10 shadow-inner">
                   <div className="flex items-center justify-between text-[10px] text-slate-400 mb-2 pb-2 border-b border-white/10">
                     <span>SPSS / Python Model</span>
                     <span className="text-emerald-400 font-bold">n = 1,420</span>
@@ -447,10 +455,10 @@ const Home: React.FC = () => {
             </div>
 
             {/* 2. AI & Workflow Automation Card with Embedded Pipeline Diagram */}
-            <div className="bg-white border border-slate-200/90 rounded-3xl p-8 shadow-sm hover:shadow-2xl hover:-translate-y-1.5 transition-all duration-300 flex flex-col justify-between group">
+            <div className="bg-white border border-[#092755]/10 rounded-3xl p-8 shadow-sm hover:shadow-2xl hover:-translate-y-1.5 transition-all duration-300 flex flex-col justify-between group">
               <div>
                 {/* Embedded UI Mini-Mockup: Pipeline Visual */}
-                <div className="mb-6 bg-[#07152E] rounded-2xl p-4 text-white font-mono text-[11px] border border-slate-800 shadow-inner">
+                <div className="mb-6 bg-[#092755] rounded-2xl p-4 text-white font-mono text-[11px] border border-white/10 shadow-inner">
                   <div className="flex items-center justify-between text-[10px] text-slate-400 mb-2 pb-2 border-b border-white/10">
                     <span>Active Webhook Pipeline</span>
                     <span className="text-emerald-400 font-bold">Live 24/7</span>
@@ -510,10 +518,10 @@ const Home: React.FC = () => {
             </div>
 
             {/* 3. Custom Software Development Card with Embedded Browser Window */}
-            <div className="bg-white border border-slate-200/90 rounded-3xl p-8 shadow-sm hover:shadow-2xl hover:-translate-y-1.5 transition-all duration-300 flex flex-col justify-between group">
+            <div className="bg-white border border-[#092755]/10 rounded-3xl p-8 shadow-sm hover:shadow-2xl hover:-translate-y-1.5 transition-all duration-300 flex flex-col justify-between group">
               <div>
                 {/* Embedded UI Mini-Mockup: Browser Portal */}
-                <div className="mb-6 bg-[#07152E] rounded-2xl p-4 text-white font-mono text-[11px] border border-slate-800 shadow-inner">
+                <div className="mb-6 bg-[#092755] rounded-2xl p-4 text-white font-mono text-[11px] border border-white/10 shadow-inner">
                   <div className="flex items-center justify-between text-[10px] text-slate-400 mb-2 pb-2 border-b border-white/10">
                     <div className="flex items-center space-x-1">
                       <span className="w-2 h-2 rounded-full bg-red-400 inline-block" />
@@ -826,12 +834,56 @@ const Home: React.FC = () => {
             </Link>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
             
-            {/* The AI Presentation System & Playbook */}
-            <div className="bg-slate-50 border border-slate-200/90 rounded-3xl p-8 sm:p-10 flex flex-col justify-between hover:bg-white hover:shadow-xl transition-all duration-300 group">
+            {/* The 7 AI Cheat Codes Playbook */}
+            <div className="bg-white border-2 border-accent ring-2 ring-accent/30 rounded-3xl p-8 flex flex-col justify-between shadow-xl hover:-translate-y-1 transition-all duration-300 group">
               <div>
-                <div className="flex items-center justify-between mb-6">
+                <div className="flex items-center justify-between mb-4">
+                  <span className="text-xs font-black uppercase tracking-wider bg-accent text-navy px-3 py-1 rounded-full shadow-xs">
+                    New Release
+                  </span>
+                  <span className="text-sm font-mono font-black text-navy">
+                    ₦2,500 / $10
+                  </span>
+                </div>
+
+                <div className="mb-4 rounded-xl overflow-hidden bg-[#092755] p-2 flex items-center justify-center">
+                  <img
+                    src="/cheat-codes-cover.png"
+                    alt="7 AI Cheat Codes Playbook"
+                    className="h-36 w-auto object-contain rounded-md"
+                    loading="lazy"
+                  />
+                </div>
+
+                <h3 className="text-xl font-bold text-navy mb-2 group-hover:text-accent transition-colors">
+                  7 AI Cheat Codes Playbook
+                </h3>
+
+                <p className="text-xs text-slate-600 leading-relaxed mb-4">
+                  7 copy-paste cheat codes for business owners and job seekers. Save hours every week with free AI tools, then get paid.
+                </p>
+              </div>
+
+              <div className="pt-4 border-t border-slate-100 flex items-center justify-between">
+                <span className="text-[11px] font-semibold text-slate-500">
+                  Instant PDF Download
+                </span>
+                <Link
+                  to="/7-ai-cheat-codes"
+                  className="inline-flex items-center bg-accent text-navy hover:bg-yellow-400 px-4 py-2 rounded-xl font-black text-xs transition-colors shadow-sm"
+                >
+                  <span>Get Access</span>
+                  <ArrowRight className="w-3.5 h-3.5 ml-1" />
+                </Link>
+              </div>
+            </div>
+
+            {/* The AI Presentation System & Playbook */}
+            <div className="bg-[#EEF3FB] border border-[#092755]/10 rounded-3xl p-8 flex flex-col justify-between hover:bg-white hover:shadow-xl transition-all duration-300 group">
+              <div>
+                <div className="flex items-center justify-between mb-4">
                   <span className="text-xs font-bold uppercase tracking-wider bg-white border border-slate-200 px-3 py-1 rounded-full text-navy">
                     Bestseller
                   </span>
@@ -840,60 +892,73 @@ const Home: React.FC = () => {
                   </span>
                 </div>
 
-                <h3 className="text-2xl font-bold text-navy mb-3 group-hover:text-accent-hover transition-colors">
-                  The AI Presentation System &amp; Playbook
+                <div className="mb-4 rounded-xl overflow-hidden bg-[#092755] p-2 flex items-center justify-center">
+                  <img
+                    src="/playbook-cover.png"
+                    alt="The AI Presentation System"
+                    className="h-36 w-auto object-contain rounded-md"
+                    loading="lazy"
+                  />
+                </div>
+
+                <h3 className="text-xl font-bold text-navy mb-2 group-hover:text-accent transition-colors">
+                  The AI Presentation System
                 </h3>
 
-                <p className="text-sm text-slate-600 leading-relaxed mb-6">
+                <p className="text-xs text-slate-600 leading-relaxed mb-4">
                   Turn dense documents, research reports, or raw notes into high-impact PowerPoint slides using 4 proven AI workflows.
                 </p>
               </div>
 
-              <div className="pt-6 border-t border-slate-200/70 flex items-center justify-between">
-                <span className="text-xs font-semibold text-slate-500">
-                  Instant Digital Access
+              <div className="pt-4 border-t border-slate-200/70 flex items-center justify-between">
+                <span className="text-[11px] font-semibold text-slate-500">
+                  Playbook + System
                 </span>
                 <Link
                   to="/ai-presentation-system"
-                  className="inline-flex items-center bg-navy text-white group-hover:bg-accent group-hover:text-navy px-5 py-2.5 rounded-xl font-bold text-xs transition-colors"
+                  className="inline-flex items-center bg-navy text-white group-hover:bg-accent group-hover:text-navy px-4 py-2 rounded-xl font-bold text-xs transition-colors"
                 >
                   <span>View System</span>
-                  <ArrowRight className="w-3.5 h-3.5 ml-1.5" />
+                  <ArrowRight className="w-3.5 h-3.5 ml-1" />
                 </Link>
               </div>
             </div>
 
             {/* The AI Presentation Starter Blueprint */}
-            <div className="bg-slate-50 border border-slate-200/90 rounded-3xl p-8 sm:p-10 flex flex-col justify-between hover:bg-white hover:shadow-xl transition-all duration-300 group">
+            <div className="bg-[#EEF3FB] border border-[#092755]/10 rounded-3xl p-8 flex flex-col justify-between hover:bg-white hover:shadow-xl transition-all duration-300 group">
               <div>
-                <div className="flex items-center justify-between mb-6">
+                <div className="flex items-center justify-between mb-4">
                   <span className="text-xs font-bold uppercase tracking-wider bg-white border border-slate-200 px-3 py-1 rounded-full text-navy">
-                    Free Download
+                    Free Guide
                   </span>
                   <span className="text-sm font-mono font-extrabold text-emerald-600">
                     FREE
                   </span>
                 </div>
 
-                <h3 className="text-2xl font-bold text-navy mb-3 group-hover:text-accent-hover transition-colors">
-                  The AI Presentation Starter Blueprint
+                <div className="mb-4 h-36 rounded-xl bg-gradient-to-br from-slate-100 to-slate-200 border border-slate-200/80 flex items-center justify-center text-navy">
+                  <BookOpen className="w-10 h-10 text-navy" />
+                </div>
+
+                <h3 className="text-xl font-bold text-navy mb-2 group-hover:text-accent transition-colors">
+                  AI Presentation Blueprint
                 </h3>
 
-                <p className="text-sm text-slate-600 leading-relaxed mb-6">
+                <p className="text-xs text-slate-600 leading-relaxed mb-4">
                   The 4-step rapid framework + copy-paste master prompt to immediately turn complex notes into clean slide decks.
                 </p>
               </div>
 
-              <div className="pt-6 border-t border-slate-200/70 flex items-center justify-between">
-                <span className="text-xs font-semibold text-slate-500">
+              <div className="pt-4 border-t border-slate-200/70 flex items-center justify-between">
+                <span className="text-[11px] font-semibold text-slate-500">
                   Instant PDF Download
                 </span>
                 <Link
                   to="/free-blueprint"
-                  className="inline-flex items-center bg-navy text-white group-hover:bg-accent group-hover:text-navy px-5 py-2.5 rounded-xl font-bold text-xs transition-colors"
+                  className="inline-flex items-center bg-navy text-white group-hover:bg-accent group-hover:text-navy px-4 py-2 rounded-xl font-bold text-xs transition-colors"
                 >
                   <span>Download Free</span>
-                  <ArrowRight className="w-3.5 h-3.5 ml-1.5" />
+                  <ArrowRight className="w-3.5 h-3.5 ml-1" />
                 </Link>
               </div>
             </div>
@@ -1028,8 +1093,9 @@ const Home: React.FC = () => {
       </section>
 
       {/* 9. CORPORATE AI TRAINING BANNER (Azuro Dark Feature Style) */}
-      <section className="py-20 md:py-24 bg-[#07152E] text-white px-4 sm:px-6 lg:px-8 border-b border-white/10 relative overflow-hidden">
-        <div className="absolute right-0 top-0 w-96 h-96 bg-accent/10 rounded-full blur-3xl pointer-events-none" />
+      <section className="py-20 md:py-24 bg-[#092755] text-white px-4 sm:px-6 lg:px-8 border-b border-white/10 relative overflow-hidden">
+        <div className="absolute right-0 top-0 w-96 h-96 bg-[#FDD412]/10 rounded-full blur-3xl pointer-events-none" />
+        <div className="absolute left-0 bottom-0 w-80 h-80 bg-[#EEF3FB]/5 rounded-full blur-3xl pointer-events-none" />
         
         <div className="max-w-6xl mx-auto relative z-10">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
@@ -1121,8 +1187,9 @@ const Home: React.FC = () => {
       </section>
 
       {/* 11. FINAL CONVERSION CLOSE (Azuro Style) */}
-      <section className="py-20 md:py-28 bg-[#07152E] text-white px-4 sm:px-6 lg:px-8 text-center">
-        <div className="max-w-3xl mx-auto">
+      <section className="py-20 md:py-28 bg-[#092755] text-white px-4 sm:px-6 lg:px-8 text-center relative overflow-hidden">
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-[#FDD412]/10 rounded-full blur-3xl pointer-events-none" />
+        <div className="max-w-3xl mx-auto relative z-10">
           <h2 className="text-3xl sm:text-5xl font-extrabold text-white tracking-tight leading-tight mb-6">
             Have a Project, Workflow, or Dataset Challenge?
           </h2>

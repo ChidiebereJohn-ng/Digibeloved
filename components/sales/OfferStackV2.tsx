@@ -8,7 +8,7 @@ export default function OfferStackV2() {
   const icons = [BookOpen, Cpu, FileSpreadsheet, Compass, Briefcase];
 
   return (
-    <section className="py-16 md:py-24 bg-[#07152E] text-white px-4 sm:px-6 lg:px-8 border-b border-white/10">
+    <section className="py-16 md:py-24 bg-[#092755] text-white px-4 sm:px-6 lg:px-8 border-b border-white/10">
       <div className="max-w-4xl mx-auto">
         
         {/* Section Header */}

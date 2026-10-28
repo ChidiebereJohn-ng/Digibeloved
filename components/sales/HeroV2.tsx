@@ -13,7 +13,7 @@ export default function HeroV2() {
   };
 
   return (
-    <section className="relative bg-[#07152E] text-white pt-10 pb-16 md:pt-16 md:pb-24 px-4 sm:px-6 lg:px-8 overflow-hidden">
+    <section className="relative bg-[#092755] text-white pt-10 pb-16 md:pt-16 md:pb-24 px-4 sm:px-6 lg:px-8 overflow-hidden">
       {/* Subtle editorial ambient gradient */}
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-7xl h-96 bg-gradient-to-b from-blue-600/10 via-accent/5 to-transparent pointer-events-none blur-3xl" />
 

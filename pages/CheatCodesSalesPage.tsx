@@ -930,8 +930,9 @@ export default function CheatCodesSalesPage() {
       {/* =========================================================================
           12. FOOTER SMALL PRINT (Every page requirement)
          ========================================================================= */}
-      <footer className="bg-[#07152E] text-slate-400 py-10 px-4 sm:px-6 border-t border-white/10 text-xs text-center">
-        <div className="max-w-4xl mx-auto space-y-4">
+      <footer className="bg-[#092755] text-slate-400 py-10 px-4 sm:px-6 border-t border-white/10 text-xs text-center relative overflow-hidden">
+        <div className="absolute top-0 right-0 w-80 h-80 bg-[#FDD412]/5 rounded-full blur-3xl pointer-events-none" />
+        <div className="max-w-4xl mx-auto space-y-4 relative z-10">
           
           <div className="flex items-center justify-center space-x-2 text-white font-bold text-sm mb-2">
             <img

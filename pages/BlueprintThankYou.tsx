@@ -44,7 +44,7 @@ export default function BlueprintThankYou() {
           <div className="bg-white border-2 border-slate-200 rounded-3xl p-6 sm:p-8 shadow-md mb-12 text-left">
             <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
               <div className="flex items-center space-x-4">
-                <div className="w-12 h-14 bg-[#07152E] rounded-xl flex items-center justify-center text-accent flex-shrink-0">
+                <div className="w-12 h-14 bg-[#092755] rounded-xl flex items-center justify-center text-accent flex-shrink-0">
                   <Download className="w-6 h-6" />
                 </div>
                 <div>
@@ -72,8 +72,9 @@ export default function BlueprintThankYou() {
           </div>
 
           {/* Bridge / Next Step to Full System */}
-          <div className="bg-[#07152E] text-white rounded-3xl p-8 sm:p-10 border border-white/10 shadow-2xl text-left relative overflow-hidden">
-            <div className="absolute top-0 right-0 w-64 h-64 bg-accent/10 rounded-full blur-3xl pointer-events-none" />
+          <div className="bg-[#092755] text-white rounded-3xl p-8 sm:p-10 border border-white/10 shadow-2xl text-left relative overflow-hidden">
+            <div className="absolute top-0 right-0 w-64 h-64 bg-[#FDD412]/10 rounded-full blur-3xl pointer-events-none" />
+            <div className="absolute bottom-0 left-0 w-64 h-64 bg-blue-500/10 rounded-full blur-3xl pointer-events-none" />
 
             <div className="relative">
               <div className="inline-flex items-center space-x-2 bg-white/10 px-3 py-1 rounded-full text-xs font-bold text-accent uppercase tracking-wider mb-4 border border-white/10">

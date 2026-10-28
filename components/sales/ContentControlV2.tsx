@@ -40,7 +40,7 @@ export default function ContentControlV2() {
               >
                 <div>
                   <div className="flex items-center justify-between mb-4">
-                    <div className="w-10 h-10 rounded-xl bg-[#07152E] text-accent flex items-center justify-center">
+                    <div className="w-10 h-10 rounded-xl bg-[#092755] text-accent flex items-center justify-center">
                       <Icon className="w-5 h-5" />
                     </div>
                     {isVerbatim && (

@@ -63,7 +63,7 @@ export default function FreeBlueprint() {
             
             {/* Left Column: Visual & Value */}
             <div className="lg:col-span-6 text-left">
-              <div className="inline-flex items-center space-x-2 bg-[#07152E] text-accent px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider mb-4 shadow-sm">
+              <div className="inline-flex items-center space-x-2 bg-[#092755] text-[#FDD412] px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider mb-4 shadow-sm">
                 <Sparkles className="w-3.5 h-3.5" />
                 <span>Free Downloadable Guide</span>
               </div>
@@ -106,7 +106,7 @@ export default function FreeBlueprint() {
 
               {/* Mockup Preview */}
               <div className="flex items-center space-x-4 p-4 bg-white rounded-2xl border border-slate-200 shadow-sm">
-                <div className="w-16 h-20 bg-[#07152E] rounded-lg overflow-hidden flex-shrink-0 border border-white/10">
+                <div className="w-16 h-20 bg-[#092755] rounded-lg overflow-hidden flex-shrink-0 border border-white/10">
                   <img
                     src="/playbook-cover.png"
                     alt="DigiBeloved AI Presentation Playbook"
@@ -123,8 +123,8 @@ export default function FreeBlueprint() {
 
             {/* Right Column: Lead Capture Card */}
             <div className="lg:col-span-6">
-              <div className="bg-[#07152E] text-white p-8 sm:p-10 rounded-3xl border border-white/10 shadow-2xl relative overflow-hidden">
-                <div className="absolute top-0 right-0 w-40 h-40 bg-accent/10 rounded-full blur-3xl pointer-events-none" />
+              <div className="bg-[#092755] text-white p-8 sm:p-10 rounded-3xl border border-white/10 shadow-2xl relative overflow-hidden">
+                <div className="absolute top-0 right-0 w-40 h-40 bg-[#FDD412]/15 rounded-full blur-3xl pointer-events-none" />
 
                 <div className="relative">
                   <h2 className="text-2xl sm:text-3xl font-extrabold text-white tracking-tight mb-2 text-left">

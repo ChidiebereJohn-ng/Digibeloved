@@ -73,12 +73,13 @@ const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   return (
     <div className="flex flex-col min-h-screen bg-white text-navy font-sans antialiased selection:bg-accent selection:text-navy">
       {/* Top Banner / Trust bar */}
-      <div className="bg-[#07152E] text-slate-300 text-xs py-1.5 px-4 text-center border-b border-white/5 font-medium tracking-wide">
-        <span>Based in Abuja, Nigeria. Working with clients across Nigeria and abroad.</span>
+      <div className="bg-[#092755] text-slate-300 text-xs py-2 px-4 text-center border-b border-white/10 font-medium tracking-wide flex items-center justify-center space-x-2">
+        <span className="w-1.5 h-1.5 rounded-full bg-[#FDD412] animate-pulse" />
+        <span>Based in Abuja, Nigeria. Working with researchers, founders and organizations globally.</span>
       </div>
 
       {/* Navigation Bar */}
-      <nav className="sticky top-0 w-full z-50 bg-white/95 backdrop-blur-md border-b border-slate-100 transition-all duration-300">
+      <nav className="sticky top-0 w-full z-50 bg-white/95 backdrop-blur-md border-b border-[#092755]/10 transition-all duration-300">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between h-20 items-center">
             
@@ -174,13 +175,13 @@ const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
               <Link
                 to="/products"
                 className={`px-3 py-2 rounded-lg text-sm font-semibold transition-colors flex items-center space-x-1.5 ${
-                  location.pathname === '/products' || location.pathname === '/ai-presentation-system' || location.pathname === '/free-blueprint'
-                    ? 'text-navy font-bold bg-slate-50'
-                    : 'text-slate-700 hover:text-navy hover:bg-slate-50'
+                  location.pathname === '/products' || location.pathname === '/ai-presentation-system' || location.pathname === '/free-blueprint' || location.pathname === '/7-ai-cheat-codes'
+                    ? 'text-navy font-bold bg-[#EEF3FB]'
+                    : 'text-slate-700 hover:text-navy hover:bg-[#EEF3FB]'
                 }`}
               >
                 <span>Products</span>
-                <span className="text-[10px] font-extrabold uppercase bg-navy/10 text-navy px-1.5 py-0.2 rounded-md">New</span>
+                <span className="text-[10px] font-black uppercase bg-[#FDD412] text-[#092755] px-1.5 py-0.5 rounded-md shadow-xs">New</span>
               </Link>
 
               {/* Insights */}
@@ -348,8 +349,12 @@ const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
       </main>
 
       {/* Global Comprehensive Footer */}
-      <footer className="bg-[#07152E] text-slate-300 border-t border-white/10 pt-16 pb-12 px-4 sm:px-6 lg:px-8">
-        <div className="max-w-7xl mx-auto">
+      <footer className="bg-[#092755] text-slate-300 border-t border-white/10 pt-16 pb-12 px-4 sm:px-6 lg:px-8 relative overflow-hidden">
+        {/* Soft atmospheric gradient accents */}
+        <div className="absolute top-0 right-0 w-96 h-96 bg-[#FDD412]/5 rounded-full blur-3xl pointer-events-none" />
+        <div className="absolute bottom-0 left-0 w-80 h-80 bg-[#EEF3FB]/5 rounded-full blur-3xl pointer-events-none" />
+
+        <div className="max-w-7xl mx-auto relative z-10">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10 mb-16">
             
             {/* Brand Column */}

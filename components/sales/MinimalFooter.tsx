@@ -5,7 +5,7 @@ export default function MinimalFooter() {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="w-full bg-[#07152E] text-slate-400 py-10 px-4 sm:px-6 lg:px-8 border-t border-white/5">
+    <footer className="w-full bg-[#092755] text-slate-400 py-10 px-4 sm:px-6 lg:px-8 border-t border-white/5">
       <div className="max-w-5xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4 text-xs">
         
         {/* Brand & Copyright */}

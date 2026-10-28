@@ -41,7 +41,7 @@ export default function StickyMobileCta() {
           <span className="text-[10px] uppercase tracking-wider text-slate-400 font-bold">
             Founding Offer
           </span>
-          <span className="text-sm font-black text-[#FFD100] tracking-tight">
+          <span className="text-sm font-black text-[#FDD412] tracking-tight">
             {pricing.displayLaunchPrice}
           </span>
         </div>
@@ -49,7 +49,7 @@ export default function StickyMobileCta() {
         <a
           href={buildTrackedUrl(selarCheckoutUrl)}
           onClick={handleCtaClick}
-          className="inline-flex items-center space-x-1.5 bg-[#FFD100] hover:bg-yellow-400 text-[#0A1F44] font-black text-xs px-4 py-2.5 rounded-xl shadow-lg transition-transform active:scale-95 cursor-pointer"
+          className="inline-flex items-center space-x-1.5 bg-[#FDD412] hover:bg-yellow-400 text-[#0A1F44] font-black text-xs px-4 py-2.5 rounded-xl shadow-lg transition-transform active:scale-95 cursor-pointer"
         >
           <span>Get the AI Presentation System</span>
           <ArrowRight className="w-3.5 h-3.5" />

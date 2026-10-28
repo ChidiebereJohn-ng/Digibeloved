@@ -46,7 +46,7 @@ export default function WorkflowsV2() {
                   {/* Workflow Letter & Flow Badge */}
                   <div className="flex items-center justify-between mb-4">
                     <div className="flex items-center space-x-3">
-                      <span className="w-9 h-9 rounded-xl bg-[#07152E] text-accent font-extrabold text-lg flex items-center justify-center font-mono">
+                      <span className="w-9 h-9 rounded-xl bg-[#092755] text-accent font-extrabold text-lg flex items-center justify-center font-mono">
                         {wf.letter}
                       </span>
                       <h3 className="text-lg sm:text-xl font-extrabold text-navy">

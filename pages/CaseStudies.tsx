@@ -105,15 +105,18 @@ const CaseStudies: React.FC = () => {
       <SchemaScript schema={schema} />
 
       {/* Hero */}
-      <section className="bg-[#07152E] text-white pt-20 pb-20 md:pt-28 md:pb-28 px-4 sm:px-6 lg:px-8 text-center relative overflow-hidden">
-        <div className="absolute inset-0 opacity-10 bg-[radial-gradient(#FFD100_1px,transparent_1px)] [background-size:24px_24px] pointer-events-none" />
+      <section className="bg-gradient-to-b from-[#092755] via-[#092755] to-[#0d3470] text-white pt-20 pb-20 md:pt-28 md:pb-28 px-4 sm:px-6 lg:px-8 text-center relative overflow-hidden">
+        {/* Soft atmospheric gradient accents */}
+        <div className="absolute top-0 right-0 w-96 h-96 bg-[#FDD412]/10 rounded-full blur-3xl pointer-events-none" />
+        <div className="absolute bottom-0 left-0 w-80 h-80 bg-[#EEF3FB]/5 rounded-full blur-3xl pointer-events-none" />
+        <div className="absolute inset-0 opacity-10 bg-[radial-gradient(#FDD412_1px,transparent_1px)] [background-size:24px_24px] pointer-events-none" />
         
         <div className="max-w-4xl mx-auto relative z-10">
-          <div className="inline-flex items-center space-x-2 bg-white/5 border border-white/10 px-4 py-1.5 rounded-full text-xs font-semibold text-slate-300 mb-8 backdrop-blur-xs">
-            <span className="w-2 h-2 rounded-full bg-accent animate-pulse" />
+          <div className="inline-flex items-center space-x-2 bg-white/10 border border-[#FDD412]/40 px-4 py-1.5 rounded-full text-xs font-bold text-[#FDD412] mb-8 backdrop-blur-xs">
+            <span className="w-2 h-2 rounded-full bg-[#FDD412] animate-pulse" />
             <span className="text-white">Documented Outcomes</span>
-            <span className="text-slate-500">•</span>
-            <span className="text-accent">Zero Fluff</span>
+            <span className="text-slate-400">•</span>
+            <span className="text-[#FDD412]">Zero Fluff</span>
           </div>
 
           <h1 className="text-4xl sm:text-6xl md:text-7xl font-extrabold text-white tracking-tight leading-[1.08] mb-6">
@@ -295,8 +298,9 @@ const CaseStudies: React.FC = () => {
       </section>
 
       {/* Bottom Final CTA */}
-      <section className="py-20 md:py-28 bg-[#07152E] text-white px-4 sm:px-6 lg:px-8 text-center relative overflow-hidden">
-        <div className="absolute inset-0 opacity-10 bg-[radial-gradient(#FFD100_1px,transparent_1px)] [background-size:24px_24px] pointer-events-none" />
+      <section className="py-20 md:py-28 bg-[#092755] text-white px-4 sm:px-6 lg:px-8 text-center relative overflow-hidden">
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-[#FDD412]/10 rounded-full blur-3xl pointer-events-none" />
+        <div className="absolute inset-0 opacity-10 bg-[radial-gradient(#FDD412_1px,transparent_1px)] [background-size:24px_24px] pointer-events-none" />
         
         <div className="max-w-3xl mx-auto relative z-10">
           <span className="text-xs font-bold text-accent uppercase tracking-widest bg-white/5 border border-white/10 px-3.5 py-1.5 rounded-full inline-block mb-6">
