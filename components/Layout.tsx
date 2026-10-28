@@ -74,7 +74,7 @@ const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
     <div className="flex flex-col min-h-screen bg-white text-navy font-sans antialiased selection:bg-accent selection:text-navy">
       {/* Top Banner / Trust bar */}
       <div className="bg-[#07152E] text-slate-300 text-xs py-1.5 px-4 text-center border-b border-white/5 font-medium tracking-wide">
-        <span>Based in Abuja, Nigeria • Serving clients globally</span>
+        <span>Based in Abuja, Nigeria. Working with clients across Nigeria and abroad.</span>
       </div>
 
       {/* Navigation Bar */}
@@ -139,7 +139,7 @@ const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
                             isCurrent ? 'bg-slate-50' : 'hover:bg-slate-50'
                           }`}
                         >
-                          <div className="p-2 rounded-lg bg-navy/5 text-navy mr-3 mt-0.5 group-hover:bg-navy group-hover:text-accent transition-colors">
+                          <div className="p-2 rounded-lg bg-navy/5 text-navy mr-3 mt-0.5 group-hover:bg-navy group-hover:text-white transition-colors">
                             <Icon className="w-5 h-5 text-navy" />
                           </div>
                           <div className="flex-1">
@@ -180,7 +180,7 @@ const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
                 }`}
               >
                 <span>Products</span>
-                <span className="text-[10px] font-extrabold uppercase bg-accent text-navy px-1.5 py-0.2 rounded-md">New</span>
+                <span className="text-[10px] font-extrabold uppercase bg-navy/10 text-navy px-1.5 py-0.2 rounded-md">New</span>
               </Link>
 
               {/* Insights */}
@@ -223,10 +223,10 @@ const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
               <div className="pl-2">
                 <Link
                   to="/contact"
-                  onClick={() => trackCtaClick('Discuss a Project - Header', location.pathname)}
-                  className="inline-flex items-center justify-center bg-accent text-navy px-5 py-2.5 rounded-xl font-extrabold text-sm hover:bg-yellow-400 active:scale-[0.98] transition-all shadow-[0_4px_14px_rgba(255,209,0,0.35)]"
+                  onClick={() => trackCtaClick('Get Scoping Feedback in 24 Hours - Header', location.pathname)}
+                  className="inline-flex items-center justify-center bg-accent text-navy px-4 lg:px-5 py-2.5 rounded-xl font-extrabold text-xs lg:text-sm hover:bg-yellow-400 active:scale-[0.98] transition-all shadow-[0_4px_14px_rgba(255,209,0,0.35)] whitespace-nowrap"
                 >
-                  Discuss a Project
+                  Get Scoping Feedback in 24 Hours
                 </Link>
               </div>
 
@@ -271,7 +271,7 @@ const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
                         onClick={() => setIsMenuOpen(false)}
                         className={`block px-3 py-2 rounded-lg text-xs font-semibold ${
                           location.pathname === item.path
-                            ? 'text-navy font-bold bg-accent/20'
+                            ? 'text-navy font-bold bg-slate-100'
                             : 'text-slate-600 hover:text-navy hover:bg-slate-50'
                         }`}
                       >
@@ -297,7 +297,7 @@ const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
                 className="flex items-center justify-between px-3 py-2.5 rounded-lg text-sm font-semibold text-slate-700 hover:text-navy hover:bg-slate-50"
               >
                 <span>Products Marketplace</span>
-                <span className="text-[10px] font-extrabold uppercase bg-accent text-navy px-2 py-0.5 rounded-md">New</span>
+                <span className="text-[10px] font-extrabold uppercase bg-navy/10 text-navy px-2 py-0.5 rounded-md">New</span>
               </Link>
 
               <Link
@@ -329,11 +329,11 @@ const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
                   to="/contact"
                   onClick={() => {
                     setIsMenuOpen(false);
-                    trackCtaClick('Discuss a Project - Mobile Header', location.pathname);
+                    trackCtaClick('Get Scoping Feedback in 24 Hours - Mobile Header', location.pathname);
                   }}
                   className="block w-full text-center bg-accent text-navy py-3 px-4 rounded-xl font-extrabold text-sm shadow-md"
                 >
-                  Discuss a Project
+                  Get Scoping Feedback in 24 Hours
                 </Link>
               </div>
 
@@ -421,6 +421,11 @@ const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
                   </Link>
                 </li>
                 <li>
+                  <Link to="/7-ai-cheat-codes" className="hover:text-white transition-colors text-accent font-medium">
+                    7 AI Cheat Codes
+                  </Link>
+                </li>
+                <li>
                   <Link to="/tools/prompt-polisher" className="hover:text-white transition-colors">
                     The Prompt Polisher
                   </Link>
@@ -466,14 +471,21 @@ const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
 
           </div>
 
+          {/* Small Print Footer Notice */}
+          <div className="border-t border-white/10 pt-6 pb-6 text-xs text-slate-400 leading-relaxed">
+            <p>
+              <strong className="text-slate-300">Disclaimer:</strong> Earning ideas are examples, not promises. Results depend on your work and who you reach. AI tools change often, so always check results before you send, sign or pay. This guide is not affiliated with any AI company.
+            </p>
+          </div>
+
           <div className="border-t border-white/10 pt-8 flex flex-col md:flex-row justify-between items-center gap-4 text-xs text-slate-500">
             <p>
               &copy; {new Date().getFullYear()} DigiBeloved. All rights reserved.
             </p>
             <div className="flex flex-wrap items-center space-x-6 text-slate-400">
               <Link to="/about" className="hover:text-white transition-colors">About Us</Link>
-              <Link to="/contact" className="hover:text-white transition-colors">Privacy Policy</Link>
-              <Link to="/contact" className="hover:text-white transition-colors">Terms of Service</Link>
+              <Link to="/privacy" className="hover:text-white transition-colors">Privacy Policy</Link>
+              <Link to="/terms" className="hover:text-white transition-colors">Terms of Service</Link>
               <Link to="/contact" className="hover:text-white transition-colors">Contact</Link>
             </div>
           </div>

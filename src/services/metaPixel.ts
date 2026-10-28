@@ -5,17 +5,16 @@
  * 1. Global PageView tracking
  * 2. Lead event (fired STRICTLY after verified server success)
  * 3. BlueprintDownload custom event (fired on PDF link click)
- * 4. ViewContent event (on /ai-presentation-system with content_name)
- * 5. SelarCheckoutClick custom event (fired before outbound navigation to Selar)
- * 6. UTM & fbclid parameter persistence across funnel and outbound checkout
- * 7. Development-only debug logging (no console noise in production)
- * 
- * NOTE: Purchase tracking is handled exclusively by Selar.
+ * 4. ViewContent event (on sales pages)
+ * 5. SelarCheckoutClick & InitiateCheckout events (fired before outbound navigation to Selar)
+ * 6. Purchase event (fired on /thank-you once per visit)
+ * 7. UTM & fbclid parameter persistence across funnel and outbound checkout
+ * 8. Development-only debug logging (no console noise in production)
  */
 
-import { META_PIXEL_ID, PRODUCT_CONFIG } from "../config/metaPixelConfig";
+import { META_PIXEL_ID, PRODUCT_CONFIG, CHEAT_CODES_CONFIG } from "../config/metaPixelConfig";
 
-export { META_PIXEL_ID, PRODUCT_CONFIG };
+export { META_PIXEL_ID, PRODUCT_CONFIG, CHEAT_CODES_CONFIG };
 
 const UTM_STORAGE_KEY = "digibeloved_utm_params";
 
@@ -163,7 +162,7 @@ export function trackBlueprintDownload(payload: Record<string, unknown> = {}): v
 
 /**
  * 5. Event: ViewContent
- * Fired on /ai-presentation-system sales page.
+ * General ViewContent tracker supporting customizable payload.
  */
 export function trackViewContent(payload: Record<string, unknown> = {}): void {
   callFbq("track", "ViewContent", {
@@ -176,12 +175,23 @@ export function trackViewContent(payload: Record<string, unknown> = {}): void {
 }
 
 /**
- * 6. Custom Event: SelarCheckoutClick
+ * ViewContent specifically for 7 AI Cheat Codes sales page
+ */
+export function trackCheatCodesViewContent(payload: Record<string, unknown> = {}): void {
+  callFbq("track", "ViewContent", {
+    content_name: CHEAT_CODES_CONFIG.name,
+    content_type: "product",
+    value: CHEAT_CODES_CONFIG.priceUSD,
+    currency: CHEAT_CODES_CONFIG.currency,
+    ...payload,
+  });
+}
+
+/**
+ * 6. Custom Event: SelarCheckoutClick & Standard InitiateCheckout
  * Fired immediately before navigating from our sales page to Selar.
- * Also triggers InitiateCheckout for standard ad optimization.
  */
 export function trackSelarCheckoutClick(ctaLocation: string = "unknown"): void {
-  // Custom event as explicitly requested
   callFbq("trackCustom", "SelarCheckoutClick", {
     content_name: PRODUCT_CONFIG.name,
     cta_location: ctaLocation,
@@ -190,7 +200,6 @@ export function trackSelarCheckoutClick(ctaLocation: string = "unknown"): void {
     destination: PRODUCT_CONFIG.selarBaseUrl,
   });
 
-  // Standard InitiateCheckout event
   callFbq("track", "InitiateCheckout", {
     content_name: PRODUCT_CONFIG.name,
     content_type: "product",
@@ -200,7 +209,76 @@ export function trackSelarCheckoutClick(ctaLocation: string = "unknown"): void {
 }
 
 /**
- * 7. Custom Event: CtaClick
+ * InitiateCheckout specifically for 7 AI Cheat Codes product buttons
+ */
+export function trackCheatCodesCheckoutClick(ctaLocation: string = "unknown"): void {
+  callFbq("trackCustom", "SelarCheckoutClick", {
+    content_name: CHEAT_CODES_CONFIG.name,
+    cta_location: ctaLocation,
+    value: CHEAT_CODES_CONFIG.priceUSD,
+    currency: CHEAT_CODES_CONFIG.currency,
+    destination: CHEAT_CODES_CONFIG.selarCheckoutUrl,
+  });
+
+  callFbq("track", "InitiateCheckout", {
+    content_name: CHEAT_CODES_CONFIG.name,
+    content_type: "product",
+    value: CHEAT_CODES_CONFIG.priceUSD,
+    currency: CHEAT_CODES_CONFIG.currency,
+  });
+}
+
+/**
+ * 7. Event: Purchase
+ * Standard Meta Pixel Purchase event.
+ */
+export function trackPurchase(payload: {
+  value: number;
+  currency: string;
+  content_name?: string;
+  num_items?: number;
+}): void {
+  callFbq("track", "Purchase", {
+    value: payload.value,
+    currency: payload.currency,
+    content_name: payload.content_name || CHEAT_CODES_CONFIG.name,
+    content_type: "product",
+    num_items: payload.num_items || 1,
+  });
+}
+
+/**
+ * Fire Purchase event strictly ONCE per visit / session.
+ * Prevents duplicate conversion tracking when buyer refreshes /thank-you page.
+ */
+export function trackPurchaseOnce(payload: {
+  value: number;
+  currency: string;
+  content_name: string;
+}): boolean {
+  if (typeof window === "undefined") return false;
+
+  const storageKey = `meta_purchase_fired_${payload.content_name.replace(/\s+/g, "_")}`;
+  try {
+    const alreadyFired = sessionStorage.getItem(storageKey);
+    if (alreadyFired === "true") {
+      if (import.meta.env.DEV) {
+        console.log(`[Meta Pixel Debug] Purchase event for '${payload.content_name}' already fired this session. Skipping.`);
+      }
+      return false;
+    }
+
+    trackPurchase(payload);
+    sessionStorage.setItem(storageKey, "true");
+    return true;
+  } catch (err) {
+    trackPurchase(payload);
+    return true;
+  }
+}
+
+/**
+ * 8. Custom Event: CtaClick
  * Fired when a primary or secondary CTA button is clicked on money pages.
  */
 export function trackCtaClick(ctaName: string, location: string): void {
@@ -212,7 +290,7 @@ export function trackCtaClick(ctaName: string, location: string): void {
 }
 
 /**
- * 8. Custom Event: FormStart
+ * 9. Custom Event: FormStart
  * Fired when user interacts with or starts filling an enquiry form.
  */
 export function trackFormStart(formName: string, service?: string): void {
@@ -224,7 +302,7 @@ export function trackFormStart(formName: string, service?: string): void {
 }
 
 /**
- * 9. Event: QualifiedEnquiry
+ * 10. Event: QualifiedEnquiry
  * Fired upon successful lead submission with project scope and budget data.
  */
 export function trackQualifiedEnquiry(payload: {
@@ -241,4 +319,3 @@ export function trackQualifiedEnquiry(payload: {
     service: payload.service,
   });
 }
-

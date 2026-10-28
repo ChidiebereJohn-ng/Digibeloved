@@ -148,89 +148,218 @@ const Home: React.FC = () => {
     <>
       <SchemaScript schema={homeSchema} />
 
-      {/* 1. AZURO DIGITAL STYLE HERO SECTION */}
-      <section className="relative bg-white pt-16 pb-16 md:pt-28 md:pb-24 px-4 sm:px-6 lg:px-8 overflow-hidden">
+      {/* 1. HERO SECTION */}
+      <section className="relative bg-white pt-12 pb-16 md:pt-20 md:pb-24 px-4 sm:px-6 lg:px-8 overflow-hidden border-b border-slate-100">
         
         {/* Subtle grid background */}
         <div className="absolute inset-0 opacity-[0.03] bg-[radial-gradient(#07152E_1px,transparent_1px)] [background-size:24px_24px] pointer-events-none" />
 
-        <div className="relative max-w-5xl mx-auto text-center">
+        <div className="relative max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-center">
           
-          {/* Status pill badge with pulsing dot */}
-          <div className="inline-flex items-center space-x-2.5 bg-slate-50 border border-slate-200/80 px-4 py-1.5 rounded-full text-xs font-semibold text-slate-800 mb-8 shadow-xs">
-            <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
-            <span>Applied AI, Data &amp; Custom Software Solutions</span>
+          {/* Left Column: Outcome-focused copy & CTAs (centered on mobile, left-aligned on desktop) */}
+          <div className="lg:col-span-7 flex flex-col items-center lg:items-start text-center lg:text-left">
+            
+            {/* Eyebrow */}
+            <div className="inline-flex items-center space-x-2.5 bg-slate-50 border border-slate-200/80 px-4 py-1.5 rounded-full text-xs font-semibold text-navy mb-6 shadow-xs">
+              <span className="w-2 h-2 rounded-full bg-navy" aria-hidden="true" />
+              <span>Data, automation and software for Nigerian organizations</span>
+            </div>
+
+            {/* Headline (Option A - recommended for mixed audience) */}
+            <h1 className="text-3xl sm:text-5xl lg:text-[3.35rem] font-extrabold text-navy tracking-tight leading-[1.1] mb-6 [text-wrap:balance]">
+              Clear results from your data. Less manual work. Software you own.
+            </h1>
+
+            {/* Subhead */}
+            <p className="text-base sm:text-lg md:text-xl text-slate-600 font-normal max-w-[60ch] leading-relaxed mb-8 [text-wrap:pretty]">
+              DigiBeloved helps researchers, NGOs and growing businesses analyse data properly, automate repetitive tasks, and build the custom tools they need, with full ownership of everything delivered.
+            </p>
+
+            {/* Primary & Secondary CTAs */}
+            <div className="w-full sm:w-auto flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-3.5 mb-4">
+              <Link
+                to="/contact"
+                onClick={() => trackCtaClick('Get Scoping Feedback in 24 Hours - Hero', '/')}
+                className="w-full sm:w-auto inline-flex items-center justify-center bg-accent text-navy px-7 py-4 rounded-xl font-extrabold text-base tracking-wide hover:bg-yellow-400 active:scale-[0.98] transition-all shadow-[0_10px_25px_rgba(255,209,0,0.35)]"
+              >
+                <span>Get Scoping Feedback in 24 Hours</span>
+                <ArrowRight className="w-4 h-4 ml-2 shrink-0" aria-hidden="true" />
+              </Link>
+              <a
+                href="#how-we-work"
+                className="w-full sm:w-auto inline-flex items-center justify-center bg-white hover:bg-slate-50 text-navy border border-slate-200 px-6 py-4 rounded-xl font-bold text-base tracking-wide transition-all"
+              >
+                See How It Works
+              </a>
+            </div>
+
+            {/* Trust line under buttons */}
+            <p className="text-xs sm:text-sm text-slate-600 font-medium flex items-center justify-center lg:justify-start gap-2">
+              <ShieldCheck className="w-4 h-4 text-navy shrink-0" aria-hidden="true" />
+              <span>You own the code, the data and the reports. No lock-in.</span>
+            </p>
+
           </div>
 
-          {/* Punchy, Bold H1 */}
-          <h1 className="text-4xl sm:text-6xl md:text-7xl font-extrabold text-navy tracking-tight leading-[1.08] mb-6">
-            Data Analysis, AI Automation &amp; Custom Software.
-          </h1>
-
-          {/* Crisp 1-sentence value statement */}
-          <p className="text-lg sm:text-xl md:text-2xl text-slate-600 font-normal max-w-3xl mx-auto leading-relaxed mb-10">
-            We help researchers and organizations turn raw data into defensible insights, repetitive tasks into automated workflows, and business ideas into production software.
-          </p>
-
-          {/* Sleek dual CTAs */}
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-12">
-            <Link
-              to="/contact"
-              onClick={() => trackCtaClick('Discuss Your Project - Hero', '/')}
-              className="w-full sm:w-auto inline-flex items-center justify-center bg-accent text-navy px-8 py-4 rounded-2xl font-extrabold text-base tracking-wide hover:bg-yellow-400 active:scale-[0.98] transition-all shadow-[0_10px_25px_rgba(255,209,0,0.35)]"
+          {/* Right Column: Single clean visual (Before: raw spreadsheet vs After: structured dashboard) */}
+          <div className="lg:col-span-5 w-full max-w-lg mx-auto lg:max-w-none">
+            <div
+              role="region"
+              aria-label="Before and after comparison showing a messy spreadsheet transformed into a structured dashboard and validated analysis output"
+              className="bg-slate-50 border border-slate-200/90 rounded-2xl p-4 sm:p-5 shadow-sm space-y-3.5 text-left"
             >
-              <span>Discuss Your Project</span>
-              <ArrowRight className="w-4 h-4 ml-2" />
-            </Link>
-            <a
-              href="#solutions"
-              className="w-full sm:w-auto inline-flex items-center justify-center bg-slate-50 hover:bg-slate-100 text-slate-800 border border-slate-200/80 px-8 py-4 rounded-2xl font-bold text-base tracking-wide transition-all shadow-xs"
-            >
-              Explore Solutions
-            </a>
+              
+              {/* BEFORE PANEL: Raw Spreadsheet */}
+              <div className="bg-white border border-slate-200 rounded-xl p-4">
+                <div className="flex items-center justify-between mb-3">
+                  <span className="inline-flex items-center gap-1.5 text-[11px] font-bold uppercase tracking-wider text-rose-700 bg-rose-50 border border-rose-200/70 px-2.5 py-0.5 rounded-md">
+                    <FileSpreadsheet className="w-3.5 h-3.5" aria-hidden="true" />
+                    Before: Manual Spreadsheet
+                  </span>
+                  <span className="text-[11px] font-mono text-slate-500">raw_export_v4_final.xlsx</span>
+                </div>
+
+                {/* Mini spreadsheet rows showing real pain points */}
+                <div className="border border-slate-200 rounded-lg overflow-hidden text-xs font-mono">
+                  <div className="grid grid-cols-12 bg-slate-100 text-slate-600 font-semibold border-b border-slate-200 px-2.5 py-1.5 text-[10px]">
+                    <span className="col-span-3">RECORD</span>
+                    <span className="col-span-5">STATUS</span>
+                    <span className="col-span-4 text-right">SYNC</span>
+                  </div>
+                  <div className="grid grid-cols-12 items-center px-2.5 py-1.5 border-b border-slate-100 text-slate-600 bg-rose-50/30">
+                    <span className="col-span-3 font-semibold text-slate-700">#0418</span>
+                    <span className="col-span-5 text-rose-700">#REF! Missing (18%)</span>
+                    <span className="col-span-4 text-right text-slate-500">Manual copy</span>
+                  </div>
+                  <div className="grid grid-cols-12 items-center px-2.5 py-1.5 text-slate-600">
+                    <span className="col-span-3 font-semibold text-slate-700">Branch 3</span>
+                    <span className="col-span-5 text-slate-600">Unmatched stock row</span>
+                    <span className="col-span-4 text-right text-rose-700">12 hrs/wk</span>
+                  </div>
+                </div>
+              </div>
+
+              {/* TRANSITION DIVIDER */}
+              <div className="flex items-center justify-center gap-2 text-[11px] font-bold uppercase tracking-wider text-navy py-0.5">
+                <div className="h-px flex-1 bg-slate-200" />
+                <span className="bg-white border border-slate-200 px-3 py-1 rounded-full shadow-2xs">
+                  Cleaned, Automated &amp; Handed Over
+                </span>
+                <div className="h-px flex-1 bg-slate-200" />
+              </div>
+
+              {/* AFTER PANEL: Structured Dashboard & Defensible Output */}
+              <div className="bg-white border-2 border-navy rounded-xl p-4 shadow-xs">
+                <div className="flex items-center justify-between mb-3">
+                  <span className="inline-flex items-center gap-1.5 text-[11px] font-bold uppercase tracking-wider text-navy bg-navy/5 border border-navy/15 px-2.5 py-0.5 rounded-md">
+                    <BarChart3 className="w-3.5 h-3.5" aria-hidden="true" />
+                    After: Validated System &amp; Report
+                  </span>
+                  <span className="inline-flex items-center gap-1 text-[11px] font-semibold text-emerald-700">
+                    <CheckCircle2 className="w-3.5 h-3.5 text-emerald-600" aria-hidden="true" />
+                    Client-Owned
+                  </span>
+                </div>
+
+                <div className="grid grid-cols-2 gap-2.5 mb-3">
+                  <div className="bg-slate-50 border border-slate-200/80 rounded-lg p-2.5">
+                    <div className="text-[11px] text-slate-500 font-medium">Survey Data &amp; Models</div>
+                    <div className="text-sm font-extrabold text-navy mt-0.5">1,400+ Records</div>
+                    <div className="text-[11px] text-emerald-700 font-medium mt-0.5">Cleaned &amp; APA-ready</div>
+                  </div>
+                  <div className="bg-slate-50 border border-slate-200/80 rounded-lg p-2.5">
+                    <div className="text-[11px] text-slate-500 font-medium">Weekly Reconciliation</div>
+                    <div className="text-sm font-extrabold text-navy mt-0.5">12h → 20m</div>
+                    <div className="text-[11px] text-emerald-700 font-medium mt-0.5">Automated alerts</div>
+                  </div>
+                </div>
+
+                <div className="flex items-center justify-between text-xs text-slate-600 bg-slate-50 rounded-lg px-3 py-2 border border-slate-200/70">
+                  <span className="font-semibold text-navy">Deliverables:</span>
+                  <span>Dataset · APA Tables · Live Pipeline · Source Code</span>
+                </div>
+              </div>
+
+            </div>
           </div>
 
         </div>
       </section>
 
-      {/* 2. HIGH-IMPACT QUANTITATIVE METRIC BAR (Directly Below Hero) */}
-      <section className="bg-slate-900 text-white py-8 px-4 sm:px-6 lg:px-8 border-y border-slate-800">
-        <div className="max-w-7xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
+      {/* 2. PROOF STRIP (Labelled Numbers with Visible Sources) */}
+      <section aria-label="Verified project metrics" className="bg-[#07152E] text-white py-10 px-4 sm:px-6 lg:px-8 border-b border-navy">
+        <div className="max-w-7xl mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8">
           
-          <div className="p-3">
-            <div className="text-3xl sm:text-4xl font-extrabold text-accent font-mono tracking-tight">
-              1,400+
+          <div className="p-4 sm:p-5 rounded-2xl bg-white/[0.03] border border-white/10 flex flex-col justify-between">
+            <div>
+              <div className="text-3xl sm:text-4xl font-extrabold text-white font-mono tracking-tight">
+                1,400+
+              </div>
+              <p className="text-sm text-slate-200 font-medium mt-2 leading-snug [text-wrap:pretty]">
+                survey records cleaned and modelled in a single research project
+              </p>
             </div>
-            <p className="text-xs sm:text-sm text-slate-300 font-medium mt-1">
-              Survey Records Modeled
-            </p>
+            <Link
+              to="/case-studies#cs-data-analysis-1"
+              className="inline-flex items-center gap-1 text-xs font-semibold text-slate-300 hover:text-white underline underline-offset-4 mt-3 transition-colors"
+            >
+              <span>Read research case study</span>
+              <ArrowRight className="w-3.5 h-3.5" aria-hidden="true" />
+            </Link>
           </div>
 
-          <div className="p-3 border-l border-slate-800">
-            <div className="text-3xl sm:text-4xl font-extrabold text-emerald-400 font-mono tracking-tight">
-              12h → 20m
+          <div className="p-4 sm:p-5 rounded-2xl bg-white/[0.03] border border-white/10 flex flex-col justify-between">
+            <div>
+              <div className="text-3xl sm:text-4xl font-extrabold text-white font-mono tracking-tight">
+                12h → 20m
+              </div>
+              <p className="text-sm text-slate-200 font-medium mt-2 leading-snug [text-wrap:pretty]">
+                weekly stock reconciliation for a multi-branch retailer
+              </p>
             </div>
-            <p className="text-xs sm:text-sm text-slate-300 font-medium mt-1">
-              Weekly Manual Time Reclaimed
-            </p>
+            <Link
+              to="/case-studies#cs-automation-1"
+              className="inline-flex items-center gap-1 text-xs font-semibold text-slate-300 hover:text-white underline underline-offset-4 mt-3 transition-colors"
+            >
+              <span>Read automation case study</span>
+              <ArrowRight className="w-3.5 h-3.5" aria-hidden="true" />
+            </Link>
           </div>
 
-          <div className="p-3 border-l-0 md:border-l border-slate-800">
-            <div className="text-3xl sm:text-4xl font-extrabold text-white font-mono tracking-tight">
-              100%
+          <div className="p-4 sm:p-5 rounded-2xl bg-white/[0.03] border border-white/10 flex flex-col justify-between">
+            <div>
+              <div className="text-3xl sm:text-4xl font-extrabold text-white font-mono tracking-tight">
+                100%
+              </div>
+              <p className="text-sm text-slate-200 font-medium mt-2 leading-snug [text-wrap:pretty]">
+                source code and data handed over to the client
+              </p>
             </div>
-            <p className="text-xs sm:text-sm text-slate-300 font-medium mt-1">
-              Code &amp; IP Asset Custody
-            </p>
+            <Link
+              to="/case-studies#cs-software-1"
+              className="inline-flex items-center gap-1 text-xs font-semibold text-slate-300 hover:text-white underline underline-offset-4 mt-3 transition-colors"
+            >
+              <span>Read software handover case study</span>
+              <ArrowRight className="w-3.5 h-3.5" aria-hidden="true" />
+            </Link>
           </div>
 
-          <div className="p-3 border-l border-slate-800">
-            <div className="text-3xl sm:text-4xl font-extrabold text-accent font-mono tracking-tight">
-              &lt; 24h
+          <div className="p-4 sm:p-5 rounded-2xl bg-white/[0.03] border border-white/10 flex flex-col justify-between">
+            <div>
+              <div className="text-3xl sm:text-4xl font-extrabold text-white font-mono tracking-tight">
+                &lt; 24h
+              </div>
+              <p className="text-sm text-slate-200 font-medium mt-2 leading-snug [text-wrap:pretty]">
+                to your first scoping feedback after you submit a brief
+              </p>
             </div>
-            <p className="text-xs sm:text-sm text-slate-300 font-medium mt-1">
-              Scoping &amp; Proposal Feedback
-            </p>
+            <Link
+              to="/contact"
+              className="inline-flex items-center gap-1 text-xs font-semibold text-slate-300 hover:text-white underline underline-offset-4 mt-3 transition-colors"
+            >
+              <span>Submit a project brief</span>
+              <ArrowRight className="w-3.5 h-3.5" aria-hidden="true" />
+            </Link>
           </div>
 
         </div>
@@ -785,7 +914,7 @@ const Home: React.FC = () => {
       </section>
 
       {/* 7. HOW WE WORK (Azuro 4-Step Process) */}
-      <section className="py-20 md:py-28 bg-slate-50 px-4 sm:px-6 lg:px-8 border-b border-slate-200/80">
+      <section id="how-we-work" className="py-20 md:py-28 bg-slate-50 px-4 sm:px-6 lg:px-8 border-b border-slate-200/80 scroll-mt-20">
         <div className="max-w-7xl mx-auto">
           
           <div className="text-center max-w-2xl mx-auto mb-16">

@@ -20,6 +20,12 @@ import FreeBlueprint from './pages/FreeBlueprint';
 import BlueprintThankYou from './pages/BlueprintThankYou';
 import Products from './pages/Products';
 
+// New Product Funnel Pages
+import CheatCodesSalesPage from './pages/CheatCodesSalesPage';
+import ThankYou from './pages/ThankYou';
+import PrivacyPolicy from './pages/PrivacyPolicy';
+import TermsOfService from './pages/TermsOfService';
+
 import {
   captureAndPersistUtmParams,
   trackPageView,
@@ -79,6 +85,18 @@ const App: React.FC = () => {
         <Route path="/services/training/:id" element={<Layout><CourseDetail /></Layout>} />
         <Route path="/academy/:id" element={<Layout><CourseDetail /></Layout>} />
         
+        {/* 7 AI Cheat Codes Sales Funnel */}
+        <Route path="/7-ai-cheat-codes" element={<CheatCodesSalesPage />} />
+        <Route path="/ai-cheat-codes" element={<Navigate to="/7-ai-cheat-codes" replace />} />
+        <Route path="/cheat-codes" element={<Navigate to="/7-ai-cheat-codes" replace />} />
+        <Route path="/thank-you" element={<ThankYou />} />
+
+        {/* Legal & Compliance */}
+        <Route path="/privacy" element={<Layout><PrivacyPolicy /></Layout>} />
+        <Route path="/privacy-policy" element={<Navigate to="/privacy" replace />} />
+        <Route path="/terms" element={<Layout><TermsOfService /></Layout>} />
+        <Route path="/terms-of-service" element={<Navigate to="/terms" replace />} />
+
         {/* Preserved High-Converting Lead Funnels */}
         <Route path="/ai-presentation-system" element={<AIPresentationSystem />} />
         <Route path="/free-blueprint" element={<FreeBlueprint />} />

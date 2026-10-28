@@ -597,6 +597,31 @@ const corePages = [
     title: "Insights & Applied AI Articles | DigiBeloved",
     description: "Practical guides, breakdowns, and strategic insights on data analysis, process automation, and applied artificial intelligence.",
     canonical: "https://digibeloved.com/insights"
+  },
+  {
+    route: "7-ai-cheat-codes",
+    title: "7 AI Cheat Codes: Save Hours Every Week & Get Paid | DigiBeloved",
+    description: "7 copy-paste cheat codes for business owners and job seekers. Save hours every week with free AI tools, then get paid to solve problems for others.",
+    canonical: "https://digibeloved.com/7-ai-cheat-codes"
+  },
+  {
+    route: "privacy",
+    title: "Privacy Policy | DigiBeloved",
+    description: "Learn how DigiBeloved protects your data, processes orders securely via Selar, and respects your privacy.",
+    canonical: "https://digibeloved.com/privacy"
+  },
+  {
+    route: "terms",
+    title: "Terms of Service | DigiBeloved",
+    description: "Read the terms of service, digital product licensing, guarantee terms, and earnings disclaimer for DigiBeloved.",
+    canonical: "https://digibeloved.com/terms"
+  },
+  {
+    route: "thank-you",
+    title: "Order Confirmed | DigiBeloved",
+    description: "Your digital guide is on its way. Access your download link and check out your post-purchase setup options.",
+    canonical: "https://digibeloved.com/thank-you",
+    noindex: true
   }
 ];
 
@@ -612,6 +637,14 @@ corePages.forEach((page) => {
   pageHtml = pageHtml.replace(/<meta\s+name=["']twitter:title["'][\s\S]*?>/i, `<meta name="twitter:title" content="${page.title}" />`);
   pageHtml = pageHtml.replace(/<meta\s+name=["']twitter:description["'][\s\S]*?>/i, `<meta name="twitter:description" content="${page.description}" />`);
   
+  if (page.noindex) {
+    if (pageHtml.includes('<meta name="robots"')) {
+      pageHtml = pageHtml.replace(/<meta\s+name=["']robots["'][\s\S]*?>/i, `<meta name="robots" content="noindex, nofollow" />`);
+    } else {
+      pageHtml = pageHtml.replace('</head>', `  <meta name="robots" content="noindex, nofollow" />\n</head>`);
+    }
+  }
+
   if (pageHtml.includes('<link rel="canonical"')) {
     pageHtml = pageHtml.replace(/<link rel="canonical" href=".*?" \/>/i, `<link rel="canonical" href="${page.canonical}" />`);
   } else {

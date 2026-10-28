@@ -21,6 +21,31 @@ export interface MarketplaceProduct {
 
 export const marketplaceProducts: MarketplaceProduct[] = [
   {
+    id: "7-ai-cheat-codes",
+    title: "7 AI Cheat Codes: Save Hours Every Week & Get Paid",
+    slug: "7-ai-cheat-codes",
+    category: "Playbooks & Systems",
+    price: "₦2,500 / $10",
+    originalPrice: "₦15,000",
+    badge: "New Release",
+    badgeColor: "bg-[#FDD412]/20 text-[#092755] border-[#FDD412]/60 font-bold",
+    shortDesc: "7 copy-paste cheat codes for business owners and job seekers. Save hours every week with free AI tools, then get paid to solve problems for others.",
+    description: "The 20-page action guide with click-by-click screen guides, copy-paste prompts, and 7 paid service ideas. Turn rambling voice notes into proposals, automate meeting minutes, create instant charts from messy data, and land your first paid client in 3 steps.",
+    highlights: [
+      "The 20-Page Action Guide (Instant PDF Download)",
+      "7 Click-by-Click Screen Guides (Never Get Lost)",
+      "7 Ready-to-Use Copy-Paste Prompts for Free Tools",
+      "7 'Get Paid For It' Service Blueprints for Clients",
+      "Launch Your First Paid AI Service in 3 Steps"
+    ],
+    image: "/cheat-codes-cover.png",
+    ctaText: "GET INSTANT ACCESS: N2,500 / $10",
+    link: "/7-ai-cheat-codes",
+    featured: true,
+    rating: 5.0,
+    ratingCount: 168
+  },
+  {
     id: "ai-presentation-system",
     title: "The AI Presentation System & Playbook",
     slug: "ai-presentation-system",

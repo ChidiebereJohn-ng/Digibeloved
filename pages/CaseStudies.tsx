@@ -190,8 +190,9 @@ const CaseStudies: React.FC = () => {
         <div className="max-w-5xl mx-auto space-y-16">
           {filteredStudies.map((cs) => (
             <article 
+              id={cs.id}
               key={cs.id}
-              className="bg-slate-50 border border-slate-200/90 rounded-3xl overflow-hidden shadow-sm hover:shadow-md transition-all duration-300"
+              className="bg-slate-50 border border-slate-200/90 rounded-3xl overflow-hidden shadow-sm hover:shadow-md transition-all duration-300 scroll-mt-28"
             >
               {/* Browser Mockup Top Header */}
               <div className="bg-[#0B1B38] px-6 py-4 flex items-center justify-between border-b border-white/10">
