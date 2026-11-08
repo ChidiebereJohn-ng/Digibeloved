@@ -164,50 +164,51 @@ const Home: React.FC = () => {
           {/* Left Column: Outcome-focused copy & CTAs */}
           <div className="lg:col-span-6 flex flex-col items-center lg:items-start text-center lg:text-left">
             
-            {/* Eyebrow */}
+            {/* Top Label / Eyebrow */}
             <div className="inline-flex items-center space-x-2.5 bg-[#EEF3FB] border border-[#092755]/10 px-4 py-1.5 rounded-full text-xs font-bold text-navy mb-6 shadow-xs">
               <span className="w-2 h-2 rounded-full bg-[#FDD412] animate-pulse" aria-hidden="true" />
-              <span>AI Consulting &amp; Education · Abuja &amp; Global</span>
+              <span>AI Consulting &amp; Training • Abuja &amp; Worldwide</span>
             </div>
 
             {/* Headline */}
             <h1 className="text-3xl sm:text-5xl lg:text-[3.25rem] font-extrabold text-navy tracking-tight leading-[1.15] mb-6 [text-wrap:balance]">
-              Turn AI Potential Into <span className="text-[#092755] underline decoration-[#FDD412] decoration-4 underline-offset-4">Operational Power</span>.
+              Use AI to Work Smarter, Save Time, and Grow Faster.
             </h1>
 
             {/* Subhead */}
             <p className="text-base sm:text-lg md:text-xl text-slate-600 font-normal max-w-[60ch] leading-relaxed mb-8 [text-wrap:pretty]">
-              We architect custom autonomous agent workflows, build production digital solutions, and upskill ambitious professionals and organizations to progress from baseline chatbots to full AI operating systems.
+              We help businesses automate tasks, build websites and digital solutions, and provide practical AI training for individuals and teams.
             </p>
 
             {/* Primary & Secondary CTAs */}
             <div className="w-full sm:w-auto flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-3.5 mb-6">
-              <a
-                href="#applied-ai-hub"
-                onClick={() => trackCtaClick('Explore Applied AI Hub - Hero', '/')}
-                className="w-full sm:w-auto inline-flex items-center justify-center bg-accent text-navy px-7 py-4 rounded-xl font-extrabold text-base tracking-wide hover:bg-yellow-400 active:scale-[0.98] transition-all shadow-[0_10px_25px_rgba(255,209,0,0.35)]"
-              >
-                <span>Explore Applied AI Hub</span>
-                <ArrowRight className="w-4 h-4 ml-2 shrink-0" aria-hidden="true" />
-              </a>
               <Link
                 to="/ai-training-for-organizations"
-                className="w-full sm:w-auto inline-flex items-center justify-center bg-white hover:bg-slate-50 text-navy border border-slate-200 px-6 py-4 rounded-xl font-bold text-base tracking-wide transition-all shadow-xs"
+                onClick={() => trackCtaClick('Explore AI Training - Hero', '/')}
+                className="w-full sm:w-auto inline-flex items-center justify-center bg-navy hover:bg-navy-light text-white px-7 py-4 rounded-full font-bold text-base tracking-wide hover:shadow-lg transition-all shadow-md active:scale-[0.98]"
               >
-                Take Level Assessment
+                <span>Explore AI Training</span>
+                <ArrowRight className="w-4 h-4 ml-2 shrink-0" aria-hidden="true" />
               </Link>
+              <a
+                href="#ai-levels"
+                onClick={() => trackCtaClick('Check Your AI Skills - Hero', '/')}
+                className="w-full sm:w-auto inline-flex items-center justify-center bg-white hover:bg-slate-50 text-slate-700 hover:text-navy border border-slate-300 px-6 py-4 rounded-full font-semibold text-base tracking-wide transition-all shadow-xs active:scale-[0.98]"
+              >
+                Check Your AI Skills
+              </a>
             </div>
 
-            {/* Trust line under buttons */}
-            <div className="pt-2 flex flex-wrap items-center justify-center lg:justify-start gap-x-6 gap-y-2 text-xs text-slate-600 font-mono">
+            {/* Bottom Highlights */}
+            <div className="pt-2 flex flex-wrap items-center justify-center lg:justify-start gap-x-6 gap-y-2 text-xs sm:text-sm text-slate-700 font-medium">
               <span className="flex items-center gap-1.5">
-                <span className="text-[#092755] font-bold">✓</span> 5-Level AI Mastery
+                <span className="text-[#092755] font-bold">✓</span> Practical AI Training
               </span>
               <span className="flex items-center gap-1.5">
-                <span className="text-[#092755] font-bold">✓</span> Agent SDK &amp; n8n
+                <span className="text-[#092755] font-bold">✓</span> Business Automation
               </span>
               <span className="flex items-center gap-1.5">
-                <span className="text-[#092755] font-bold">✓</span> 150K Hybrid Abuja Cohort
+                <span className="text-[#092755] font-bold">✓</span> Digital Solutions
               </span>
             </div>
 
