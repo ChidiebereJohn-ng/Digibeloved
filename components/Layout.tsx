@@ -94,8 +94,8 @@ const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
                 <span className="text-xl font-extrabold tracking-tight text-navy leading-none">
                   DigiBeloved
                 </span>
-                <span className="text-[10px] uppercase font-bold text-slate-500 tracking-wider mt-1">
-                  Applied AI &amp; Software
+                <span className="text-[10px] uppercase font-bold text-[#FDD412] bg-[#092755] px-1.5 py-0.5 rounded tracking-wider mt-1 w-max">
+                  AI Consulting &amp; Education
                 </span>
               </div>
             </Link>

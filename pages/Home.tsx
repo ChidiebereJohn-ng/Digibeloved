@@ -30,6 +30,7 @@ import {
   ChevronRight
 } from 'lucide-react';
 import SchemaScript from '../components/SchemaScript';
+import AnatomyBrainHero from '../components/AnatomyBrainHero';
 import { trackCtaClick } from '../src/services/metaPixel';
 
 const Home: React.FC = () => {
@@ -149,7 +150,7 @@ const Home: React.FC = () => {
       <SchemaScript schema={homeSchema} />
 
       {/* 1. HERO SECTION */}
-      <section className="relative bg-white pt-12 pb-16 md:pt-20 md:pb-24 px-4 sm:px-6 lg:px-8 overflow-hidden border-b border-slate-100">
+      <section className="relative bg-white pt-10 pb-16 md:pt-16 md:pb-20 px-4 sm:px-6 lg:px-8 overflow-hidden border-b border-slate-100">
         
         {/* Soft atmospheric gradient accents */}
         <div className="absolute top-0 right-0 w-96 h-96 bg-[#FDD412]/10 rounded-full blur-3xl pointer-events-none" />
@@ -160,135 +161,71 @@ const Home: React.FC = () => {
 
         <div className="relative max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-center">
           
-          {/* Left Column: Outcome-focused copy & CTAs (centered on mobile, left-aligned on desktop) */}
-          <div className="lg:col-span-7 flex flex-col items-center lg:items-start text-center lg:text-left">
+          {/* Left Column: Outcome-focused copy & CTAs */}
+          <div className="lg:col-span-6 flex flex-col items-center lg:items-start text-center lg:text-left">
             
             {/* Eyebrow */}
             <div className="inline-flex items-center space-x-2.5 bg-[#EEF3FB] border border-[#092755]/10 px-4 py-1.5 rounded-full text-xs font-bold text-navy mb-6 shadow-xs">
               <span className="w-2 h-2 rounded-full bg-[#FDD412] animate-pulse" aria-hidden="true" />
-              <span>Applied AI, Data &amp; Custom Software Solutions</span>
+              <span>AI Consulting &amp; Education · Abuja &amp; Global</span>
             </div>
 
-            {/* Headline (Option A - recommended for mixed audience) */}
-            <h1 className="text-3xl sm:text-5xl lg:text-[3.35rem] font-extrabold text-navy tracking-tight leading-[1.1] mb-6 [text-wrap:balance]">
-              Clear results from your data. Less manual work. Software you own.
+            {/* Headline */}
+            <h1 className="text-3xl sm:text-5xl lg:text-[3.25rem] font-extrabold text-navy tracking-tight leading-[1.15] mb-6 [text-wrap:balance]">
+              Turn AI Potential Into <span className="text-[#092755] underline decoration-[#FDD412] decoration-4 underline-offset-4">Operational Power</span>.
             </h1>
 
             {/* Subhead */}
             <p className="text-base sm:text-lg md:text-xl text-slate-600 font-normal max-w-[60ch] leading-relaxed mb-8 [text-wrap:pretty]">
-              DigiBeloved helps researchers, NGOs and growing businesses analyse data properly, automate repetitive tasks, and build the custom tools they need, with full ownership of everything delivered.
+              We architect custom autonomous agent workflows, build production digital solutions, and upskill ambitious professionals and organizations to progress from baseline chatbots to full AI operating systems.
             </p>
 
             {/* Primary & Secondary CTAs */}
-            <div className="w-full sm:w-auto flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-3.5 mb-4">
-              <Link
-                to="/contact"
-                onClick={() => trackCtaClick('Get Scoping Feedback in 24 Hours - Hero', '/')}
+            <div className="w-full sm:w-auto flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-3.5 mb-6">
+              <a
+                href="#applied-ai-hub"
+                onClick={() => trackCtaClick('Explore Applied AI Hub - Hero', '/')}
                 className="w-full sm:w-auto inline-flex items-center justify-center bg-accent text-navy px-7 py-4 rounded-xl font-extrabold text-base tracking-wide hover:bg-yellow-400 active:scale-[0.98] transition-all shadow-[0_10px_25px_rgba(255,209,0,0.35)]"
               >
-                <span>Get Scoping Feedback in 24 Hours</span>
+                <span>Explore Applied AI Hub</span>
                 <ArrowRight className="w-4 h-4 ml-2 shrink-0" aria-hidden="true" />
-              </Link>
-              <a
-                href="#how-we-work"
-                className="w-full sm:w-auto inline-flex items-center justify-center bg-white hover:bg-slate-50 text-navy border border-slate-200 px-6 py-4 rounded-xl font-bold text-base tracking-wide transition-all"
-              >
-                See How It Works
               </a>
+              <Link
+                to="/ai-training-for-organizations"
+                className="w-full sm:w-auto inline-flex items-center justify-center bg-white hover:bg-slate-50 text-navy border border-slate-200 px-6 py-4 rounded-xl font-bold text-base tracking-wide transition-all shadow-xs"
+              >
+                Take Level Assessment
+              </Link>
             </div>
 
             {/* Trust line under buttons */}
-            <p className="text-xs sm:text-sm text-slate-600 font-medium flex items-center justify-center lg:justify-start gap-2">
-              <ShieldCheck className="w-4 h-4 text-navy shrink-0" aria-hidden="true" />
-              <span>You own the code, the data and the reports. No lock-in.</span>
-            </p>
+            <div className="pt-2 flex flex-wrap items-center justify-center lg:justify-start gap-x-6 gap-y-2 text-xs text-slate-600 font-mono">
+              <span className="flex items-center gap-1.5">
+                <span className="text-[#092755] font-bold">✓</span> 5-Level AI Mastery
+              </span>
+              <span className="flex items-center gap-1.5">
+                <span className="text-[#092755] font-bold">✓</span> Agent SDK &amp; n8n
+              </span>
+              <span className="flex items-center gap-1.5">
+                <span className="text-[#092755] font-bold">✓</span> 150K Hybrid Abuja Cohort
+              </span>
+            </div>
 
           </div>
 
-          {/* Right Column: Single clean visual (Before: raw spreadsheet vs After: structured dashboard) */}
-          <div className="lg:col-span-5 w-full max-w-lg mx-auto lg:max-w-none">
-            <div
-              role="region"
-              aria-label="Before and after comparison showing a messy spreadsheet transformed into a structured dashboard and validated analysis output"
-              className="bg-slate-50 border border-slate-200/90 rounded-2xl p-4 sm:p-5 shadow-sm space-y-3.5 text-left"
-            >
-              
-              {/* BEFORE PANEL: Raw Spreadsheet */}
-              <div className="bg-white border border-slate-200 rounded-xl p-4">
-                <div className="flex items-center justify-between mb-3">
-                  <span className="inline-flex items-center gap-1.5 text-[11px] font-bold uppercase tracking-wider text-rose-700 bg-rose-50 border border-rose-200/70 px-2.5 py-0.5 rounded-md">
-                    <FileSpreadsheet className="w-3.5 h-3.5" aria-hidden="true" />
-                    Before: Manual Spreadsheet
-                  </span>
-                  <span className="text-[11px] font-mono text-slate-500">raw_export_v4_final.xlsx</span>
-                </div>
-
-                {/* Mini spreadsheet rows showing real pain points */}
-                <div className="border border-slate-200 rounded-lg overflow-hidden text-xs font-mono">
-                  <div className="grid grid-cols-12 bg-slate-100 text-slate-600 font-semibold border-b border-slate-200 px-2.5 py-1.5 text-[10px]">
-                    <span className="col-span-3">RECORD</span>
-                    <span className="col-span-5">STATUS</span>
-                    <span className="col-span-4 text-right">SYNC</span>
-                  </div>
-                  <div className="grid grid-cols-12 items-center px-2.5 py-1.5 border-b border-slate-100 text-slate-600 bg-rose-50/30">
-                    <span className="col-span-3 font-semibold text-slate-700">#0418</span>
-                    <span className="col-span-5 text-rose-700">#REF! Missing (18%)</span>
-                    <span className="col-span-4 text-right text-slate-500">Manual copy</span>
-                  </div>
-                  <div className="grid grid-cols-12 items-center px-2.5 py-1.5 text-slate-600">
-                    <span className="col-span-3 font-semibold text-slate-700">Branch 3</span>
-                    <span className="col-span-5 text-slate-600">Unmatched stock row</span>
-                    <span className="col-span-4 text-right text-rose-700">12 hrs/wk</span>
-                  </div>
-                </div>
-              </div>
-
-              {/* TRANSITION DIVIDER */}
-              <div className="flex items-center justify-center gap-2 text-[11px] font-bold uppercase tracking-wider text-navy py-0.5">
-                <div className="h-px flex-1 bg-slate-200" />
-                <span className="bg-white border border-slate-200 px-3 py-1 rounded-full shadow-2xs">
-                  Cleaned, Automated &amp; Handed Over
-                </span>
-                <div className="h-px flex-1 bg-slate-200" />
-              </div>
-
-              {/* AFTER PANEL: Structured Dashboard & Defensible Output */}
-              <div className="bg-white border-2 border-navy rounded-xl p-4 shadow-xs">
-                <div className="flex items-center justify-between mb-3">
-                  <span className="inline-flex items-center gap-1.5 text-[11px] font-bold uppercase tracking-wider text-navy bg-navy/5 border border-navy/15 px-2.5 py-0.5 rounded-md">
-                    <BarChart3 className="w-3.5 h-3.5" aria-hidden="true" />
-                    After: Validated System &amp; Report
-                  </span>
-                  <span className="inline-flex items-center gap-1 text-[11px] font-semibold text-emerald-700">
-                    <CheckCircle2 className="w-3.5 h-3.5 text-emerald-600" aria-hidden="true" />
-                    Client-Owned
-                  </span>
-                </div>
-
-                <div className="grid grid-cols-2 gap-2.5 mb-3">
-                  <div className="bg-slate-50 border border-slate-200/80 rounded-lg p-2.5">
-                    <div className="text-[11px] text-slate-500 font-medium">Survey Data &amp; Models</div>
-                    <div className="text-sm font-extrabold text-navy mt-0.5">1,400+ Records</div>
-                    <div className="text-[11px] text-emerald-700 font-medium mt-0.5">Cleaned &amp; APA-ready</div>
-                  </div>
-                  <div className="bg-slate-50 border border-slate-200/80 rounded-lg p-2.5">
-                    <div className="text-[11px] text-slate-500 font-medium">Weekly Reconciliation</div>
-                    <div className="text-sm font-extrabold text-navy mt-0.5">12h → 20m</div>
-                    <div className="text-[11px] text-emerald-700 font-medium mt-0.5">Automated alerts</div>
-                  </div>
-                </div>
-
-                <div className="flex items-center justify-between text-xs text-slate-600 bg-slate-50 rounded-lg px-3 py-2 border border-slate-200/70">
-                  <span className="font-semibold text-navy">Deliverables:</span>
-                  <span>Dataset · APA Tables · Live Pipeline · Source Code</span>
-                </div>
-              </div>
-
-            </div>
+          {/* Right Column: Interactive Anatomy Brain Visualizer */}
+          <div className="lg:col-span-6 w-full max-w-lg mx-auto lg:max-w-none">
+            <AnatomyBrainHero />
           </div>
 
         </div>
       </section>
+
+      {/* Anchor Jump Targets for Navigation */}
+      <div id="ai-levels" className="scroll-mt-24" />
+      <div id="applied-ai-hub" className="scroll-mt-24" />
+      <div id="solutions" className="scroll-mt-24" />
+      <div id="marketplace" className="scroll-mt-24" />
 
       {/* 2. PROOF STRIP (Labelled Numbers with Visible Sources) */}
       <section aria-label="Verified project metrics" className="bg-[#092755] text-white py-12 px-4 sm:px-6 lg:px-8 border-b border-white/10 relative overflow-hidden">
