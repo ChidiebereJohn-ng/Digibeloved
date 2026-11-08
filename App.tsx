@@ -19,6 +19,7 @@ import AIPresentationSystem from './pages/AIPresentationSystem';
 import FreeBlueprint from './pages/FreeBlueprint';
 import BlueprintThankYou from './pages/BlueprintThankYou';
 import Products from './pages/Products';
+import AppliedAIHub from './pages/AppliedAIHub';
 
 // New Product Funnel Pages
 import CheatCodesSalesPage from './pages/CheatCodesSalesPage';
@@ -65,6 +66,8 @@ const App: React.FC = () => {
         <Route path="/ai-training-for-organizations" element={<Layout><CorporateAITraining /></Layout>} />
         
         {/* Individual Learning & Proof */}
+        <Route path="/applied-ai-hub" element={<Layout><AppliedAIHub /></Layout>} />
+        <Route path="/hub" element={<Navigate to="/applied-ai-hub" replace />} />
         <Route path="/products" element={<Layout><Products /></Layout>} />
         <Route path="/academy" element={<Layout><Academy /></Layout>} />
         <Route path="/case-studies" element={<Layout><CaseStudies /></Layout>} />

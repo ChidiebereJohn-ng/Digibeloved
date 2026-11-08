@@ -159,6 +159,19 @@ const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
                 )}
               </div>
 
+              {/* Applied AI Hub */}
+              <Link
+                to="/applied-ai-hub"
+                className={`px-3 py-2 rounded-lg text-sm font-semibold transition-colors flex items-center space-x-1.5 ${
+                  location.pathname === '/applied-ai-hub'
+                    ? 'text-navy font-bold bg-[#EEF3FB]'
+                    : 'text-slate-700 hover:text-navy hover:bg-[#EEF3FB]'
+                }`}
+              >
+                <span>Applied AI Hub</span>
+                <span className="text-[10px] font-black uppercase bg-[#092755] text-[#FDD412] px-1.5 py-0.5 rounded-md shadow-2xs">Matrix</span>
+              </Link>
+
               {/* Case Studies */}
               <Link
                 to="/case-studies"
@@ -283,6 +296,15 @@ const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
                   </div>
                 )}
               </div>
+
+              <Link
+                to="/applied-ai-hub"
+                onClick={() => setIsMenuOpen(false)}
+                className="flex items-center justify-between px-3 py-2.5 rounded-lg text-sm font-semibold text-slate-700 hover:text-navy hover:bg-slate-50"
+              >
+                <span>Applied AI Hub</span>
+                <span className="text-[10px] font-extrabold uppercase bg-[#092755] text-[#FDD412] px-2 py-0.5 rounded-md">Matrix</span>
+              </Link>
 
               <Link
                 to="/case-studies"
@@ -410,6 +432,12 @@ const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
                 Capability &amp; Learning
               </h3>
               <ul className="space-y-2.5 text-sm">
+                <li>
+                  <Link to="/applied-ai-hub" className="hover:text-white transition-colors text-accent font-semibold flex items-center gap-1.5">
+                    <span>Applied AI Hub</span>
+                    <span className="text-[10px] bg-accent text-navy px-1.5 py-0.2 rounded font-extrabold uppercase">New</span>
+                  </Link>
+                </li>
                 <li>
                   <Link to="/ai-training-for-organizations" className="hover:text-white transition-colors">
                     AI Training for Organizations

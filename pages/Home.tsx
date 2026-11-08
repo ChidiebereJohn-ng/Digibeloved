@@ -31,6 +31,8 @@ import {
 } from 'lucide-react';
 import SchemaScript from '../components/SchemaScript';
 import AnatomyBrainHero from '../components/AnatomyBrainHero';
+import AILevelsShowcase from '../components/AILevelsShowcase';
+import AppliedAIHubSection from '../components/AppliedAIHubSection';
 import { trackCtaClick } from '../src/services/metaPixel';
 
 const Home: React.FC = () => {
@@ -223,8 +225,6 @@ const Home: React.FC = () => {
       </section>
 
       {/* Anchor Jump Targets for Navigation */}
-      <div id="ai-levels" className="scroll-mt-24" />
-      <div id="applied-ai-hub" className="scroll-mt-24" />
       <div id="solutions" className="scroll-mt-24" />
       <div id="marketplace" className="scroll-mt-24" />
 
@@ -311,7 +311,15 @@ const Home: React.FC = () => {
         </div>
       </section>
 
-      {/* 3. CORE DONE-FOR-YOU SOLUTIONS (With Embedded UI Mini-Mockups) */}
+      {/* 3. THE 5 LEVELS OF AI MASTERY (Module 2) */}
+      <div id="ai-levels" className="scroll-mt-20" />
+      <AILevelsShowcase />
+
+      {/* 4. THE APPLIED AI HUB (Module 3) */}
+      <div id="applied-ai-hub" className="scroll-mt-20" />
+      <AppliedAIHubSection initialLimit={6} />
+
+      {/* 5. CORE DONE-FOR-YOU SOLUTIONS (With Embedded UI Mini-Mockups) */}
       <section id="solutions" className="py-20 md:py-28 bg-[#EEF3FB] border-b border-[#092755]/10 px-4 sm:px-6 lg:px-8">
         <div className="max-w-7xl mx-auto">
           
