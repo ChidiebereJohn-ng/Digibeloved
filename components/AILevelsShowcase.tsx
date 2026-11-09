@@ -5,7 +5,6 @@ import {
   ArrowRight, 
   Cpu, 
   Sparkles, 
-  Play, 
   Zap, 
   Layers, 
   Bot, 
@@ -214,66 +213,7 @@ export const AILevelsShowcase: React.FC = () => {
           </p>
         </div>
 
-        {/* 1. YOUTUBE FRAMEWORK VIDEO EMBED */}
-        <div className="mb-16">
-          <div className="bg-slate-900/80 rounded-3xl border border-white/15 p-4 sm:p-6 shadow-2xl backdrop-blur-md relative overflow-hidden group">
-            <div className="flex flex-col lg:flex-row items-center justify-between gap-6 mb-5 pb-5 border-b border-white/10">
-              <div className="flex items-center gap-3">
-                <div className="w-10 h-10 rounded-xl bg-[#FDD412] text-[#092755] flex items-center justify-center font-black text-lg shrink-0 shadow-md">
-                  <Play className="w-5 h-5 fill-current ml-0.5" />
-                </div>
-                <div>
-                  <h3 className="text-lg sm:text-xl font-bold text-white tracking-tight">
-                    Watch the Architectural Breakdown
-                  </h3>
-                  <p className="text-xs sm:text-sm text-slate-300">
-                    Understanding the transition from Prompt Engineering to Autonomous AI Operating Systems
-                  </p>
-                </div>
-              </div>
-
-              {/* Badges */}
-              <div className="flex flex-wrap items-center gap-2 self-start lg:self-center">
-                <span className="text-[11px] font-semibold uppercase tracking-wider bg-white/10 text-slate-200 px-3 py-1 rounded-full border border-white/10">
-                  Numroid Framework
-                </span>
-                <span className="text-[11px] font-semibold uppercase tracking-wider bg-[#FDD412]/20 text-[#FDD412] px-3 py-1 rounded-full border border-[#FDD412]/30">
-                  Essential Watch
-                </span>
-              </div>
-            </div>
-
-            {/* Video Container (16:9 Aspect Ratio) */}
-            <div className="relative w-full aspect-video rounded-2xl overflow-hidden bg-black shadow-inner border border-white/10">
-              <iframe
-                className="absolute inset-0 w-full h-full"
-                src="https://www.youtube-nocookie.com/embed/oJVZVyv_4Mo?rel=0&modestbranding=1"
-                title="The 5 Levels of AI Mastery Framework"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                allowFullScreen
-                loading="lazy"
-              />
-            </div>
-
-            {/* Video Footer Takeaways */}
-            <div className="mt-5 pt-4 border-t border-white/10 grid grid-cols-1 sm:grid-cols-3 gap-3 text-xs text-slate-300">
-              <div className="flex items-center gap-2">
-                <Check className="w-4 h-4 text-[#FDD412] shrink-0" />
-                <span>Move beyond single-turn copy-paste</span>
-              </div>
-              <div className="flex items-center gap-2">
-                <Check className="w-4 h-4 text-[#FDD412] shrink-0" />
-                <span>Build persistent context &amp; memory</span>
-              </div>
-              <div className="flex items-center gap-2">
-                <Check className="w-4 h-4 text-[#FDD412] shrink-0" />
-                <span>Orchestrate autonomous subagent networks</span>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        {/* 2. THE 5 LEVELS STEPPER */}
+        {/* THE 5 LEVELS STEPPER */}
         <div className="mb-16">
           <div className="flex items-center justify-between mb-6">
             <div>
