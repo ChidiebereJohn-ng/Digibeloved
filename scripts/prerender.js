@@ -570,14 +570,14 @@ const corePages = [
   },
   {
     route: "ai-builder-bootcamp",
-    title: "AI Builder Bootcamp | Build Real Software With AI | DigiBeloved",
-    description: "In 7 weeks (3 hrs/week), go from beginner to launching live web apps, custom CMS, Android apps, and full-stack software using AI agents. No coding required.",
+    title: "AI Builder Bootcamp Nigeria | Build Apps Without Coding — DigiBeloved",
+    description: "Learn to build websites, Android apps, and AI tools without coding experience. Join DigiBeloved's 7-week practical AI Builder Bootcamp. ₦100,000.",
     canonical: "https://digibeloved.com/ai-builder-bootcamp"
   },
   {
     route: "services/training/ai-builder-bootcamp",
-    title: "AI Builder Bootcamp | Build Real Software With AI | DigiBeloved",
-    description: "In 7 weeks (3 hrs/week), go from beginner to launching live web apps, custom CMS, Android apps, and full-stack software using AI agents. No coding required.",
+    title: "AI Builder Bootcamp Nigeria | Build Apps Without Coding — DigiBeloved",
+    description: "Learn to build websites, Android apps, and AI tools without coding experience. Join DigiBeloved's 7-week practical AI Builder Bootcamp. ₦100,000.",
     canonical: "https://digibeloved.com/services/training/ai-builder-bootcamp"
   },
   {
