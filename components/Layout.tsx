@@ -84,17 +84,17 @@ const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
           <div className="flex justify-between h-20 items-center">
             
             {/* Logo */}
-            <Link to="/" className="flex items-center space-x-3 group">
+            <Link to="/" className="flex items-center space-x-2.5 sm:space-x-3 group shrink-0 mr-4 lg:mr-6 xl:mr-10">
               <img
                 src="https://res.cloudinary.com/dn2mgiges/image/upload/v1754587273/DigiBeloved.png"
                 alt="DigiBeloved"
-                className="h-9 w-auto object-contain group-hover:scale-105 transition-transform duration-300"
+                className="h-8 sm:h-9 w-auto object-contain group-hover:scale-105 transition-transform duration-300 shrink-0"
               />
-              <div className="flex flex-col">
-                <span className="text-xl font-extrabold tracking-tight text-navy leading-none">
+              <div className="flex flex-col shrink-0">
+                <span className="text-lg sm:text-xl font-extrabold tracking-tight text-navy leading-none">
                   DigiBeloved
                 </span>
-                <span className="text-[10px] uppercase font-bold text-[#FDD412] bg-[#092755] px-1.5 py-0.5 rounded tracking-wider mt-1 w-max">
+                <span className="text-[9px] uppercase font-bold text-[#FDD412] bg-[#092755] px-1.5 py-0.5 rounded tracking-wider mt-1 w-max whitespace-nowrap">
                   AI Consulting &amp; Education
                 </span>
               </div>
@@ -199,7 +199,7 @@ const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
               {/* Insights */}
               <Link
                 to="/insights"
-                className={`px-2.5 xl:px-3 py-2 rounded-lg text-xs xl:text-sm font-semibold transition-colors whitespace-nowrap ${
+                className={`hidden xl:block px-2.5 xl:px-3 py-2 rounded-lg text-xs xl:text-sm font-semibold transition-colors whitespace-nowrap ${
                   location.pathname.startsWith('/insights') || location.pathname.startsWith('/blog')
                     ? 'text-navy font-bold bg-slate-50'
                     : 'text-slate-700 hover:text-navy hover:bg-slate-50'
@@ -211,7 +211,7 @@ const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
               {/* Academy */}
               <Link
                 to="/academy"
-                className={`px-2.5 xl:px-3 py-2 rounded-lg text-xs xl:text-sm font-semibold transition-colors whitespace-nowrap ${
+                className={`hidden xl:block px-2.5 xl:px-3 py-2 rounded-lg text-xs xl:text-sm font-semibold transition-colors whitespace-nowrap ${
                   location.pathname === '/academy'
                     ? 'text-navy font-bold bg-slate-50'
                     : 'text-slate-700 hover:text-navy hover:bg-slate-50'
@@ -223,7 +223,7 @@ const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
               {/* About */}
               <Link
                 to="/about"
-                className={`px-2.5 xl:px-3 py-2 rounded-lg text-xs xl:text-sm font-semibold transition-colors whitespace-nowrap ${
+                className={`hidden 2xl:block px-2.5 xl:px-3 py-2 rounded-lg text-xs xl:text-sm font-semibold transition-colors whitespace-nowrap ${
                   location.pathname === '/about'
                     ? 'text-navy font-bold bg-slate-50'
                     : 'text-slate-700 hover:text-navy hover:bg-slate-50'
