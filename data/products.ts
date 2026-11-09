@@ -21,6 +21,31 @@ export interface MarketplaceProduct {
 
 export const marketplaceProducts: MarketplaceProduct[] = [
   {
+    id: "ai-builder-bootcamp",
+    title: "AI Builder Bootcamp: Build Real Software With AI",
+    slug: "ai-builder-bootcamp",
+    category: "Courses & Masterclasses",
+    price: "₦100,000",
+    originalPrice: "₦250,000",
+    badge: "Cohort Enrollment",
+    badgeColor: "bg-emerald-50 text-emerald-800 border-emerald-300 font-bold",
+    shortDesc: "In 7 weeks (3 hrs/week), go from beginner to launching live web apps, custom CMS, Android apps, and full-stack software using AI agents. No coding required.",
+    description: "A 7-week cohort-based bootcamp teaching Context Engineering, Agentic IDEs, and full-stack software deployment using AI agents. Includes 1-on-1 mentorship, engineering code reviews, 5 live deployed projects, and a 100% money-back guarantee.",
+    highlights: [
+      "7-Week Cohort Experience (3 hours/week commitment)",
+      "Context Engineering & Software System Architecture",
+      "Agentic IDE Setup (AI writes, tests & debugs your code)",
+      "Build AI-Native Web Apps, Custom CMS & Android Apps",
+      "Direct 1-on-1 Mentorship & Code Reviews with DigiBeloved Engineers",
+      "100% Full Refund Guarantee If Promises Undelivered"
+    ],
+    ctaText: "Explore Bootcamp & Enroll — ₦100,000",
+    link: "/ai-builder-bootcamp",
+    featured: true,
+    rating: 5.0,
+    ratingCount: 38
+  },
+  {
     id: "7-ai-cheat-codes",
     title: "7 AI Cheat Codes: Save Hours Every Week & Get Paid",
     slug: "7-ai-cheat-codes",

@@ -780,8 +780,51 @@ const Home: React.FC = () => {
             </Link>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
             
+            {/* The AI Builder Bootcamp */}
+            <div className="bg-white border-2 border-emerald-500 ring-2 ring-emerald-500/20 rounded-3xl p-6 sm:p-7 flex flex-col justify-between shadow-xl hover:-translate-y-1 transition-all duration-300 group">
+              <div>
+                <div className="flex items-center justify-between mb-4">
+                  <span className="text-[11px] font-black uppercase tracking-wider bg-emerald-600 text-white px-3 py-1 rounded-full shadow-xs">
+                    Cohort Open
+                  </span>
+                  <span className="text-sm font-mono font-black text-navy">
+                    ₦100,000
+                  </span>
+                </div>
+
+                <div className="mb-4 h-36 rounded-xl bg-gradient-to-br from-[#092755] to-[#101F42] border border-white/10 flex flex-col items-center justify-center p-3 text-center text-white relative overflow-hidden">
+                  <div className="w-10 h-10 rounded-xl bg-accent text-navy flex items-center justify-center mb-2 font-bold text-lg shadow-md">
+                    ⚡
+                  </div>
+                  <span className="text-xs font-mono font-bold text-accent">7-WEEK COHORT</span>
+                  <span className="text-[11px] text-slate-300 font-medium">No Coding Required</span>
+                </div>
+
+                <h3 className="text-lg sm:text-xl font-bold text-navy mb-2 group-hover:text-emerald-700 transition-colors">
+                  AI Builder Bootcamp
+                </h3>
+
+                <p className="text-xs text-slate-600 leading-relaxed mb-4">
+                  Go from zero to building live web apps, custom CMS, Android apps, and full-stack software using AI agents with 1-on-1 mentorship.
+                </p>
+              </div>
+
+              <div className="pt-4 border-t border-slate-100 flex items-center justify-between">
+                <span className="text-[11px] font-semibold text-emerald-700">
+                  100% Refund Policy
+                </span>
+                <Link
+                  to="/ai-builder-bootcamp"
+                  className="inline-flex items-center bg-emerald-600 text-white hover:bg-emerald-500 px-3.5 py-2 rounded-xl font-black text-xs transition-colors shadow-sm"
+                >
+                  <span>Explore</span>
+                  <ArrowRight className="w-3.5 h-3.5 ml-1" />
+                </Link>
+              </div>
+            </div>
+
             {/* The 7 AI Cheat Codes Playbook */}
             <div className="bg-white border-2 border-accent ring-2 ring-accent/30 rounded-3xl p-8 flex flex-col justify-between shadow-xl hover:-translate-y-1 transition-all duration-300 group">
               <div>

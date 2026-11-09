@@ -187,12 +187,12 @@ const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
               <Link
                 to="/products"
                 className={`px-2.5 xl:px-3 py-2 rounded-lg text-xs xl:text-sm font-semibold transition-colors flex items-center space-x-1.5 whitespace-nowrap ${
-                  location.pathname === '/products' || location.pathname === '/ai-presentation-system' || location.pathname === '/free-blueprint' || location.pathname === '/7-ai-cheat-codes'
+                  location.pathname === '/products' || location.pathname === '/ai-presentation-system' || location.pathname === '/free-blueprint' || location.pathname === '/7-ai-cheat-codes' || location.pathname === '/ai-builder-bootcamp'
                     ? 'text-navy font-bold bg-[#EEF3FB]'
                     : 'text-slate-700 hover:text-navy hover:bg-[#EEF3FB]'
                 }`}
               >
-                <span>Products</span>
+                <span>Marketplace</span>
                 <span className="text-[9px] xl:text-[10px] font-black uppercase bg-[#FDD412] text-[#092755] px-1.5 py-0.2 rounded shadow-xs">New</span>
               </Link>
 
@@ -460,6 +460,12 @@ const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
                 <li>
                   <Link to="/academy" className="hover:text-white transition-colors">
                     DigiBeloved Academy
+                  </Link>
+                </li>
+                <li>
+                  <Link to="/ai-builder-bootcamp" className="hover:text-white transition-colors text-emerald-400 font-semibold flex items-center justify-between">
+                    <span>AI Builder Bootcamp</span>
+                    <span className="text-[10px] bg-emerald-500/20 text-emerald-400 px-1.5 py-0.5 rounded font-mono">₦100k</span>
                   </Link>
                 </li>
                 <li>

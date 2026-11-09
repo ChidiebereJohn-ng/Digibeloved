@@ -569,6 +569,18 @@ const corePages = [
     canonical: "https://digibeloved.com/products"
   },
   {
+    route: "ai-builder-bootcamp",
+    title: "AI Builder Bootcamp | Build Real Software With AI | DigiBeloved",
+    description: "In 7 weeks (3 hrs/week), go from beginner to launching live web apps, custom CMS, Android apps, and full-stack software using AI agents. No coding required.",
+    canonical: "https://digibeloved.com/ai-builder-bootcamp"
+  },
+  {
+    route: "services/training/ai-builder-bootcamp",
+    title: "AI Builder Bootcamp | Build Real Software With AI | DigiBeloved",
+    description: "In 7 weeks (3 hrs/week), go from beginner to launching live web apps, custom CMS, Android apps, and full-stack software using AI agents. No coding required.",
+    canonical: "https://digibeloved.com/services/training/ai-builder-bootcamp"
+  },
+  {
     route: "academy",
     title: "DigiBeloved Academy | Practical AI Skills & Playbooks",
     description: "Learn practical AI skills, step-by-step playbooks, and reusable workflows you can apply immediately in your work or career.",
