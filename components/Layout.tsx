@@ -101,7 +101,7 @@ const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
             </Link>
 
             {/* Desktop Navigation */}
-            <div className="hidden md:flex space-x-1 lg:space-x-2 items-center">
+            <div className="hidden lg:flex space-x-1 xl:space-x-2 items-center">
               
               {/* Solutions Dropdown */}
               <div className="relative" ref={dropdownRef}>
@@ -110,7 +110,7 @@ const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
                   onClick={() => setIsSolutionsOpen(!isSolutionsOpen)}
                   onMouseEnter={() => setIsSolutionsOpen(true)}
                   aria-expanded={isSolutionsOpen}
-                  className={`flex items-center space-x-1 px-3 py-2 rounded-lg text-sm font-semibold transition-colors ${
+                  className={`flex items-center space-x-1 px-2.5 xl:px-3 py-2 rounded-lg text-xs xl:text-sm font-semibold transition-colors whitespace-nowrap ${
                     isSolutionsActive
                       ? 'text-navy font-bold bg-slate-50'
                       : 'text-slate-700 hover:text-navy hover:bg-slate-50'
@@ -162,20 +162,19 @@ const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
               {/* Applied AI Hub */}
               <Link
                 to="/applied-ai-hub"
-                className={`px-3 py-2 rounded-lg text-sm font-semibold transition-colors flex items-center space-x-1.5 ${
+                className={`px-2.5 xl:px-3 py-2 rounded-lg text-xs xl:text-sm font-semibold transition-colors whitespace-nowrap ${
                   location.pathname === '/applied-ai-hub'
                     ? 'text-navy font-bold bg-[#EEF3FB]'
                     : 'text-slate-700 hover:text-navy hover:bg-[#EEF3FB]'
                 }`}
               >
-                <span>Applied AI Hub</span>
-                <span className="text-[10px] font-black uppercase bg-[#092755] text-[#FDD412] px-1.5 py-0.5 rounded-md shadow-2xs">Matrix</span>
+                Applied AI Hub
               </Link>
 
               {/* Case Studies */}
               <Link
                 to="/case-studies"
-                className={`px-3 py-2 rounded-lg text-sm font-semibold transition-colors ${
+                className={`px-2.5 xl:px-3 py-2 rounded-lg text-xs xl:text-sm font-semibold transition-colors whitespace-nowrap ${
                   location.pathname === '/case-studies'
                     ? 'text-navy font-bold bg-slate-50'
                     : 'text-slate-700 hover:text-navy hover:bg-slate-50'
@@ -187,20 +186,20 @@ const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
               {/* Products & Marketplace */}
               <Link
                 to="/products"
-                className={`px-3 py-2 rounded-lg text-sm font-semibold transition-colors flex items-center space-x-1.5 ${
+                className={`px-2.5 xl:px-3 py-2 rounded-lg text-xs xl:text-sm font-semibold transition-colors flex items-center space-x-1.5 whitespace-nowrap ${
                   location.pathname === '/products' || location.pathname === '/ai-presentation-system' || location.pathname === '/free-blueprint' || location.pathname === '/7-ai-cheat-codes'
                     ? 'text-navy font-bold bg-[#EEF3FB]'
                     : 'text-slate-700 hover:text-navy hover:bg-[#EEF3FB]'
                 }`}
               >
                 <span>Products</span>
-                <span className="text-[10px] font-black uppercase bg-[#FDD412] text-[#092755] px-1.5 py-0.5 rounded-md shadow-xs">New</span>
+                <span className="text-[9px] xl:text-[10px] font-black uppercase bg-[#FDD412] text-[#092755] px-1.5 py-0.2 rounded shadow-xs">New</span>
               </Link>
 
               {/* Insights */}
               <Link
                 to="/insights"
-                className={`px-3 py-2 rounded-lg text-sm font-semibold transition-colors ${
+                className={`px-2.5 xl:px-3 py-2 rounded-lg text-xs xl:text-sm font-semibold transition-colors whitespace-nowrap ${
                   location.pathname.startsWith('/insights') || location.pathname.startsWith('/blog')
                     ? 'text-navy font-bold bg-slate-50'
                     : 'text-slate-700 hover:text-navy hover:bg-slate-50'
@@ -212,7 +211,7 @@ const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
               {/* Academy */}
               <Link
                 to="/academy"
-                className={`px-3 py-2 rounded-lg text-sm font-semibold transition-colors ${
+                className={`px-2.5 xl:px-3 py-2 rounded-lg text-xs xl:text-sm font-semibold transition-colors whitespace-nowrap ${
                   location.pathname === '/academy'
                     ? 'text-navy font-bold bg-slate-50'
                     : 'text-slate-700 hover:text-navy hover:bg-slate-50'
@@ -224,7 +223,7 @@ const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
               {/* About */}
               <Link
                 to="/about"
-                className={`px-3 py-2 rounded-lg text-sm font-semibold transition-colors ${
+                className={`px-2.5 xl:px-3 py-2 rounded-lg text-xs xl:text-sm font-semibold transition-colors whitespace-nowrap ${
                   location.pathname === '/about'
                     ? 'text-navy font-bold bg-slate-50'
                     : 'text-slate-700 hover:text-navy hover:bg-slate-50'
@@ -234,20 +233,20 @@ const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
               </Link>
 
               {/* Primary Action Button */}
-              <div className="pl-2">
+              <div className="pl-1 xl:pl-2">
                 <Link
                   to="/contact"
                   onClick={() => trackCtaClick('Get Scoping Feedback in 24 Hours - Header', location.pathname)}
-                  className="inline-flex items-center justify-center bg-accent text-navy px-4 lg:px-5 py-2.5 rounded-xl font-extrabold text-xs lg:text-sm hover:bg-yellow-400 active:scale-[0.98] transition-all shadow-[0_4px_14px_rgba(255,209,0,0.35)] whitespace-nowrap"
+                  className="inline-flex items-center justify-center bg-accent text-navy px-3.5 xl:px-5 py-2.5 rounded-xl font-extrabold text-xs xl:text-sm hover:bg-yellow-400 active:scale-[0.98] transition-all shadow-[0_4px_14px_rgba(255,209,0,0.35)] whitespace-nowrap"
                 >
-                  Get Scoping Feedback in 24 Hours
+                  Get Scoping Feedback
                 </Link>
               </div>
 
             </div>
 
             {/* Mobile Menu Button */}
-            <div className="md:hidden flex items-center">
+            <div className="lg:hidden flex items-center">
               <button
                 type="button"
                 onClick={() => setIsMenuOpen(!isMenuOpen)}
