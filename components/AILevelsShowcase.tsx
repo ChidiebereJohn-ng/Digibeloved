@@ -372,7 +372,7 @@ export const AILevelsShowcase: React.FC = () => {
               </div>
 
               <Link
-                to="/ai-training-for-organizations"
+                to="/applied-ai"
                 className="w-full sm:w-auto inline-flex items-center justify-center bg-[#092755] hover:bg-[#0d3470] text-white px-6 py-3.5 rounded-xl font-bold text-sm tracking-wide transition-all shadow-md active:scale-[0.98] shrink-0"
               >
                 <span>Bridge to Level {Math.min(activeLevel.level + 1, 5)}</span>
@@ -473,7 +473,7 @@ export const AILevelsShowcase: React.FC = () => {
 
                   <div className="shrink-0 flex flex-col gap-2">
                     <Link
-                      to="/ai-training-for-organizations"
+                      to="/applied-ai"
                       className="inline-flex items-center justify-center bg-[#092755] hover:bg-slate-900 text-white font-extrabold px-6 py-4 rounded-xl text-sm shadow-xl active:scale-[0.98] transition-all"
                     >
                       <span>Get Custom Training Roadmap</span>

@@ -21,6 +21,7 @@ import BlueprintThankYou from './pages/BlueprintThankYou';
 import Products from './pages/Products';
 import AppliedAIHub from './pages/AppliedAIHub';
 import AdminDashboard from './pages/AdminDashboard';
+import AppliedAIFunnel from './pages/AppliedAIFunnel';
 
 // New Product Funnel Pages
 import CheatCodesSalesPage from './pages/CheatCodesSalesPage';
@@ -63,8 +64,12 @@ const App: React.FC = () => {
         <Route path="/ai-automation" element={<Layout><AIAutomation /></Layout>} />
         <Route path="/custom-software-development" element={<Layout><CustomSoftware /></Layout>} />
         
-        {/* Organizational Capability */}
+        {/* Organizational Capability & Training Funnel */}
         <Route path="/ai-training-for-organizations" element={<Layout><CorporateAITraining /></Layout>} />
+        <Route path="/applied-ai" element={<Layout><AppliedAIFunnel /></Layout>} />
+        <Route path="/assessment" element={<Navigate to="/applied-ai" replace />} />
+        <Route path="/training-funnel" element={<Navigate to="/applied-ai" replace />} />
+        <Route path="/ai-audit" element={<Navigate to="/applied-ai" replace />} />
         
         {/* Individual Learning & Proof */}
         <Route path="/applied-ai-hub" element={<Layout><AppliedAIHub /></Layout>} />

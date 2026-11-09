@@ -306,6 +306,15 @@ const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
               </Link>
 
               <Link
+                to="/applied-ai"
+                onClick={() => setIsMenuOpen(false)}
+                className="flex items-center justify-between px-3 py-2.5 rounded-lg text-sm font-semibold text-slate-700 hover:text-navy hover:bg-slate-50"
+              >
+                <span>Applied AI Assessment</span>
+                <span className="text-[10px] font-extrabold uppercase bg-[#FDD412] text-[#092755] px-2 py-0.5 rounded-md">Audit</span>
+              </Link>
+
+              <Link
                 to="/case-studies"
                 onClick={() => setIsMenuOpen(false)}
                 className="block px-3 py-2.5 rounded-lg text-sm font-semibold text-slate-700 hover:text-navy hover:bg-slate-50"
@@ -435,6 +444,12 @@ const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
                   <Link to="/applied-ai-hub" className="hover:text-white transition-colors text-accent font-semibold flex items-center gap-1.5">
                     <span>Applied AI Hub</span>
                     <span className="text-[10px] bg-accent text-navy px-1.5 py-0.2 rounded font-extrabold uppercase">New</span>
+                  </Link>
+                </li>
+                <li>
+                  <Link to="/applied-ai" className="hover:text-white transition-colors text-slate-300 flex items-center gap-1.5">
+                    <span>Applied AI Assessment</span>
+                    <span className="text-[10px] bg-white/10 text-[#FDD412] px-1.5 py-0.2 rounded font-extrabold uppercase">Audit</span>
                   </Link>
                 </li>
                 <li>
