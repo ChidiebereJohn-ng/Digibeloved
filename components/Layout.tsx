@@ -520,6 +520,7 @@ const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
               <Link to="/privacy" className="hover:text-white transition-colors">Privacy Policy</Link>
               <Link to="/terms" className="hover:text-white transition-colors">Terms of Service</Link>
               <Link to="/contact" className="hover:text-white transition-colors">Contact</Link>
+              <Link to="/admin" className="hover:text-accent transition-colors font-medium">Staff Admin</Link>
             </div>
           </div>
         </div>

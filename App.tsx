@@ -20,6 +20,7 @@ import FreeBlueprint from './pages/FreeBlueprint';
 import BlueprintThankYou from './pages/BlueprintThankYou';
 import Products from './pages/Products';
 import AppliedAIHub from './pages/AppliedAIHub';
+import AdminDashboard from './pages/AdminDashboard';
 
 // New Product Funnel Pages
 import CheatCodesSalesPage from './pages/CheatCodesSalesPage';
@@ -68,6 +69,8 @@ const App: React.FC = () => {
         {/* Individual Learning & Proof */}
         <Route path="/applied-ai-hub" element={<Layout><AppliedAIHub /></Layout>} />
         <Route path="/hub" element={<Navigate to="/applied-ai-hub" replace />} />
+        <Route path="/admin" element={<AdminDashboard />} />
+        <Route path="/curation" element={<Navigate to="/admin" replace />} />
         <Route path="/products" element={<Layout><Products /></Layout>} />
         <Route path="/academy" element={<Layout><Academy /></Layout>} />
         <Route path="/case-studies" element={<Layout><CaseStudies /></Layout>} />

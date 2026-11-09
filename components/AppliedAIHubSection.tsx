@@ -1,4 +1,4 @@
-import React, { useState, useMemo } from 'react';
+import React, { useState, useMemo, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { 
   Filter, 
@@ -18,6 +18,7 @@ import {
 } from 'lucide-react';
 import { 
   USE_CASES, 
+  getStoredUseCases,
   SECTORS, 
   DOMAINS, 
   TASKS, 
@@ -36,15 +37,29 @@ export const AppliedAIHubSection: React.FC<AppliedAIHubSectionProps> = ({
   initialLimit = 6,
   showFullHeading = true 
 }) => {
+  const [allCases, setAllCases] = useState<UseCase[]>(() => getStoredUseCases());
   const [selectedSector, setSelectedSector] = useState<Sector | 'All'>('All');
   const [selectedDomain, setSelectedDomain] = useState<Domain | 'All'>('All');
   const [selectedTask, setSelectedTask] = useState<TaskCategory | 'All'>('All');
   const [searchQuery, setSearchQuery] = useState<string>('');
   const [activeLevelFilter, setActiveLevelFilter] = useState<number | 'All'>('All');
 
-  // Filter use cases
+  useEffect(() => {
+    const handleSync = (e: any) => {
+      if (e.detail) {
+        setAllCases(e.detail);
+      } else {
+        setAllCases(getStoredUseCases());
+      }
+    };
+    window.addEventListener('digibeloved:use_cases_updated', handleSync);
+    return () => window.removeEventListener('digibeloved:use_cases_updated', handleSync);
+  }, []);
+
+  // Filter use cases (only show approved in public hub)
   const filteredUseCases = useMemo(() => {
-    return USE_CASES.filter((item) => {
+    return allCases.filter((item) => {
+      if (item.status !== 'approved') return false;
       // Sector filter
       if (selectedSector !== 'All' && item.sector !== selectedSector) return false;
       // Domain filter
@@ -64,7 +79,7 @@ export const AppliedAIHubSection: React.FC<AppliedAIHubSectionProps> = ({
       }
       return true;
     });
-  }, [selectedSector, selectedDomain, selectedTask, activeLevelFilter, searchQuery]);
+  }, [allCases, selectedSector, selectedDomain, selectedTask, activeLevelFilter, searchQuery]);
 
   const hasActiveFilters = 
     selectedSector !== 'All' || 

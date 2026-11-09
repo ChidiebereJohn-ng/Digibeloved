@@ -398,5 +398,96 @@ export const USE_CASES: UseCase[] = [
     status: 'approved',
     featured: true,
     createdAt: '2026-11-08'
+  },
+  {
+    id: 'uc-health-triage-draft',
+    title: 'Autonomous Clinical Inpatient Triage & Vitals Anomaly Pipeline',
+    slug: 'clinical-inpatient-triage-vitals-anomaly',
+    sector: 'Healthcare',
+    domain: 'Customer Support',
+    task: 'Clinical Note Summarization',
+    level: 3,
+    summary: 'Ingests ICU bedside monitor vitals and nurse shift handover notes, detects early sepsis patterns, and automatically triggers urgent on-call physician alerts.',
+    depthOfAction: [
+      'Continuous telemetry ingestion from bedside monitor HL7/FHIR feeds',
+      'NLP analysis of free-text nursing notes to identify subtle cognitive decline indicators',
+      'Cross-referencing against SOFA (Sequential Organ Failure Assessment) scoring tables',
+      'Automated escalation to attending physician smartphone via encrypted hospital pager app',
+      'Drafts structured physician shift handover summary in electronic health record'
+    ],
+    impactYielded: {
+      hoursSaved: '3.5 hrs/shift/nurse',
+      roi: '42% faster critical triage response',
+      metricHighlight: 'Early sepsis warning triggered 4.2 hours before clinical septic shock onset'
+    },
+    toolStack: ['HL7 FHIR API', 'Claude 3.7 Sonnet', 'PostgreSQL', 'FastAPI', 'Docker'],
+    status: 'draft',
+    featured: false,
+    createdAt: '2026-11-08'
+  },
+  {
+    id: 'uc-agri-yield-draft',
+    title: 'Synthetic Aperture Radar & Soil Moisture Crop Risk Underwriting Agent',
+    slug: 'sar-crop-risk-underwriting-agent',
+    sector: 'Agriculture',
+    domain: 'Research & Data Analysis',
+    task: 'Agronomic Soil & Yield Forecasting',
+    level: 4,
+    summary: 'Analyzes Sentinel-1 satellite radar data and IoT soil moisture probes across 50,000 hectares to underwrite micro-agricultural parametric insurance policies.',
+    depthOfAction: [
+      'Automated weekly raster tile downloads from European Space Agency Copernicus API',
+      'Computes vegetation NDVI index and surface backscatter soil saturation indices',
+      'Correlates weather radar forecasts with historical 10-year local drought indices',
+      'Autonomous subagent runs parametric risk simulation per farming cooperative',
+      'Calculates payout indemnity thresholds and outputs certified underwriting package'
+    ],
+    impactYielded: {
+      hoursSaved: '60 hrs/underwriting cycle',
+      roi: '8.4x portfolio risk modeling speed',
+      metricHighlight: '94% correlation between satellite radar soil indices and ground truth moisture probes'
+    },
+    toolStack: ['Copernicus Sentinel API', 'Python GDAL', 'Gemini 3 Pro', 'Antigravity Agent SDK', 'PostGIS'],
+    status: 'draft',
+    featured: false,
+    createdAt: '2026-11-09'
   }
 ];
+
+export const STORAGE_KEY = 'digibeloved_curated_use_cases';
+
+export const getStoredUseCases = (): UseCase[] => {
+  if (typeof window === 'undefined') return USE_CASES;
+  try {
+    const raw = localStorage.getItem(STORAGE_KEY);
+    if (raw) {
+      const parsed = JSON.parse(raw);
+      if (Array.isArray(parsed) && parsed.length > 0) {
+        return parsed;
+      }
+    }
+  } catch (e) {
+    console.warn('Failed to load use cases from localStorage:', e);
+  }
+  return USE_CASES;
+};
+
+export const saveStoredUseCases = (cases: UseCase[]): void => {
+  if (typeof window === 'undefined') return;
+  try {
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(cases));
+    window.dispatchEvent(new CustomEvent('digibeloved:use_cases_updated', { detail: cases }));
+  } catch (e) {
+    console.warn('Failed to save use cases to localStorage:', e);
+  }
+};
+
+export const resetStoredUseCases = (): UseCase[] => {
+  if (typeof window === 'undefined') return USE_CASES;
+  try {
+    localStorage.removeItem(STORAGE_KEY);
+    window.dispatchEvent(new CustomEvent('digibeloved:use_cases_updated', { detail: USE_CASES }));
+  } catch (e) {
+    console.warn('Failed to reset use cases in localStorage:', e);
+  }
+  return USE_CASES;
+};
