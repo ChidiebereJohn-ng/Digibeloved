@@ -29,6 +29,7 @@ import ThankYou from './pages/ThankYou';
 import PrivacyPolicy from './pages/PrivacyPolicy';
 import TermsOfService from './pages/TermsOfService';
 import AIBuilderBootcamp from './pages/AIBuilderBootcamp';
+import AIBuilderBootcampVariantB from './pages/AIBuilderBootcampVariantB';
 
 import {
   captureAndPersistUtmParams,
@@ -97,10 +98,14 @@ const App: React.FC = () => {
         <Route path="/services/training/:id" element={<Layout><CourseDetail /></Layout>} />
         <Route path="/academy/:id" element={<Layout><CourseDetail /></Layout>} />
         
-        {/* AI Builder Bootcamp Sales Page */}
+        {/* AI Builder Bootcamp Sales Page (Variant A) */}
         <Route path="/ai-builder-bootcamp" element={<Layout><AIBuilderBootcamp /></Layout>} />
         <Route path="/services/training/ai-builder-bootcamp" element={<Layout><AIBuilderBootcamp /></Layout>} />
         <Route path="/bootcamp" element={<Navigate to="/ai-builder-bootcamp" replace />} />
+
+        {/* AI Builder Bootcamp Sales Page (Variant B - A/B Test) */}
+        <Route path="/ai-builder-bootcamp-v2" element={<Layout><AIBuilderBootcampVariantB /></Layout>} />
+        <Route path="/ai-builder-bootcamp/v2" element={<Layout><AIBuilderBootcampVariantB /></Layout>} />
 
         {/* 7 AI Cheat Codes Sales Funnel */}
         <Route path="/7-ai-cheat-codes" element={<CheatCodesSalesPage />} />

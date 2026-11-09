@@ -581,6 +581,18 @@ const corePages = [
     canonical: "https://digibeloved.com/services/training/ai-builder-bootcamp"
   },
   {
+    route: "ai-builder-bootcamp-v2",
+    title: "You Use AI Every Day. Now Learn to Build With It | DigiBeloved Bootcamp",
+    description: "In 7 weeks, at 3 hours a week, you will build and launch five real projects with AI: a live website with a CMS, an Android app, a full-stack AI tool, and a capstone. ₦100,000.",
+    canonical: "https://digibeloved.com/ai-builder-bootcamp-v2"
+  },
+  {
+    route: "ai-builder-bootcamp/v2",
+    title: "You Use AI Every Day. Now Learn to Build With It | DigiBeloved Bootcamp",
+    description: "In 7 weeks, at 3 hours a week, you will build and launch five real projects with AI: a live website with a CMS, an Android app, a full-stack AI tool, and a capstone. ₦100,000.",
+    canonical: "https://digibeloved.com/ai-builder-bootcamp/v2"
+  },
+  {
     route: "academy",
     title: "DigiBeloved Academy | Practical AI Skills & Playbooks",
     description: "Learn practical AI skills, step-by-step playbooks, and reusable workflows you can apply immediately in your work or career.",
